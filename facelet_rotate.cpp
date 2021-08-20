@@ -2,6 +2,11 @@
 #include <vector>
 #include <string>
 
+/*
+    This file contains the rotation functions needed for every type of Rubik's cube rotation for
+    a cube defined as a permutation of 54 facelets stored in a string.
+*/
+
 //possible rotations
 enum ROTATION
 {
