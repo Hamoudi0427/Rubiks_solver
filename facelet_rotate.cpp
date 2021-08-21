@@ -313,7 +313,7 @@ std::string& rotateDownTwice(std::string& cube)
 }
 
 //applies a series of rotations to the cube
-std::string& rotateCube(std::string& cube, std::vector<ROTATION> moves)
+std::string rotateCube(std::string cube, std::vector<ROTATION> moves)
 {
     for (auto move : moves)
     {
