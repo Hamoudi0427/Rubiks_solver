@@ -380,3 +380,38 @@ std::string rotateCube(std::string cube, std::vector<ROTATION> moves)
 
     return cube;
 }
+
+//depth first search (DFS) to find possible solution at a given depth
+std::vector<ROTATION> depthFirstSearchCube(std::string target, std::string cube, std::vector<ROTATION> moves, int depth, std::vector<ROTATION> solution = {})
+{
+    //solution found return array of moves to get to target cube
+    if (cube == target)
+    {
+        return solution;
+    }
+
+    //no solution found if maximum depth is used
+    if (depth == 0)
+    {
+        return {};
+    }
+
+    for (auto move : moves)
+    {
+        //update the solution vector with the move and continue searching
+        std::vector<ROTATION> new_solution = solution;
+        new_solution.push_back(move);
+
+        //reduce remaining depth and apply the move to the cube
+        std::vector<ROTATION> result = depthFirstSearchCube(target, rotateCube(cube, {move}), moves, depth - 1, new_solution);
+
+        //return the solution vector if found
+        if (result.size() != 0)
+        {
+            return result;
+        }
+    }
+
+    //empty vector returned if no solution is found
+    return {};
+}
