@@ -415,3 +415,22 @@ std::vector<ROTATION> depthFirstSearchCube(std::string target, std::string cube,
     //empty vector returned if no solution is found
     return {};
 }
+
+//iterative deepening DFS function provides the optimal solution while using less space than BFS
+std::vector<ROTATION> iterativeDeepeningSearchCube(std::string target, std::string cube, std::vector<ROTATION> moves, int depth)
+{
+    //continues searching deeper until a solution is found, garentees optimal solution if one exists
+    for (int i = 0; i < depth; i++)
+    {
+        std::vector<ROTATION> solution = depthFirstSearchCube(target, cube, moves, i);
+
+        //return first solution found
+        if (solution.size() != 0)
+        {
+            return solution;
+        }
+    }
+
+    //return empty vector if no solution is found
+    return {};
+}
