@@ -31,5 +31,6 @@ std::string rotateDownClockwise(const std::string& cube);
 std::string rotateDownCounterClockwise(const std::string& cube);
 std::string& rotateDownTwice(std::string& cube);
 std::string rotateCube(std::string cube, std::vector<ROTATION> moves);
+std::vector<ROTATION> depthFirstSearchCube(std::string target, std::string cube, std::vector<ROTATION> moves, int depth, std::vector<ROTATION> solution = {});
 
 #endif
