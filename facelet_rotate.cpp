@@ -15,7 +15,7 @@ enum ROTATION
 };
 
 //printing function to help with testing
-void printCube(const std::string& cube)
+void printCube(std::string cube)
 {
     //upper layer
     for (int i = 0; i < 3; i++)
@@ -434,3 +434,5 @@ std::vector<ROTATION> iterativeDeepeningSearchCube(std::string target, std::stri
     //return empty vector if no solution is found
     return {};
 }
+
+//maybe add X enum to say no solution is found
