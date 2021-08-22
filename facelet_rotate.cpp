@@ -15,7 +15,7 @@ enum ROTATION
 };
 
 //printing function to help with testing
-void printCube(std::string cube)
+void printCube(const std::string& cube)
 {
     //upper layer
     for (int i = 0; i < 3; i++)
