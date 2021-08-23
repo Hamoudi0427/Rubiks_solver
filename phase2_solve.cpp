@@ -16,7 +16,7 @@ std::string getCornerMask(std::string g1_cube)
 	std::string target_mask = "XMXMXMXMXXXXXXXXXXXXXYXMYXXXMXMXMXMXXXXXXXXXXXXXYXYXXX";
 
 	//corner facelets
-	std::vector<std::vector<int>> corners = {{0, 36, 47}, {6, 18, 38}, {8, 9, 20}, {8, 11, 45}, {24, 27, 44}, {15, 26, 29}, 
+	std::vector<std::vector<int>> corners = {{0, 36, 47}, {6, 18, 38}, {8, 9, 20}, {2, 11, 45}, {24, 27, 44}, {15, 26, 29}, 
 	{17, 35, 51}, {33, 42, 53}};
 
 	//extract corners by indicating their Up - Down colors (White and Yellow)
@@ -24,15 +24,15 @@ std::string getCornerMask(std::string g1_cube)
 	{
 		if (g1_cube[corner[0]] == 'W' || g1_cube[corner[0]] == 'Y')
 		{
-			target_mask[corner[0]] = 'C';
+			target_mask[corner[0]] = 'M';
 		}
 		else if (g1_cube[corner[1]] == 'W' || g1_cube[corner[1]] == 'Y')
 		{
-			target_mask[corner[1]] = 'C';
+			target_mask[corner[1]] = 'M';
 		}
 		else if (g1_cube[corner[2]] == 'W' || g1_cube[corner[2]] == 'Y')
 		{
-			target_mask[corner[2]] = 'C';
+			target_mask[corner[2]] = 'M';
 		}
 	}
 
@@ -41,7 +41,7 @@ std::string getCornerMask(std::string g1_cube)
 
 std::vector<ROTATION> getG2Moves(std::string g2_mask)
 {
-	std::string target_mask = "CMCMXMCMCXXXXXXXXXXXXYXMYXXCMCMXMCMCXXXXXXXXXXXXYXYXXX";
+	std::string target_mask = "MMMMXMMMMXXXXXXXXXXXXYXMYXXMMMMXMMMMXXXXXXXXXXXXYXYXXX";
 
 	//moves without FP, F, B, BP
 	std::vector<ROTATION> moves = {U, UP, U2, D, DP, D2, F2, R, RP, R2, L, LP, L2, B2};
@@ -52,7 +52,7 @@ std::vector<ROTATION> getG2Moves(std::string g2_mask)
 
 std::vector<ROTATION> getShortestG2Moves(std::string g2_mask)
 {
-	std::string target_mask = "CMCMXMCMCXXXXXXXXXXXXYXMYXXCMCMXMCMCXXXXXXXXXXXXYXYXXX";
+	std::string target_mask = "MMMMXMMMMXXXXXXXXXXXXYXMYXXMMMMXMMMMXXXXXXXXXXXXYXYXXX";
 
 	//moves without FP, F, B, BP
 	std::vector<ROTATION> moves = {U, UP, U2, D, DP, D2, F2, R, RP, R2, L, LP, L2, B2};
