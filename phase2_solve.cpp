@@ -13,7 +13,7 @@
 std::string getCornerMask(std::string g1_cube)
 {
 	//indicate the E- slice edges with Y indicating E-slice edges
-	std::string target_mask = "XMXMXMXMXXXXXXXXXXXXXYXMYXXXMXMXMXMXXXXXXXXXXXXXYXYXXX";
+	std::string target_mask = "XMXMXMXMXXXXXXXXXXXXXYXYXXXXMXMXMXMXXXXXXXXXXXXXYXYXXX";;
 
 	//corner facelets
 	std::vector<std::vector<int>> corners = {{0, 36, 47}, {6, 18, 38}, {8, 9, 20}, {2, 11, 45}, {24, 27, 44}, {15, 26, 29}, 
@@ -25,14 +25,17 @@ std::string getCornerMask(std::string g1_cube)
 		if (g1_cube[corner[0]] == 'W' || g1_cube[corner[0]] == 'Y')
 		{
 			target_mask[corner[0]] = 'M';
+			std::cout << 1;
 		}
 		else if (g1_cube[corner[1]] == 'W' || g1_cube[corner[1]] == 'Y')
 		{
 			target_mask[corner[1]] = 'M';
+			std::cout << 2;
 		}
 		else if (g1_cube[corner[2]] == 'W' || g1_cube[corner[2]] == 'Y')
 		{
 			target_mask[corner[2]] = 'M';
+			std::cout << 3;
 		}
 	}
 
