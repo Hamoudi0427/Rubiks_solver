@@ -171,7 +171,7 @@ std::vector<ROTATION> getG1Moves(std::string mask)
 std::vector<ROTATION> getShortestG1Moves(std::string mask)
 {
 	std::string target_mask = "XMXMXMXMXXXXXXXXXXXXXMXMXXXXMXMXMXMXXXXXXXXXXXXXMXMXXX";
-	std::vector<ROTATION> moves = { U, UP, U2, D, DP, D2, F, FP, F2, R, RP, R2, L, LP, L2, B, BP, B2 };
+	std::vector<ROTATION> moves = {U, UP, U2, D, DP, D2, F, FP, F2, R, RP, R2, L, LP, L2, B, BP, B2};
 
 	//return shortest amount of moves to get the edges oriented
 	return iterativeDeepeningSearchCube(target_mask, mask, moves, 7);
