@@ -25,17 +25,14 @@ std::string getCornerMask(std::string g1_cube)
 		if (g1_cube[corner[0]] == 'W' || g1_cube[corner[0]] == 'Y')
 		{
 			target_mask[corner[0]] = 'M';
-			std::cout << 1;
 		}
 		else if (g1_cube[corner[1]] == 'W' || g1_cube[corner[1]] == 'Y')
 		{
 			target_mask[corner[1]] = 'M';
-			std::cout << 2;
 		}
 		else if (g1_cube[corner[2]] == 'W' || g1_cube[corner[2]] == 'Y')
 		{
 			target_mask[corner[2]] = 'M';
-			std::cout << 3;
 		}
 	}
 
