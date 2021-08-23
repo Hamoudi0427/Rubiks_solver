@@ -434,5 +434,3 @@ std::vector<ROTATION> iterativeDeepeningSearchCube(std::string target, std::stri
     //return empty vector if no solution is found
     return {};
 }
-
-//maybe add X enum to say no solution is found
