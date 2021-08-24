@@ -56,7 +56,7 @@ std::vector<ROTATION> getG2Moves(std::string g2_mask)
 	std::vector<ROTATION> moves = {U, UP, U2, D, DP, D2, F2, R, RP, R2, L, LP, L2, B2};
 
 	//return the moves to get edges oriented
-	return depthFirstSearchCube(target_mask, g2_mask, moves, 13);
+	return depthFirstSearchCube(target_mask, g2_mask, moves, 10);
 }
 
 std::vector<ROTATION> getShortestG2Moves(std::string g2_mask)
@@ -67,7 +67,7 @@ std::vector<ROTATION> getShortestG2Moves(std::string g2_mask)
 	std::vector<ROTATION> moves = {U, UP, U2, D, DP, D2, F2, R, RP, R2, L, LP, L2, B2};
 
 	//return shortest amount of moves to get the edges oriented
-	return iterativeDeepeningSearchCube(target_mask, g2_mask, moves, 13);
+	return iterativeDeepeningSearchCube(target_mask, g2_mask, moves, 10);
 }
 
 //Note: 'C' = corner, 'M' = U/D edge, 'Y' = E-slice edges
