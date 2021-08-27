@@ -57,7 +57,7 @@ std::vector<ROTATION> getG2Moves(std::string g2_mask)
 	std::vector<ROTATION> moves = {U, UP, U2, D, DP, D2, F2, R, RP, R2, L, LP, L2, B2};
 
 	//generate the pruning table
-	std::map<std::string, int> table = generateG2Table(7);
+	std::map<std::string, int> table = generateG2Table(6);
 
 	//return the moves to get edges oriented
 	return depthFirstSearchCube(target_mask, g2_mask, moves, 10, table);
@@ -71,7 +71,7 @@ std::vector<ROTATION> getShortestG2Moves(std::string g2_mask)
 	std::vector<ROTATION> moves = {U, UP, U2, D, DP, D2, F2, R, RP, R2, L, LP, L2, B2};
 
 	//generate the pruning table
-	std::map<std::string, int> table = generateG2Table(7);
+	std::map<std::string, int> table = generateG2Table(6);
 
 	//return shortest amount of moves to get the edges oriented
 	return iterativeDeepeningSearchCube(target_mask, g2_mask, moves, 10, table);
