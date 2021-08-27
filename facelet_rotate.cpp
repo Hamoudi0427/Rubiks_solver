@@ -399,9 +399,17 @@ std::vector<ROTATION> depthFirstSearchCube(std::string target, std::string cube,
     }
 
     //if solution is farther than remaining depth exit early
-    if (table[cube] > depth)
+    if (table.find(cube) != table.end())
     {
-        return {};
+        if (table[cube] > depth)
+        {
+            return {};
+        }
+    }
+    else if (table.find(cube) == table.end())
+    {
+        //Note: this value must be modified if the depth is changed
+        table[cube] = 8;
     }
 
     for (auto move : moves)
