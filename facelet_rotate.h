@@ -6,7 +6,7 @@
 #include <map>
 
 //cube rotations
-enum ROTATION
+enum class ROTATION
 {
     U, UP, U2, D, DP, D2, F, FP, F2, R, RP, R2, L, LP, L2, B, BP, B2
 };

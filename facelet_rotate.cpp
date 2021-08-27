@@ -10,7 +10,7 @@
 */
 
 //possible rotations
-enum ROTATION
+enum class ROTATION
 {
     U, UP, U2, D, DP, D2, F, FP, F2, R, RP, R2, L, LP, L2, B, BP, B2
 };
@@ -320,58 +320,58 @@ std::string rotateCube(std::string cube, std::vector<ROTATION> moves)
     {
         switch (move)
         {
-        case U:
+        case ROTATION::U:
             cube = rotateUpClockwise(cube);
             break;
-        case UP:
+        case ROTATION::UP:
             cube = rotateUpCounterClockwise(cube);
             break;
-        case U2:
+        case ROTATION::U2:
             cube = rotateUpTwice(cube);
             break;
-        case D:
+        case ROTATION::D:
             cube = rotateDownClockwise(cube);
             break;
-        case DP:
+        case ROTATION::DP:
             cube = rotateDownCounterClockwise(cube);
             break;
-        case D2:
+        case ROTATION::D2:
             cube = rotateDownTwice(cube);
             break;
-        case L:
+        case ROTATION::L:
             cube = rotateLeftClockwise(cube);
             break;
-        case LP:
+        case ROTATION::LP:
             cube = rotateLeftCounterClockwise(cube);
             break;
-        case L2:
+        case ROTATION::L2:
             cube = rotateLeftTwice(cube);
             break;
-        case R:
+        case ROTATION::R:
             cube = rotateRightClockwise(cube);
             break;
-        case RP:
+        case ROTATION::RP:
             cube = rotateRightCounterClockwise(cube);
             break;
-        case R2:
+        case ROTATION::R2:
             cube = rotateRightTwice(cube);
             break;
-        case B:
+        case ROTATION::B:
             cube = rotateBackClockwise(cube);
             break;
-        case BP:
+        case ROTATION::BP:
             cube = rotateBackCounterClockwise(cube);
             break;
-        case B2:
+        case ROTATION::B2:
             cube = rotateBackTwice(cube);
             break;
-        case F:
+        case ROTATION::F:
             cube = rotateFrontClockwise(cube);
             break;
-        case FP:
+        case ROTATION::FP:
             cube = rotateFrontCounterClockwise(cube);
             break;
-        case F2:
+        case ROTATION::F2:
             cube = rotateFrontTwice(cube);
             break;
         default:
@@ -409,7 +409,7 @@ std::vector<ROTATION> depthFirstSearchCube(std::string target, std::string cube,
     else if (table.find(cube) == table.end())
     {
         //Note: this value must be modified if the depth is changed
-        table[cube] = 8;
+        table[cube] = 7;
     }
 
     for (auto move : moves)
