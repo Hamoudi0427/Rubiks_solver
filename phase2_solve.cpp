@@ -58,10 +58,10 @@ std::vector<ROT> getG2Moves(std::string g2_mask)
 		ROT::LP, ROT::L2, ROT::B2};
 
 	//generate the pruning table
-	std::map<std::string, int> table = generateG2Table(6);
+	std::map<std::string, int> table = generateG2Table(PHASE_G2_TABLE);
 
 	//return the moves to get edges oriented
-	return depthFirstSearchCube(target_mask, g2_mask, moves, 10, table, PHASE_G2);
+	return depthFirstSearchCube(target_mask, g2_mask, moves, PHASE_G2_DEPTH, table, PHASE_G2_TABLE);
 }
 
 std::vector<ROT> getShortestG2Moves(std::string g2_mask)
@@ -73,10 +73,10 @@ std::vector<ROT> getShortestG2Moves(std::string g2_mask)
 		ROT::LP, ROT::L2, ROT::B2};
 
 	//generate the pruning table
-	std::map<std::string, int> table = generateG2Table(6);
+	std::map<std::string, int> table = generateG2Table(PHASE_G2_TABLE);
 
 	//return shortest amount of moves to get the edges oriented
-	return iterativeDeepeningSearchCube(target_mask, g2_mask, moves, 10, table, PHASE_G1);
+	return iterativeDeepeningSearchCube(target_mask, g2_mask, moves, PHASE_G2_DEPTH, table, PHASE_G2_TABLE);
 }
 
 //Note: 'C' = corner, 'M' = U/D edge, 'Y' = E-slice edges

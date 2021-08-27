@@ -7,6 +7,20 @@
 /*
     This file contains the rotation functions for a Rubik's cube defined as a 
     permutation of 54 facelets stored in a string.
+
+    A representation is shown below as (face, index):
+    
+                  U0  U1  U2
+                  U3  U4  U5
+                  U6  U7  U8
+
+    L36 L37 L38   F18 F19 F20   R9  R10 R11   B45 B46 B47  
+    L39 L40 L41   F21 F22 F23   R12 R13 R14   B48 B49 B50
+    L42 L43 L44   F24 F25 F26   R15 R16 R17   B51 B52 B53
+
+                  D27 D28 D29
+                  D30 D31 D32
+                  D33 D34 D35
 */
 
 //possible rotations
@@ -15,11 +29,11 @@ enum class ROT
     U, UP, U2, D, DP, D2, F, FP, F2, R, RP, R2, L, LP, L2, B, BP, B2
 };
 
-//Number of moves in a phase needed for depth limit
-constexpr int PHASE_GO = 5;
-constexpr int PHASE_G1 = 6;
-constexpr int PHASE_G2 = 13;
-constexpr int PHASE_G3 = 15;
+//number of moves in a phase needed for depth limit
+constexpr int PHASE_G1_TABLE = 5;
+constexpr int PHASE_G2_TABLE = 6;
+constexpr int PHASE_G1_DEPTH = 7;
+constexpr int PHASE_G2_DEPTH = 10;
 
 //printing function to help with testing
 void printCube(const std::string& cube)

@@ -161,6 +161,7 @@ std::string getEdgeMask(std::string cube)
 	return masked_cube;
 }
 
+//this function generates the pruning table and then searches for the G1 moves (sub-optimally as it uses DFS)
 std::vector<ROT> getG1Moves(std::string mask)
 {
 	std::string target_mask = "XMXMXMXMXXXXXXXXXXXXXMXMXXXXMXMXMXMXXXXXXXXXXXXXMXMXXX";
@@ -168,12 +169,13 @@ std::vector<ROT> getG1Moves(std::string mask)
 		ROT::R2, ROT::L, ROT::LP, ROT::L2, ROT::B, ROT::BP, ROT::B2};
 
 	//generate the pruning table
-	std::map<std::string, int> table = generateG1Table(5);
+	std::map<std::string, int> table = generateG1Table(PHASE_G1_TABLE);
 
 	//return the moves to get edges oriented
-	return depthFirstSearchCube(target_mask, mask, moves, 7, table, PHASE_GO);
+	return depthFirstSearchCube(target_mask, mask, moves, PHASE_G1_DEPTH, table, PHASE_G1_TABLE);
 }
 
+//returns the optimal moves to get to the next phase (uses IDDFS)
 std::vector<ROT> getShortestG1Moves(std::string mask)
 {
 	std::string target_mask = "XMXMXMXMXXXXXXXXXXXXXMXMXXXXMXMXMXMXXXXXXXXXXXXXMXMXXX";
@@ -181,8 +183,8 @@ std::vector<ROT> getShortestG1Moves(std::string mask)
 		ROT::R2, ROT::L, ROT::LP, ROT::L2, ROT::B, ROT::BP, ROT::B2};
 
 	//generate the pruning table
-	std::map<std::string, int> table = generateG1Table(5);
+	std::map<std::string, int> table = generateG1Table(PHASE_G1_TABLE);
 
 	//return shortest amount of moves to get the edges oriented
-	return iterativeDeepeningSearchCube(target_mask, mask, moves, 7, table, PHASE_GO);
+	return iterativeDeepeningSearchCube(target_mask, mask, moves, PHASE_G1_DEPTH, table, PHASE_G1_TABLE);
 }
