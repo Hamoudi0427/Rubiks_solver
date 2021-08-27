@@ -12,7 +12,7 @@ int main(void)
 	std::string g1 = "BYOBWWBYBOOYRRBGOGYBYGGWBRYRGRBYYGWRWRRROOWOWGGOWBYWGO";
 
 	cube = "WWWWWWWWWRRRRRRRRRGGGGGGGGGYYYYYYYYYOOOOOOOOOBBBBBBBBB";
-	cube = rotateCube(cube, {ROT::L, ROT::R, ROT::U, ROT::D2});
+	cube = rotateCube(cube, {ROT::L, ROT::R, ROT::U, ROT::D2, ROT::D, ROT::F, ROT::LP});
 
 	//std::map<std::string, int> table2= generateG2Table(7);
 	//std::cout << table2.size() << std::endl;
@@ -38,7 +38,6 @@ int main(void)
 //rework to make the functions apart of a cube class after testing
 
 
-//enum classes
 //remove print statements from prune table
 //add flag for the lower bound update of the map
 //review and clean up code
