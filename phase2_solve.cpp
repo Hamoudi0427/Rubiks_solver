@@ -2,6 +2,7 @@
 #include <string>
 #include <iostream>
 #include <vector>
+#include "pruning_table.h"
 
 /*
 	In the second phase (G1 -> G2) the set of legal moves = <L, R, F2, B2, U, D> as F and B quarter turns affect edge orientation.
@@ -55,8 +56,11 @@ std::vector<ROTATION> getG2Moves(std::string g2_mask)
 	//moves without FP, F, B, BP
 	std::vector<ROTATION> moves = {U, UP, U2, D, DP, D2, F2, R, RP, R2, L, LP, L2, B2};
 
+	//generate the pruning table
+	std::map<std::string, int> table = generateG2Table(5);
+
 	//return the moves to get edges oriented
-	return depthFirstSearchCube(target_mask, g2_mask, moves, 10);
+	return depthFirstSearchCube(target_mask, g2_mask, moves, 10, table);
 }
 
 std::vector<ROTATION> getShortestG2Moves(std::string g2_mask)
@@ -66,8 +70,11 @@ std::vector<ROTATION> getShortestG2Moves(std::string g2_mask)
 	//moves without FP, F, B, BP
 	std::vector<ROTATION> moves = {U, UP, U2, D, DP, D2, F2, R, RP, R2, L, LP, L2, B2};
 
+	//generate the pruning table
+	std::map<std::string, int> table = generateG2Table(5);
+
 	//return shortest amount of moves to get the edges oriented
-	return iterativeDeepeningSearchCube(target_mask, g2_mask, moves, 10);
+	return iterativeDeepeningSearchCube(target_mask, g2_mask, moves, 10, table);
 }
 
 //Note: 'C' = corner, 'M' = U/D edge, 'Y' = E-slice edges

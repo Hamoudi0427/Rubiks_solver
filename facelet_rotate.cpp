@@ -2,6 +2,7 @@
 #include <vector>
 #include <string>
 #include <array>
+#include <map>
 
 /*
     This file contains the rotation functions for a Rubik's cube defined as a 
@@ -382,7 +383,8 @@ std::string rotateCube(std::string cube, std::vector<ROTATION> moves)
 }
 
 //depth first search (DFS) to find possible solution at a given depth
-std::vector<ROTATION> depthFirstSearchCube(std::string target, std::string cube, std::vector<ROTATION> moves, int depth, std::vector<ROTATION> solution = {})
+std::vector<ROTATION> depthFirstSearchCube(std::string target, std::string cube, std::vector<ROTATION> moves, int depth, 
+    std::map<std::string, int>& table, std::vector<ROTATION> solution = {})
 {
     //solution found return array of moves to get to target cube
     if (cube == target)
@@ -396,6 +398,12 @@ std::vector<ROTATION> depthFirstSearchCube(std::string target, std::string cube,
         return {};
     }
 
+    //if solution is farther than remaining depth exit early
+    if (table[cube] > depth)
+    {
+        return {};
+    }
+
     for (auto move : moves)
     {
         //update the solution vector with the move and continue searching
@@ -403,7 +411,7 @@ std::vector<ROTATION> depthFirstSearchCube(std::string target, std::string cube,
         new_solution.push_back(move);
 
         //reduce remaining depth and apply the move to the cube
-        std::vector<ROTATION> result = depthFirstSearchCube(target, rotateCube(cube, {move}), moves, depth - 1, new_solution);
+        std::vector<ROTATION> result = depthFirstSearchCube(target, rotateCube(cube, {move}), moves, depth - 1, table, new_solution);
 
         //return the solution vector if found
         if (result.size() != 0)
@@ -417,12 +425,13 @@ std::vector<ROTATION> depthFirstSearchCube(std::string target, std::string cube,
 }
 
 //iterative deepening DFS function provides the optimal solution while using less space than BFS
-std::vector<ROTATION> iterativeDeepeningSearchCube(std::string target, std::string cube, std::vector<ROTATION> moves, int depth)
+std::vector<ROTATION> iterativeDeepeningSearchCube(std::string target, std::string cube, std::vector<ROTATION> moves, int depth,
+    std::map<std::string, int>& table)
 {
     //continues searching deeper until a solution is found, garentees optimal solution if one exists
-    for (int i = 0; i < depth; i++)
+    for (int i = 1; i <= depth; i++)
     {
-        std::vector<ROTATION> solution = depthFirstSearchCube(target, cube, moves, i);
+        std::vector<ROTATION> solution = depthFirstSearchCube(target, cube, moves, i, table);
 
         //return first solution found
         if (solution.size() != 0)

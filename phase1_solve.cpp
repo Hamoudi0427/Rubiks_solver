@@ -2,6 +2,8 @@
 #include <string>
 #include <iostream>
 #include <vector>
+#include <map>
+#include "pruning_table.h"
 
 /*
 	In the first phase (Go -> G1) the set of legal moves = <L, R, F, B, U, D>.
@@ -164,8 +166,11 @@ std::vector<ROTATION> getG1Moves(std::string mask)
 	std::string target_mask = "XMXMXMXMXXXXXXXXXXXXXMXMXXXXMXMXMXMXXXXXXXXXXXXXMXMXXX";
 	std::vector<ROTATION> moves = {U, UP, U2, D, DP, D2, F, FP, F2, R, RP, R2, L, LP, L2, B, BP, B2};
 
+	//generate the pruning table
+	std::map<std::string, int> table = generateG1Table(5);
+
 	//return the moves to get edges oriented
-	return depthFirstSearchCube(target_mask, mask, moves, 7);
+	return depthFirstSearchCube(target_mask, mask, moves, 7, table);
 }
 
 std::vector<ROTATION> getShortestG1Moves(std::string mask)
@@ -173,6 +178,9 @@ std::vector<ROTATION> getShortestG1Moves(std::string mask)
 	std::string target_mask = "XMXMXMXMXXXXXXXXXXXXXMXMXXXXMXMXMXMXXXXXXXXXXXXXMXMXXX";
 	std::vector<ROTATION> moves = {U, UP, U2, D, DP, D2, F, FP, F2, R, RP, R2, L, LP, L2, B, BP, B2};
 
+	//generate the pruning table
+	std::map<std::string, int> table = generateG1Table(5);
+
 	//return shortest amount of moves to get the edges oriented
-	return iterativeDeepeningSearchCube(target_mask, mask, moves, 7);
+	return iterativeDeepeningSearchCube(target_mask, mask, moves, 7, table);
 }

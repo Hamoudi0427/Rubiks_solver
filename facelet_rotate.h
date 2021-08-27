@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <string>
+#include <map>
 
 //cube rotations
 enum ROTATION
@@ -31,7 +32,9 @@ std::string rotateDownClockwise(const std::string& cube);
 std::string rotateDownCounterClockwise(const std::string& cube);
 std::string& rotateDownTwice(std::string& cube);
 std::string rotateCube(std::string cube, std::vector<ROTATION> moves);
-std::vector<ROTATION> depthFirstSearchCube(std::string target, std::string cube, std::vector<ROTATION> moves, int depth, std::vector<ROTATION> solution = {});
-std::vector<ROTATION> iterativeDeepeningSearchCube(std::string target, std::string cube, std::vector<ROTATION> moves, int depth);
+std::vector<ROTATION> depthFirstSearchCube(std::string target, std::string cube, std::vector<ROTATION> moves, int depth,
+    std::map<std::string, int>& table, std::vector<ROTATION> solution = {});
+std::vector<ROTATION> iterativeDeepeningSearchCube(std::string target, std::string cube, std::vector<ROTATION> moves, int depth,
+    std::map<std::string, int>& table);
 
 #endif
