@@ -67,7 +67,6 @@ std::map<std::string, int> generateG2Table(int depth)
 	//generate states
 	for (int i = 1; i <= depth; i++)
 	{
-		std::cout << i << "  ";
 		std::vector<std::string> frontier;
 		for (auto previous_state : previous_frontier)
 		{
@@ -88,6 +87,5 @@ std::map<std::string, int> generateG2Table(int depth)
 		previous_frontier = frontier;
 	}
 
-	std::cout << "done";
 	return states;
 }

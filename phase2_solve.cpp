@@ -69,8 +69,8 @@ std::vector<ROT> getShortestG2Moves(std::string g2_mask)
 	std::string target_mask = "MMMMXMMMMXXXXXXXXXXXXYXYXXXMMMMXMMMMXXXXXXXXXXXXYXYXXX";
 
 	//moves without FP, F, B, BP
-	std::vector<ROT> moves = { ROT::U, ROT::UP, ROT::U2, ROT::D, ROT::DP, ROT::D2, ROT::F2, ROT::R, ROT::RP, ROT::R2, ROT::L,
-		ROT::LP, ROT::L2, ROT::B2 };
+	std::vector<ROT> moves = {ROT::U, ROT::UP, ROT::U2, ROT::D, ROT::DP, ROT::D2, ROT::F2, ROT::R, ROT::RP, ROT::R2, ROT::L,
+		ROT::LP, ROT::L2, ROT::B2};
 
 	//generate the pruning table
 	std::map<std::string, int> table = generateG2Table(6);

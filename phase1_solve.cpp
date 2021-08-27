@@ -177,8 +177,8 @@ std::vector<ROT> getG1Moves(std::string mask)
 std::vector<ROT> getShortestG1Moves(std::string mask)
 {
 	std::string target_mask = "XMXMXMXMXXXXXXXXXXXXXMXMXXXXMXMXMXMXXXXXXXXXXXXXMXMXXX";
-	std::vector<ROT> moves = { ROT::U, ROT::UP, ROT::U2, ROT::D, ROT::DP, ROT::D2, ROT::F, ROT::FP, ROT::F2, ROT::R, ROT::RP,
-		ROT::R2, ROT::L, ROT::LP, ROT::L2, ROT::B, ROT::BP, ROT::B2 };
+	std::vector<ROT> moves = {ROT::U, ROT::UP, ROT::U2, ROT::D, ROT::DP, ROT::D2, ROT::F, ROT::FP, ROT::F2, ROT::R, ROT::RP,
+		ROT::R2, ROT::L, ROT::LP, ROT::L2, ROT::B, ROT::BP, ROT::B2};
 
 	//generate the pruning table
 	std::map<std::string, int> table = generateG1Table(5);
