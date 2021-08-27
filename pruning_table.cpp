@@ -4,6 +4,11 @@
 #include <vector>
 #include <map>
 
+/*
+	This file contains functions that generate the prune tables to speed up the move solvers. These tables
+	significantly reduce wait times.
+*/
+
 //generates states with their coresponding depth to allow for pruning when finding G1 moves
 std::map<std::string, int> generateG1Table(int depth)
 {
