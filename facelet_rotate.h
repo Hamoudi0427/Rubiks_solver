@@ -11,6 +11,12 @@ enum class ROT
     U, UP, U2, D, DP, D2, F, FP, F2, R, RP, R2, L, LP, L2, B, BP, B2
 };
 
+//phase pruning table depths
+constexpr int PHASE_GO = 5;
+constexpr int PHASE_G1 = 6;
+constexpr int PHASE_G2 = 13;
+constexpr int PHASE_G3 = 15;
+
 //rotation functions for facelet model
 void printCube(const std::string& cube);
 std::string rotateUpClockwise(const std::string& cube);
@@ -33,8 +39,8 @@ std::string rotateDownCounterClockwise(const std::string& cube);
 std::string& rotateDownTwice(std::string& cube);
 std::string rotateCube(std::string cube, std::vector<ROT> moves);
 std::vector<ROT> depthFirstSearchCube(std::string target, std::string cube, std::vector<ROT> moves, int depth,
-    std::map<std::string, int>& table, std::vector<ROT> solution = {});
+    std::map<std::string, int>& table, int phase, std::vector<ROT> solution = {});
 std::vector<ROT> iterativeDeepeningSearchCube(std::string target, std::string cube, std::vector<ROT> moves, int depth,
-    std::map<std::string, int>& table);
+    std::map<std::string, int>& table, int phase);
 
 #endif

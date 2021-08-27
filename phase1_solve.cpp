@@ -171,7 +171,7 @@ std::vector<ROT> getG1Moves(std::string mask)
 	std::map<std::string, int> table = generateG1Table(5);
 
 	//return the moves to get edges oriented
-	return depthFirstSearchCube(target_mask, mask, moves, 7, table);
+	return depthFirstSearchCube(target_mask, mask, moves, 7, table, PHASE_GO);
 }
 
 std::vector<ROT> getShortestG1Moves(std::string mask)
@@ -184,5 +184,5 @@ std::vector<ROT> getShortestG1Moves(std::string mask)
 	std::map<std::string, int> table = generateG1Table(5);
 
 	//return shortest amount of moves to get the edges oriented
-	return iterativeDeepeningSearchCube(target_mask, mask, moves, 7, table);
+	return iterativeDeepeningSearchCube(target_mask, mask, moves, 7, table, PHASE_GO);
 }

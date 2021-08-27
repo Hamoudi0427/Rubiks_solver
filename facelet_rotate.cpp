@@ -15,6 +15,12 @@ enum class ROT
     U, UP, U2, D, DP, D2, F, FP, F2, R, RP, R2, L, LP, L2, B, BP, B2
 };
 
+//Number of moves in a phase needed for depth limit
+constexpr int PHASE_GO = 5;
+constexpr int PHASE_G1 = 6;
+constexpr int PHASE_G2 = 13;
+constexpr int PHASE_G3 = 15;
+
 //printing function to help with testing
 void printCube(const std::string& cube)
 {
@@ -384,7 +390,7 @@ std::string rotateCube(std::string cube, std::vector<ROT> moves)
 
 //depth first search (DFS) to find possible solution at a given depth
 std::vector<ROT> depthFirstSearchCube(std::string target, std::string cube, std::vector<ROT> moves, int depth, 
-    std::map<std::string, int>& table, std::vector<ROT> solution = {})
+    std::map<std::string, int>& table, int phase, std::vector<ROT> solution = {})
 {
     //solution found return array of moves to get to target cube
     if (cube == target)
@@ -409,7 +415,7 @@ std::vector<ROT> depthFirstSearchCube(std::string target, std::string cube, std:
     else if (table.find(cube) == table.end())
     {
         //Note: this value must be modified if the depth is changed
-        table[cube] = 7;
+        table[cube] = phase + 1;
     }
 
     for (auto move : moves)
@@ -419,7 +425,7 @@ std::vector<ROT> depthFirstSearchCube(std::string target, std::string cube, std:
         new_solution.push_back(move);
 
         //reduce remaining depth and apply the move to the cube
-        std::vector<ROT> result = depthFirstSearchCube(target, rotateCube(cube, {move}), moves, depth - 1, table, new_solution);
+        std::vector<ROT> result = depthFirstSearchCube(target, rotateCube(cube, {move}), moves, depth - 1, table, phase, new_solution);
 
         //return the solution vector if found
         if (result.size() != 0)
@@ -434,12 +440,12 @@ std::vector<ROT> depthFirstSearchCube(std::string target, std::string cube, std:
 
 //iterative deepening DFS function provides the optimal solution while using less space than BFS
 std::vector<ROT> iterativeDeepeningSearchCube(std::string target, std::string cube, std::vector<ROT> moves, int depth,
-    std::map<std::string, int>& table)
+    std::map<std::string, int>& table, int phase)
 {
     //continues searching deeper until a solution is found, garentees optimal solution if one exists
     for (int i = 1; i <= depth; i++)
     {
-        std::vector<ROT> solution = depthFirstSearchCube(target, cube, moves, i, table);
+        std::vector<ROT> solution = depthFirstSearchCube(target, cube, moves, i, table, phase);
 
         //return first solution found
         if (solution.size() != 0)
