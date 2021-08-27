@@ -6,7 +6,7 @@
 #include <map>
 
 //cube rotations
-enum class ROTATION
+enum class ROT
 {
     U, UP, U2, D, DP, D2, F, FP, F2, R, RP, R2, L, LP, L2, B, BP, B2
 };
@@ -31,10 +31,10 @@ std::string& rotateBackTwice(std::string& cube);
 std::string rotateDownClockwise(const std::string& cube);
 std::string rotateDownCounterClockwise(const std::string& cube);
 std::string& rotateDownTwice(std::string& cube);
-std::string rotateCube(std::string cube, std::vector<ROTATION> moves);
-std::vector<ROTATION> depthFirstSearchCube(std::string target, std::string cube, std::vector<ROTATION> moves, int depth,
-    std::map<std::string, int>& table, std::vector<ROTATION> solution = {});
-std::vector<ROTATION> iterativeDeepeningSearchCube(std::string target, std::string cube, std::vector<ROTATION> moves, int depth,
+std::string rotateCube(std::string cube, std::vector<ROT> moves);
+std::vector<ROT> depthFirstSearchCube(std::string target, std::string cube, std::vector<ROT> moves, int depth,
+    std::map<std::string, int>& table, std::vector<ROT> solution = {});
+std::vector<ROT> iterativeDeepeningSearchCube(std::string target, std::string cube, std::vector<ROT> moves, int depth,
     std::map<std::string, int>& table);
 
 #endif

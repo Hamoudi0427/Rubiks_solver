@@ -13,7 +13,8 @@
 std::map<std::string, int> generateG1Table(int depth)
 {
 	//use all available moves
-	std::vector<ROTATION> moves = {U, UP, U2, D, DP, D2, F, FP, F2, R, RP, R2, L, LP, L2, B, BP, B2};
+	std::vector<ROT> moves = { ROT::U, ROT::UP, ROT::U2, ROT::D, ROT::DP, ROT::D2, ROT::F, ROT::FP, ROT::F2, ROT::R, ROT::RP,
+		ROT::R2, ROT::L, ROT::LP, ROT::L2, ROT::B, ROT::BP, ROT::B2 };
 
 	//map will have the cube state as the key and the depth from the solved state as the value
 	std::map<std::string, int> states;
@@ -53,7 +54,8 @@ std::map<std::string, int> generateG1Table(int depth)
 std::map<std::string, int> generateG2Table(int depth)
 {
 	//use all available moves
-	std::vector<ROTATION> moves = {U, UP, U2, D, DP, D2, R, RP, R2, L, LP, L2, B2, F2};
+	std::vector<ROT> moves = { ROT::U, ROT::UP, ROT::U2, ROT::D, ROT::DP, ROT::D2, ROT::F2, ROT::R, ROT::RP, ROT::R2, ROT::L,
+		ROT::LP, ROT::L2, ROT::B2 };
 
 	//map will have the cube state as the key and the depth from the solved state as the value
 	std::map<std::string, int> states;
@@ -86,5 +88,6 @@ std::map<std::string, int> generateG2Table(int depth)
 		previous_frontier = frontier;
 	}
 
+	std::cout << "done";
 	return states;
 }

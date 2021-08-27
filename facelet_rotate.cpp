@@ -10,7 +10,7 @@
 */
 
 //possible rotations
-enum class ROTATION
+enum class ROT
 {
     U, UP, U2, D, DP, D2, F, FP, F2, R, RP, R2, L, LP, L2, B, BP, B2
 };
@@ -54,7 +54,7 @@ std::string rotateUpClockwise(const std::string& cube)
 {
     //define the rotation as a set of permutations
     std::array<std::array<int, 2>, 20> src_dst{{{0, 2}, {1, 5}, {2, 8}, {3, 1}, {5, 7}, {6, 0}, {7, 3}, {8, 6}, {18, 36}, {19, 37}, {20, 38}, {9, 18}, {10, 19}, {11, 20},
-    {45, 9}, {46, 10}, {47, 11}, {36, 45}, {37, 46}, {38, 47}}};
+        {45, 9}, {46, 10}, {47, 11}, {36, 45}, {37, 46}, {38, 47}}};
 
     //apply the rotation
     std::string new_cube = cube;
@@ -71,7 +71,7 @@ std::string rotateUpCounterClockwise(const std::string& cube)
 {
     //define the rotation as a set of permutations
     std::array<std::array<int, 2>, 20> src_dst{{{2, 0}, {5, 1}, {8, 2}, {1, 3}, {7, 5}, {0, 6}, {3, 7}, {6, 8}, {36, 18}, {37, 19}, {38, 20}, {18, 9}, {19, 10}, {20, 11},
-    {9, 45}, {10, 46}, {11, 47}, {45, 36}, {46, 37}, {47, 38}}};
+        {9, 45}, {10, 46}, {11, 47}, {45, 36}, {46, 37}, {47, 38}}};
 
     //apply the rotation
     std::string new_cube = cube;
@@ -98,7 +98,7 @@ std::string rotateFrontClockwise(const std::string& cube)
 {
     //define the rotation as a set of permutations
     std::array<std::array<int, 2>, 20> src_dst{{{18, 20}, {19, 23}, {20, 26}, {21, 19}, {23, 25}, {24, 18}, {25, 21}, {26, 24}, {6, 9}, {7, 12}, {8, 15}, {9, 29},
-    {12, 28}, {15, 27}, {27, 38}, {28, 41}, {29, 44}, {38, 8}, {41, 7}, {44, 6}}};
+        {12, 28}, {15, 27}, {27, 38}, {28, 41}, {29, 44}, {38, 8}, {41, 7}, {44, 6}}};
 
     //apply the rotation
     std::string new_cube = cube;
@@ -115,7 +115,7 @@ std::string rotateFrontCounterClockwise(const std::string& cube)
 {
     //define the rotation as a set of permutations
     std::array<std::array<int, 2>, 20> src_dst{{{20, 18}, {23, 19}, {26, 20}, {19, 21}, {25, 23}, {18, 24}, {21, 25}, {24, 26}, {9, 6}, {12, 7}, {15, 8}, {29, 9},
-    {28, 12}, {27, 15}, {38, 27}, {41, 28}, {44, 29}, {8, 38}, {7, 41}, {6, 44}}};
+        {28, 12}, {27, 15}, {38, 27}, {41, 28}, {44, 29}, {8, 38}, {7, 41}, {6, 44}}};
 
     //apply the rotation
     std::string new_cube = cube;
@@ -142,7 +142,7 @@ std::string rotateLeftClockwise(const std::string& cube)
 {
     //define the rotation as a set of permutations
     std::array<std::array<int, 2>, 20> src_dst{{{36, 38}, {37, 41}, {38, 44}, {39, 37}, {41, 43}, {42, 36}, {43, 39}, {44, 42}, {0, 18}, {3, 21}, {6, 24}, {18, 27},
-    {21, 30}, {24, 33}, {27, 53}, {30, 50}, {33, 47}, {47, 6}, {50, 3}, {53, 0}}};
+        {21, 30}, {24, 33}, {27, 53}, {30, 50}, {33, 47}, {47, 6}, {50, 3}, {53, 0}}};
 
     //apply the rotation
     std::string new_cube = cube;
@@ -159,7 +159,7 @@ std::string rotateLeftCounterClockwise(const std::string& cube)
 {
     //define the rotation as a set of permutations
     std::array<std::array<int, 2>, 20> src_dst{{{38, 36}, {41, 37}, {44, 38}, {37, 39}, {43, 41}, {36, 42}, {39, 43}, {42, 44}, {18, 0}, {21, 3}, {24, 6}, {27, 18},
-    {30, 21}, {33, 24}, {53, 27}, {50, 30}, {47, 33}, {6, 47}, {3, 50}, {0, 53}}};
+        {30, 21}, {33, 24}, {53, 27}, {50, 30}, {47, 33}, {6, 47}, {3, 50}, {0, 53}}};
 
     //apply the rotation
     std::string new_cube = cube;
@@ -186,7 +186,7 @@ std::string rotateRightClockwise(const std::string& cube)
 {
     //define the rotation as a set of permutations
     std::array<std::array<int, 2>, 20> src_dst{{{9, 11}, {10, 14}, {11, 17}, {12, 10}, {14, 16}, {15, 9}, {16, 12}, {17, 15}, {20, 2}, {23, 5}, {26, 8}, {2, 51},
-    {5, 48}, {8, 45}, {45, 35}, {48, 32}, {51, 29}, {29, 20}, {32, 23}, {35, 26}}};
+        {5, 48}, {8, 45}, {45, 35}, {48, 32}, {51, 29}, {29, 20}, {32, 23}, {35, 26}}};
 
     //apply the rotation
     std::string new_cube = cube;
@@ -203,7 +203,7 @@ std::string rotateRightCounterClockwise(const std::string& cube)
 {
     //define the rotation as a set of permutations
     std::array<std::array<int, 2>, 20> src_dst{{{11, 9}, {14, 10}, {17, 11}, {10, 12}, {16, 14}, {9, 15}, {12, 16}, {15, 17}, {2, 20}, {5, 23}, {8, 26}, {51, 2},
-    {48, 5}, {45, 8}, {35, 45}, {32, 48}, {29, 51}, {20, 29}, {23, 32}, {26, 35}}};
+        {48, 5}, {45, 8}, {35, 45}, {32, 48}, {29, 51}, {20, 29}, {23, 32}, {26, 35}}};
 
     //apply the rotation
     std::string new_cube = cube;
@@ -230,7 +230,7 @@ std::string rotateBackClockwise(const std::string& cube)
 {
     //define the rotation as a set of permutations
     std::array<std::array<int, 2>, 20> src_dst{{{45, 47}, {46, 50}, {47, 53}, {48, 46}, {50, 52}, {51, 45}, {52, 48}, {53, 51}, {11, 0}, {14, 1}, {17, 2}, {0, 42},
-    {1, 39}, {2, 36}, {36, 33}, {39, 34}, {42, 35}, {33, 17}, {34, 14}, {35, 11}}};
+        {1, 39}, {2, 36}, {36, 33}, {39, 34}, {42, 35}, {33, 17}, {34, 14}, {35, 11}}};
 
     //apply the rotation
     std::string new_cube = cube;
@@ -247,7 +247,7 @@ std::string rotateBackCounterClockwise(const std::string& cube)
 {
     //define the rotation as a set of permutations
     std::array<std::array<int, 2>, 20> src_dst{{{47, 45}, {50, 46}, {53, 47}, {46, 48}, {52, 50}, {45, 51}, {48, 52}, {51, 53}, {0, 11}, {1, 14}, {2, 17}, {42, 0},
-    {39, 1}, {36, 2}, {33, 36}, {34, 39}, {35, 42}, {17, 33}, {14, 34}, {11, 35}}};
+        {39, 1}, {36, 2}, {33, 36}, {34, 39}, {35, 42}, {17, 33}, {14, 34}, {11, 35}}};
 
     //apply the rotation
     std::string new_cube = cube;
@@ -274,7 +274,7 @@ std::string rotateDownClockwise(const std::string& cube)
 {
     //define the rotation as a set of permutations
     std::array<std::array<int, 2>, 20> src_dst{{{27, 29}, {28, 32}, {29, 35}, {30, 28}, {32, 34}, {33, 27}, {34, 30}, {35, 33}, {24, 15}, {25, 16}, {26, 17}, {15, 51},
-    {16, 52}, {17, 53}, {51, 42}, {52, 43}, {53, 44}, {42, 24}, {43, 25}, {44, 26}}};
+        {16, 52}, {17, 53}, {51, 42}, {52, 43}, {53, 44}, {42, 24}, {43, 25}, {44, 26}}};
 
     //apply the rotation
     std::string new_cube = cube;
@@ -291,7 +291,7 @@ std::string rotateDownCounterClockwise(const std::string& cube)
 {
     //define the rotation as a set of permutations
     std::array<std::array<int, 2>, 20> src_dst{{{29, 27}, {32, 28}, {35, 29}, {28, 30}, {34, 32}, {27, 33}, {30, 34}, {33, 35}, {15, 24}, {16, 25}, {17, 26}, {51, 15},
-    {52, 16}, {53, 17}, {42, 51}, {43, 52}, {44, 53}, {24, 42}, {25, 43}, {26, 44}}};
+        {52, 16}, {53, 17}, {42, 51}, {43, 52}, {44, 53}, {24, 42}, {25, 43}, {26, 44}}};
 
     //apply the rotation
     std::string new_cube = cube;
@@ -314,64 +314,64 @@ std::string& rotateDownTwice(std::string& cube)
 }
 
 //applies a series of rotations to the cube
-std::string rotateCube(std::string cube, std::vector<ROTATION> moves)
+std::string rotateCube(std::string cube, std::vector<ROT> moves)
 {
     for (auto move : moves)
     {
         switch (move)
         {
-        case ROTATION::U:
+        case ROT::U:
             cube = rotateUpClockwise(cube);
             break;
-        case ROTATION::UP:
+        case ROT::UP:
             cube = rotateUpCounterClockwise(cube);
             break;
-        case ROTATION::U2:
+        case ROT::U2:
             cube = rotateUpTwice(cube);
             break;
-        case ROTATION::D:
+        case ROT::D:
             cube = rotateDownClockwise(cube);
             break;
-        case ROTATION::DP:
+        case ROT::DP:
             cube = rotateDownCounterClockwise(cube);
             break;
-        case ROTATION::D2:
+        case ROT::D2:
             cube = rotateDownTwice(cube);
             break;
-        case ROTATION::L:
+        case ROT::L:
             cube = rotateLeftClockwise(cube);
             break;
-        case ROTATION::LP:
+        case ROT::LP:
             cube = rotateLeftCounterClockwise(cube);
             break;
-        case ROTATION::L2:
+        case ROT::L2:
             cube = rotateLeftTwice(cube);
             break;
-        case ROTATION::R:
+        case ROT::R:
             cube = rotateRightClockwise(cube);
             break;
-        case ROTATION::RP:
+        case ROT::RP:
             cube = rotateRightCounterClockwise(cube);
             break;
-        case ROTATION::R2:
+        case ROT::R2:
             cube = rotateRightTwice(cube);
             break;
-        case ROTATION::B:
+        case ROT::B:
             cube = rotateBackClockwise(cube);
             break;
-        case ROTATION::BP:
+        case ROT::BP:
             cube = rotateBackCounterClockwise(cube);
             break;
-        case ROTATION::B2:
+        case ROT::B2:
             cube = rotateBackTwice(cube);
             break;
-        case ROTATION::F:
+        case ROT::F:
             cube = rotateFrontClockwise(cube);
             break;
-        case ROTATION::FP:
+        case ROT::FP:
             cube = rotateFrontCounterClockwise(cube);
             break;
-        case ROTATION::F2:
+        case ROT::F2:
             cube = rotateFrontTwice(cube);
             break;
         default:
@@ -383,8 +383,8 @@ std::string rotateCube(std::string cube, std::vector<ROTATION> moves)
 }
 
 //depth first search (DFS) to find possible solution at a given depth
-std::vector<ROTATION> depthFirstSearchCube(std::string target, std::string cube, std::vector<ROTATION> moves, int depth, 
-    std::map<std::string, int>& table, std::vector<ROTATION> solution = {})
+std::vector<ROT> depthFirstSearchCube(std::string target, std::string cube, std::vector<ROT> moves, int depth, 
+    std::map<std::string, int>& table, std::vector<ROT> solution = {})
 {
     //solution found return array of moves to get to target cube
     if (cube == target)
@@ -415,11 +415,11 @@ std::vector<ROTATION> depthFirstSearchCube(std::string target, std::string cube,
     for (auto move : moves)
     {
         //update the solution vector with the move and continue searching
-        std::vector<ROTATION> new_solution = solution;
+        std::vector<ROT> new_solution = solution;
         new_solution.push_back(move);
 
         //reduce remaining depth and apply the move to the cube
-        std::vector<ROTATION> result = depthFirstSearchCube(target, rotateCube(cube, {move}), moves, depth - 1, table, new_solution);
+        std::vector<ROT> result = depthFirstSearchCube(target, rotateCube(cube, {move}), moves, depth - 1, table, new_solution);
 
         //return the solution vector if found
         if (result.size() != 0)
@@ -433,13 +433,13 @@ std::vector<ROTATION> depthFirstSearchCube(std::string target, std::string cube,
 }
 
 //iterative deepening DFS function provides the optimal solution while using less space than BFS
-std::vector<ROTATION> iterativeDeepeningSearchCube(std::string target, std::string cube, std::vector<ROTATION> moves, int depth,
+std::vector<ROT> iterativeDeepeningSearchCube(std::string target, std::string cube, std::vector<ROT> moves, int depth,
     std::map<std::string, int>& table)
 {
     //continues searching deeper until a solution is found, garentees optimal solution if one exists
     for (int i = 1; i <= depth; i++)
     {
-        std::vector<ROTATION> solution = depthFirstSearchCube(target, cube, moves, i, table);
+        std::vector<ROT> solution = depthFirstSearchCube(target, cube, moves, i, table);
 
         //return first solution found
         if (solution.size() != 0)

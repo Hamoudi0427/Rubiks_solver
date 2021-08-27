@@ -6,7 +6,7 @@
 #include "facelet_rotate.h"
 
 std::string getEdgeMask(std::string cube);
-std::vector<ROTATION> getG1Moves(std::string mask);
-std::vector<ROTATION> getShortestG1Moves(std::string mask);
+std::vector<ROT> getG1Moves(std::string mask);
+std::vector<ROT> getShortestG1Moves(std::string mask);
 
 #endif

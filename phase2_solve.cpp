@@ -27,7 +27,7 @@ std::string getCornerMask(std::string g1_cube)
 
 	//corner facelets
 	std::vector<std::vector<int>> corners = {{0, 36, 47}, {6, 18, 38}, {8, 9, 20}, {2, 11, 45}, {24, 27, 44}, {15, 26, 29}, 
-	{17, 35, 51}, {33, 42, 53}};
+		{17, 35, 51}, {33, 42, 53}};
 
 	//extract corners by indicating their Up - Down colors (White and Yellow)
 	for (auto corner : corners)
@@ -49,12 +49,13 @@ std::string getCornerMask(std::string g1_cube)
 	return target_mask;
 }
 
-std::vector<ROTATION> getG2Moves(std::string g2_mask)
+std::vector<ROT> getG2Moves(std::string g2_mask)
 {
 	std::string target_mask = "MMMMXMMMMXXXXXXXXXXXXYXYXXXMMMMXMMMMXXXXXXXXXXXXYXYXXX";
 
 	//moves without FP, F, B, BP
-	std::vector<ROTATION> moves = {U, UP, U2, D, DP, D2, F2, R, RP, R2, L, LP, L2, B2};
+	std::vector<ROT> moves = {ROT::U, ROT::UP, ROT::U2, ROT::D, ROT::DP, ROT::D2, ROT::F2, ROT::R, ROT::RP, ROT::R2, ROT::L, 
+		ROT::LP, ROT::L2, ROT::B2};
 
 	//generate the pruning table
 	std::map<std::string, int> table = generateG2Table(6);
@@ -63,12 +64,13 @@ std::vector<ROTATION> getG2Moves(std::string g2_mask)
 	return depthFirstSearchCube(target_mask, g2_mask, moves, 10, table);
 }
 
-std::vector<ROTATION> getShortestG2Moves(std::string g2_mask)
+std::vector<ROT> getShortestG2Moves(std::string g2_mask)
 {
 	std::string target_mask = "MMMMXMMMMXXXXXXXXXXXXYXYXXXMMMMXMMMMXXXXXXXXXXXXYXYXXX";
 
 	//moves without FP, F, B, BP
-	std::vector<ROTATION> moves = {U, UP, U2, D, DP, D2, F2, R, RP, R2, L, LP, L2, B2};
+	std::vector<ROT> moves = { ROT::U, ROT::UP, ROT::U2, ROT::D, ROT::DP, ROT::D2, ROT::F2, ROT::R, ROT::RP, ROT::R2, ROT::L,
+		ROT::LP, ROT::L2, ROT::B2 };
 
 	//generate the pruning table
 	std::map<std::string, int> table = generateG2Table(6);
