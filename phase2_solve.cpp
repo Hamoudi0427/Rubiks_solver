@@ -16,7 +16,7 @@ std::string getCornerMask(std::string g1_cube)
 	std::string target_mask = "XMXMXMXMXXXXXXXXXXXXXMXMXXXXMXMXMXMXXXXXXXXXXXXXMXMXXX";
 
 	//indicate the E- slice edges with Y indicating E-slice edges
-	std::vector<int> facelet_location = {1, 3, 5, 7, 21, 23, 48, 50, 28, 30, 32, 34};
+	std::vector<int> facelet_location = { 1, 3, 5, 7, 21, 23, 48, 50, 28, 30, 32, 34 };
 	for (auto facelet : facelet_location)
 	{
 		if (g1_cube[facelet] == 'G' || g1_cube[facelet] == 'B')
@@ -26,8 +26,8 @@ std::string getCornerMask(std::string g1_cube)
 	}
 
 	//corner facelets
-	std::vector<std::vector<int>> corners = {{0, 36, 47}, {6, 18, 38}, {8, 9, 20}, {2, 11, 45}, {24, 27, 44}, {15, 26, 29}, 
-		{17, 35, 51}, {33, 42, 53}};
+	std::vector<std::vector<int>> corners = { {0, 36, 47}, {6, 18, 38}, {8, 9, 20}, {2, 11, 45}, {24, 27, 44}, {15, 26, 29},
+		{17, 35, 51}, {33, 42, 53} };
 
 	//extract corners by indicating their Up - Down colors (White and Yellow)
 	for (auto corner : corners)
@@ -54,8 +54,8 @@ std::vector<ROT> getG2Moves(std::string g2_mask)
 	std::string target_mask = "MMMMXMMMMXXXXXXXXXXXXYXYXXXMMMMXMMMMXXXXXXXXXXXXYXYXXX";
 
 	//moves without FP, F, B, BP
-	std::vector<ROT> moves = {ROT::U, ROT::UP, ROT::U2, ROT::D, ROT::DP, ROT::D2, ROT::F2, ROT::R, ROT::RP, ROT::R2, ROT::L, 
-		ROT::LP, ROT::L2, ROT::B2};
+	std::vector<ROT> moves = { ROT::U, ROT::UP, ROT::U2, ROT::D, ROT::DP, ROT::D2, ROT::F2, ROT::R, ROT::RP, ROT::R2, ROT::L,
+		ROT::LP, ROT::L2, ROT::B2 };
 
 	//generate the pruning table
 	std::map<std::string, int> table = generateG2Table(PHASE_G2_TABLE);
@@ -69,8 +69,8 @@ std::vector<ROT> getShortestG2Moves(std::string g2_mask)
 	std::string target_mask = "MMMMXMMMMXXXXXXXXXXXXYXYXXXMMMMXMMMMXXXXXXXXXXXXYXYXXX";
 
 	//moves without FP, F, B, BP
-	std::vector<ROT> moves = {ROT::U, ROT::UP, ROT::U2, ROT::D, ROT::DP, ROT::D2, ROT::F2, ROT::R, ROT::RP, ROT::R2, ROT::L,
-		ROT::LP, ROT::L2, ROT::B2};
+	std::vector<ROT> moves = { ROT::U, ROT::UP, ROT::U2, ROT::D, ROT::DP, ROT::D2, ROT::F2, ROT::R, ROT::RP, ROT::R2, ROT::L,
+		ROT::LP, ROT::L2, ROT::B2 };
 
 	//generate the pruning table
 	std::map<std::string, int> table = generateG2Table(PHASE_G2_TABLE);

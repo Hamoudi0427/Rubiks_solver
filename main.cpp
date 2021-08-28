@@ -13,30 +13,28 @@ int main(void)
 	std::string g1 = "BYOBWWBYBOOYRRBGOGYBYGGWBRYRGRBYYGWRWRRROOWOWGGOWBYWGO";
 
 	cube = "WWWWWWWWWRRRRRRRRRGGGGGGGGGYYYYYYYYYOOOOOOOOOBBBBBBBBB";
-	cube = rotateCube(cube, {ROT::L, ROT::R, ROT::U, ROT::D2});
+	cube = rotateCube(cube, {ROT::L, ROT::R, ROT::U, ROT::D2, ROT::LP, ROT::U, ROT::D, ROT::F, ROT::B, ROT::L, ROT::D, ROT::R});
 
-	//std::map<std::string, int> table2= generateG2Table(7);
-	//std::cout << table2.size() << std::endl;
-
+	//g1
 	std::vector<ROT> sol = getShortestG1Moves(getEdgeMask(cube));
 	std::cout << sol.size() << std::endl;
 	cube = rotateCube(cube, sol);
 	printCube(cube);
-	std::cout << std::endl;
 
+	//g2
 	sol = getShortestG2Moves(getCornerMask(cube));
 	cube = rotateCube(cube, sol);
 	std::cout << sol.size() << std::endl;
 	printCube(cube);
 
-	std::vector<std::string> tb = generateCornerOrbits(7);
-	std::cout << tb.size() << std::endl;
-
-	std::map<std::string, int> g3 = generateG3Table(5, tb);
-	std::cout << g3.size() << std::endl;
-
+	//g3
 	std::string phase3 = getOrbitMask(cube);
-	std::cout << phase3 << std::endl;
+	sol = getShortestG3Moves(phase3);
+	std::cout << sol.size() << std::endl;
+	cube = rotateCube(cube, sol);
+	printCube(cube);
+
+	//std::vector<ROT> sol = iterativeDeepeningSearchCube()
 
 	return 0;
 }

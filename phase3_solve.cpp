@@ -22,8 +22,7 @@ std::vector<std::string> generateCornerOrbits(int depth)
 
 	//we start from the solved cube and generate moves from there (corners are marked by their face)
 	std::string target = "UXUXXXUXURRRRXRRRRFFFFXFFFFDXDXXXDXDLRLRXRLRLBFBFXFBFB";
-	//UXUXXXUXURXRXXXRXRFXFXXXFXFDXDXXXDXDLXLXXXLXLBXBXXXBXB"
-	std::vector<std::string> previous_frontier = { target };
+	std::vector<std::string> previous_frontier = {target};
 
 	//generate states
 	for (int i = 1; i <= depth; i++)
@@ -34,7 +33,7 @@ std::vector<std::string> generateCornerOrbits(int depth)
 			for (auto move : moves)
 			{
 				//add to map if not previously discovered
-				std::string new_cube = rotateCube(previous_state, { move });
+				std::string new_cube = rotateCube(previous_state, {move});
 				if (states.find(new_cube) == states.end())
 				{
 					states[new_cube] = i;
@@ -127,4 +126,36 @@ std::string getOrbitMask(std::string g2_cube)
 	}
 
 	return mask;
+}
+
+//return the moves needed to get to G3
+std::vector<ROT> getG3Moves(std::string g3_mask)
+{
+	//available moves
+	std::vector<ROT> moves = { ROT::U, ROT::UP, ROT::U2, ROT::D, ROT::DP, ROT::D2, ROT::F2, ROT::R2, ROT::L2, ROT::B2 };
+
+	//generate the corner orbits
+	std::vector<std::string> corner_orbits = generateCornerOrbits(7);
+
+	//generate the pruning table
+	std::map<std::string, int> table = generateG3Table(6, corner_orbits);
+
+	//return the moves to get edges oriented
+	return depthFirstSearchCubes(corner_orbits, g3_mask, moves, 13, table, 6);
+}
+
+//return the optimal solution needed to get to G3
+std::vector<ROT> getShortestG3Moves(std::string g3_mask)
+{
+	//available moves
+	std::vector<ROT> moves = { ROT::U, ROT::UP, ROT::U2, ROT::D, ROT::DP, ROT::D2, ROT::F2, ROT::R2, ROT::L2, ROT::B2 };
+
+	//generate the corner orbits
+	std::vector<std::string> corner_orbits = generateCornerOrbits(7);
+
+	//generate the pruning table
+	std::map<std::string, int> table = generateG3Table(6, corner_orbits);
+
+	//return the moves to get edges oriented
+	return iterativeDeepeningSearchCubes(corner_orbits, g3_mask, moves, 13, table, 6);
 }

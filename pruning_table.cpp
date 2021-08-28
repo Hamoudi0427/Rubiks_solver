@@ -13,17 +13,16 @@
 std::map<std::string, int> generateG1Table(int depth)
 {
 	//use all available moves
-	std::vector<ROT> moves = {ROT::U, ROT::UP, ROT::U2, ROT::D, ROT::DP, ROT::D2, ROT::F, ROT::FP, ROT::F2, ROT::R, ROT::RP,
-		ROT::R2, ROT::L, ROT::LP, ROT::L2, ROT::B, ROT::BP, ROT::B2};
+	std::vector<ROT> moves = { ROT::U, ROT::UP, ROT::U2, ROT::D, ROT::DP, ROT::D2, ROT::F, ROT::FP, ROT::F2, ROT::R, ROT::RP,
+		ROT::R2, ROT::L, ROT::LP, ROT::L2, ROT::B, ROT::BP, ROT::B2 };
 
 	//map will have the cube state as the key and the depth from the solved state as the value
 	std::map<std::string, int> states;
 
 	//we start from the target state and generate moves from there
 	std::string target = "XMXMXMXMXXXXXXXXXXXXXMXMXXXXMXMXMXMXXXXXXXXXXXXXMXMXXX";
-	states[target] = 0;
-	std::vector<std::string> previous_frontier = {target};
-	
+	std::vector<std::string> previous_frontier = { target };
+
 	//generate states
 	for (int i = 1; i <= depth; i++)
 	{
@@ -33,7 +32,7 @@ std::map<std::string, int> generateG1Table(int depth)
 			for (auto move : moves)
 			{
 				//add to map if not previously discovered
-				std::string new_cube = rotateCube(previous_state, {move});
+				std::string new_cube = rotateCube(previous_state, { move });
 				if (states.find(new_cube) == states.end())
 				{
 					states[new_cube] = i;
@@ -53,7 +52,7 @@ std::map<std::string, int> generateG1Table(int depth)
 //generates states with their coresponding depth to allow for pruning when finding G2 moves
 std::map<std::string, int> generateG2Table(int depth)
 {
-	//use all moves except F and B half turns
+	//use all available moves
 	std::vector<ROT> moves = { ROT::U, ROT::UP, ROT::U2, ROT::D, ROT::DP, ROT::D2, ROT::F2, ROT::R, ROT::RP, ROT::R2, ROT::L,
 		ROT::LP, ROT::L2, ROT::B2 };
 
@@ -62,8 +61,7 @@ std::map<std::string, int> generateG2Table(int depth)
 
 	//we start from the target state and generate moves from there
 	std::string target = "MMMMXMMMMXXXXXXXXXXXXYXYXXXMMMMXMMMMXXXXXXXXXXXXYXYXXX";
-	states[target] = 0;
-	std::vector<std::string> previous_frontier = {target};
+	std::vector<std::string> previous_frontier = { target };
 
 	//generate states
 	for (int i = 1; i <= depth; i++)
@@ -106,7 +104,7 @@ std::map<std::string, int> generateG3Table(int depth, std::vector<std::string> g
 	//enter the possible corner orbits in the map
 	for (auto orbit : previous_frontier)
 	{
-		states[orbit] = 0;
+		states[orbit] = -1;
 	}
 
 	//generate states
