@@ -140,7 +140,6 @@ std::vector<ROT> getG3Moves(std::string g3_mask)
 	//generate the pruning table
 	std::map<std::string, int> table = generateG3Table(PHASE_G3_TABLE, corner_orbits);
 
-	//return the moves to get edges oriented
 	return depthFirstSearchCubes(corner_orbits, g3_mask, moves, PHASE_G3_DEPTH, table, PHASE_G3_TABLE);
 }
 
@@ -156,6 +155,5 @@ std::vector<ROT> getShortestG3Moves(std::string g3_mask)
 	//generate the pruning table
 	std::map<std::string, int> table = generateG3Table(PHASE_G3_TABLE, corner_orbits);
 
-	//return the moves to get edges oriented
 	return iterativeDeepeningSearchCubes(corner_orbits, g3_mask, moves, PHASE_G3_DEPTH, table, PHASE_G3_TABLE);
 }

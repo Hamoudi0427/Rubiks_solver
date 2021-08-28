@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <string>
+#include "facelet_rotate.h"
 
 std::vector<std::string> generateCornerOrbits(int depth);
 std::string getOrbitMask(std::string g2_cube);
