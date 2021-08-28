@@ -22,6 +22,7 @@ constexpr int PHASE_G3_ORBIT = 7;
 
 //rotation functions for facelet model
 void printCube(const std::string& cube);
+std::ostream& operator<<(std::vector<ROT> moves, std::ostream& os);
 std::string rotateUpClockwise(const std::string& cube);
 std::string rotateUpCounterClockwise(const std::string& cube);
 std::string& rotateUpTwice(std::string& cube);

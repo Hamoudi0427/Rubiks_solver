@@ -69,6 +69,77 @@ void printCube(const std::string& cube)
     }
 }
 
+//prints a vector of rotations (for testing on terminal)
+std::ostream& operator<<(std::vector<ROT> moves, std::ostream& os)
+{
+    for (auto move : moves)
+    {
+        switch (move)
+        {
+        case ROT::U:
+            os << "U" << '\t';
+            break;
+        case ROT::UP:
+            os << "UP" << '\t';
+            break;
+        case ROT::U2:
+            os << "U2" << '\t';
+            break;
+        case ROT::D:
+            os << "D" << '\t';
+            break;
+        case ROT::DP:
+            os << "DP" << '\t';
+            break;
+        case ROT::D2:
+            os << "D2" << '\t';
+            break;
+        case ROT::L:
+            os << "L" << '\t';
+            break;
+        case ROT::LP:
+            os << "LP" << '\t';
+            break;
+        case ROT::L2:
+            os << "L2" << '\t';
+            break;
+        case ROT::R:
+            os << "R" << '\t';
+            break;
+        case ROT::RP:
+            os << "RP" << '\t';
+            break;
+        case ROT::R2:
+            os << "R2" << '\t';
+            break;
+        case ROT::B:
+            os << "B" << '\t';
+            break;
+        case ROT::BP:
+            os << "BP" << '\t';
+            break;
+        case ROT::B2:
+            os << "B2" << '\t';
+            break;
+        case ROT::F:
+            os << "F" << '\t';
+            break;
+        case ROT::FP:
+            os << "FP" << '\t';
+            break;
+        case ROT::F2:
+            os << "F2" << '\t';
+            break;
+        default:
+            break;
+        }
+    }
+
+    os << std::endl;
+    
+    return os;
+}
+
 //given the cube string rotate the upper face clockwise
 std::string rotateUpClockwise(const std::string& cube)
 {
