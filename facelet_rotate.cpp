@@ -70,7 +70,7 @@ void printCube(const std::string& cube)
 }
 
 //prints a vector of rotations (for testing on terminal)
-std::ostream& operator<<(std::vector<ROT> moves, std::ostream& os)
+std::ostream& operator<<(std::ostream& os, std::vector<ROT> moves)
 {
     for (auto move : moves)
     {

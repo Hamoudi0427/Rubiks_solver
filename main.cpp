@@ -15,6 +15,7 @@ int main(void)
 
 	cube = "WWWWWWWWWRRRRRRRRRGGGGGGGGGYYYYYYYYYOOOOOOOOOBBBBBBBBB";
 	cube = rotateCube(cube, {ROT::L, ROT::R, ROT::U, ROT::D2, ROT::D, ROT::F, ROT::B, ROT::L, ROT::D, ROT::R});
+	cube = "RBWGWBBWOBROOROYWROOWYGBWGGRROWYGBRBYOYGOBRRGGWGYBYWYY";
 	std::vector<ROT> complete;
 
 	//g1
@@ -59,6 +60,7 @@ int main(void)
 	cube = rotateCube(cube, sol);
 	std::cout << sol.size() << std::endl;
 	printCube(cube);
+	std::cout << complete;
 
 	return 0;
 }
