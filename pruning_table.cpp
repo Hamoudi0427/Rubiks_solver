@@ -21,6 +21,7 @@ std::map<std::string, int> generateG1Table(int depth)
 
 	//we start from the target state and generate moves from there
 	std::string target = "XMXMXMXMXXXXXXXXXXXXXMXMXXXXMXMXMXMXXXXXXXXXXXXXMXMXXX";
+	states[target] = 0;
 	std::vector<std::string> previous_frontier = {target};
 	
 	//generate states
@@ -61,6 +62,7 @@ std::map<std::string, int> generateG2Table(int depth)
 
 	//we start from the target state and generate moves from there
 	std::string target = "MMMMXMMMMXXXXXXXXXXXXYXYXXXMMMMXMMMMXXXXXXXXXXXXYXYXXX";
+	states[target] = 0;
 	std::vector<std::string> previous_frontier = {target};
 
 	//generate states

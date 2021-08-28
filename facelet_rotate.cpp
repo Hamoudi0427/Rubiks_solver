@@ -407,7 +407,7 @@ std::vector<ROT> depthFirstSearchCube(std::string target, std::string cube, std:
     std::map<std::string, int>& table, int phase, std::vector<ROT> solution = {})
 {
     //solution found return array of moves to get to target cube
-    if (cube == target)
+    if (table[cube] == 0)
     {
         return solution;
     }
