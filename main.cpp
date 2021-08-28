@@ -13,7 +13,7 @@ int main(void)
 	std::string g1 = "BYOBWWBYBOOYRRBGOGYBYGGWBRYRGRBYYGWRWRRROOWOWGGOWBYWGO";
 
 	cube = "WWWWWWWWWRRRRRRRRRGGGGGGGGGYYYYYYYYYOOOOOOOOOBBBBBBBBB";
-	cube = rotateCube(cube, {ROT::L, ROT::R, ROT::U, ROT::D2, ROT::LP, ROT::U, ROT::D, ROT::F, ROT::B, ROT::L, ROT::D, ROT::R});
+	cube = rotateCube(cube, {ROT::L, ROT::R, ROT::U, ROT::D2, ROT::D, ROT::F, ROT::B, ROT::L, ROT::D, ROT::R});
 
 	//g1
 	std::vector<ROT> sol = getShortestG1Moves(getEdgeMask(cube));

@@ -14,8 +14,11 @@ enum class ROT
 //phase pruning table depths
 constexpr int PHASE_G1_TABLE = 5;
 constexpr int PHASE_G2_TABLE = 6;
+constexpr int PHASE_G3_TABLE = 6;
 constexpr int PHASE_G1_DEPTH = 7;
 constexpr int PHASE_G2_DEPTH = 10;
+constexpr int PHASE_G3_DEPTH = 13;
+constexpr int PHASE_G3_ORBIT = 7;
 
 //rotation functions for facelet model
 void printCube(const std::string& cube);
