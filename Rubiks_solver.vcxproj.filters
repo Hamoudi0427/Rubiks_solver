@@ -30,6 +30,9 @@
     <ClCompile Include="pruning_table.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="phase3_solve.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="facelet_rotate.h">
@@ -42,6 +45,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="pruning_table.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="phase3_solve.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

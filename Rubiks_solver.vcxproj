@@ -143,12 +143,14 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="phase1_solve.cpp" />
     <ClCompile Include="phase2_solve.cpp" />
+    <ClCompile Include="phase3_solve.cpp" />
     <ClCompile Include="pruning_table.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="facelet_rotate.h" />
     <ClInclude Include="phase1_solve.h" />
     <ClInclude Include="phase2_solve.h" />
+    <ClInclude Include="phase3_solve.h" />
     <ClInclude Include="pruning_table.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

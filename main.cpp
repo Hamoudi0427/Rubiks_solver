@@ -1,6 +1,7 @@
 #include "facelet_rotate.h"
 #include "phase1_solve.h"
 #include "phase2_solve.h"
+#include "phase3_solve.h"
 #include "pruning_table.h"
 #include <string>
 #include <iostream>
@@ -12,7 +13,7 @@ int main(void)
 	std::string g1 = "BYOBWWBYBOOYRRBGOGYBYGGWBRYRGRBYYGWRWRRROOWOWGGOWBYWGO";
 
 	cube = "WWWWWWWWWRRRRRRRRRGGGGGGGGGYYYYYYYYYOOOOOOOOOBBBBBBBBB";
-	cube = rotateCube(cube, {ROT::L, ROT::R, ROT::U, ROT::D2, ROT::D, ROT::F, ROT::LP, ROT::U2, ROT::D2});
+	cube = rotateCube(cube, {ROT::L, ROT::R, ROT::U, ROT::D2});
 
 	//std::map<std::string, int> table2= generateG2Table(7);
 	//std::cout << table2.size() << std::endl;
@@ -27,6 +28,15 @@ int main(void)
 	cube = rotateCube(cube, sol);
 	std::cout << sol.size() << std::endl;
 	printCube(cube);
+
+	std::vector<std::string> tb = generateCornerOrbits(7);
+	std::cout << tb.size() << std::endl;
+
+	std::map<std::string, int> g3 = generateG3Table(5, tb);
+	std::cout << g3.size() << std::endl;
+
+	std::string phase3 = getOrbitMask(cube);
+	std::cout << phase3 << std::endl;
 
 	return 0;
 }
