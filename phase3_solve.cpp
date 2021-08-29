@@ -147,7 +147,7 @@ std::vector<ROT> getG3Moves(std::string g3_mask)
 std::vector<ROT> getShortestG3Moves(std::string g3_mask)
 {
 	//available moves
-	std::vector<ROT> moves = { ROT::U, ROT::DP, ROT::U2, ROT::D, ROT::UP, ROT::D2, ROT::F2, ROT::R2, ROT::L2, ROT::B2 };
+	std::vector<ROT> moves = { ROT::U, ROT::UP, ROT::U2, ROT::D, ROT::DP, ROT::D2, ROT::F2, ROT::R2, ROT::L2, ROT::B2 };
 
 	//generate the corner orbits
 	std::vector<std::string> corner_orbits = generateCornerOrbits(PHASE_G3_ORBIT);

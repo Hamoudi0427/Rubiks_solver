@@ -13,7 +13,9 @@ int main(void)
 {
 
 	std::string cube = "WWWWWWWWWRRRRRRRRRGGGGGGGGGYYYYYYYYYOOOOOOOOOBBBBBBBBB";
-	cube = rotateCube(cube, {ROT::L, ROT::R, ROT::U, ROT::D2, ROT::D, ROT::L, ROT::UP, ROT::F, ROT::B2, ROT::RP, ROT::B, ROT::F, ROT::L, ROT::R});
+	cube = rotateCube(cube, { ROT::L, ROT::R, ROT::U, ROT::D2, ROT::D, ROT::L, ROT::UP, ROT::B, ROT::F2, ROT::L, 
+		ROT::LP, ROT::UP, ROT::B, ROT::L, ROT::RP, ROT::BP});
+	//cube = "BWYYWWBOYBBGRROGRWWGOBGWROWGBOYYGRYRYBOYORGOWOGRWBGBRY";
 	std::vector<ROT> complete;
 
 	//g1
@@ -60,3 +62,17 @@ int main(void)
 	
 	return 0;
 }
+
+/*
+	Left for solver:
+	-OOP if it improves code
+	-file database not done at run time using hashes
+	-both after we impliment CV
+	OpenCV:
+	-add depnedencies
+	-plan code thourogly
+	-plan rubiks class
+	-code
+	Web:
+	-python impliment and use django 
+*/

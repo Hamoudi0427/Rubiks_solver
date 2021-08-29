@@ -9,7 +9,7 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Cube Solver Header">
+    <Filter Include="Cube Solver Headers">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
@@ -39,22 +39,22 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="facelet_rotate.h">
-      <Filter>Cube Solver Header</Filter>
+      <Filter>Cube Solver Headers</Filter>
     </ClInclude>
     <ClInclude Include="phase1_solve.h">
-      <Filter>Cube Solver Header</Filter>
+      <Filter>Cube Solver Headers</Filter>
     </ClInclude>
     <ClInclude Include="phase2_solve.h">
-      <Filter>Cube Solver Header</Filter>
+      <Filter>Cube Solver Headers</Filter>
     </ClInclude>
     <ClInclude Include="pruning_table.h">
-      <Filter>Cube Solver Header</Filter>
+      <Filter>Cube Solver Headers</Filter>
     </ClInclude>
     <ClInclude Include="phase3_solve.h">
-      <Filter>Cube Solver Header</Filter>
+      <Filter>Cube Solver Headers</Filter>
     </ClInclude>
     <ClInclude Include="phase4_solve.h">
-      <Filter>Cube Solver Header</Filter>
+      <Filter>Cube Solver Headers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

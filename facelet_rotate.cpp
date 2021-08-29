@@ -476,6 +476,74 @@ std::string rotateCube(std::string cube, std::vector<ROT> moves)
     return cube;
 }
 
+//returns the string equivalent of a rotation (used for DFS optimization)
+std::string rotationToString(ROT rotation)
+{
+    std::string rotation_string;
+    
+    switch (rotation)
+    {
+    case ROT::U:
+        rotation_string = "U";
+        break;
+    case ROT::UP:
+        rotation_string = "UP";
+        break;
+    case ROT::U2:
+        rotation_string = "U2";
+        break;
+    case ROT::D:
+        rotation_string = "D";
+        break;
+    case ROT::DP:
+        rotation_string = "DP";
+        break;
+    case ROT::D2:
+        rotation_string = "D2";
+        break;
+    case ROT::L:
+        rotation_string = "L";
+        break;
+    case ROT::LP:
+        rotation_string = "LP";
+        break;
+    case ROT::L2:
+        rotation_string = "L2";
+        break;
+    case ROT::R:
+        rotation_string = "R";
+        break;
+    case ROT::RP:
+        rotation_string = "RP";
+        break;
+    case ROT::R2:
+        rotation_string = "R2";
+        break;
+    case ROT::B:
+        rotation_string = "B";
+        break;
+    case ROT::BP:
+        rotation_string = "BP";
+        break;
+    case ROT::B2:
+        rotation_string = "B2";;
+        break;
+    case ROT::F:
+        rotation_string = "F";
+        break;
+    case ROT::FP:
+        rotation_string = "FP";
+        break;
+    case ROT::F2:
+        rotation_string = "F2";
+        break;
+    default:
+        break;
+    }
+
+    return rotation_string;
+}
+
 //depth first search (DFS) to find possible solution at a given depth
 std::vector<ROT> depthFirstSearchCube(std::string target, std::string cube, std::vector<ROT> moves, int depth,
     std::map<std::string, int>& table, int phase, std::vector<ROT> solution = {})
@@ -508,6 +576,12 @@ std::vector<ROT> depthFirstSearchCube(std::string target, std::string cube, std:
 
     for (auto move : moves)
     {
+        //skip over commutative moves
+        if (solution.size() > 0 && (rotationToString(solution[solution.size() - 1])[0] == rotationToString(move)[0]))
+        {
+            continue;
+        }
+
         //update the solution vector with the move and continue searching
         std::vector<ROT> new_solution = solution;
         new_solution.push_back(move);
@@ -578,6 +652,12 @@ std::vector<ROT> depthFirstSearchCubes(std::vector<std::string> targets, std::st
 
     for (auto move : moves)
     {
+        //skip over commutative moves
+        if (solution.size() > 0 && (rotationToString(solution[solution.size() - 1])[0] == rotationToString(move)[0]))
+        {
+            continue;
+        }
+        
         //update the solution vector with the move and continue searching
         std::vector<ROT> new_solution = solution;
         new_solution.push_back(move);
