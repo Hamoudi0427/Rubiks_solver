@@ -7,15 +7,13 @@
 #include <string>
 #include <iostream>
 #include <map>
+#include <algorithm>
 
 int main(void)
 {
-	std::string cube = "YRGGWRBYOBWRORYOYBRBWOGYOBYYOGGYGOBRGOWROWGWBWGRRBBYWW";
-	std::string g1 = "BYOBWWBYBOOYRRBGOGYBYGGWBRYRGRBYYGWRWRRROOWOWGGOWBYWGO";
 
-	cube = "WWWWWWWWWRRRRRRRRRGGGGGGGGGYYYYYYYYYOOOOOOOOOBBBBBBBBB";
-	cube = rotateCube(cube, {ROT::L, ROT::R, ROT::U, ROT::D2, ROT::D, ROT::F, ROT::B, ROT::L, ROT::D, ROT::R});
-	cube = "RBWGWBBWOBROOROYWROOWYGBWGGRROWYGBRBYOYGOBRRGGWGYBYWYY";
+	std::string cube = "WWWWWWWWWRRRRRRRRRGGGGGGGGGYYYYYYYYYOOOOOOOOOBBBBBBBBB";
+	cube = rotateCube(cube, {ROT::L, ROT::R, ROT::U, ROT::D2, ROT::D, ROT::L, ROT::UP, ROT::F, ROT::B2, ROT::RP, ROT::B, ROT::F, ROT::L, ROT::R});
 	std::vector<ROT> complete;
 
 	//g1
@@ -49,8 +47,6 @@ int main(void)
 	cube = rotateCube(cube, sol);
 	printCube(cube);
 
-	//std::vector<ROT> sol = iterativeDeepeningSearchCube()
-
 	//g4
 	sol = getShortestSolvedMoves(cube);
 	for (auto s : sol)
@@ -61,15 +57,6 @@ int main(void)
 	std::cout << sol.size() << std::endl;
 	printCube(cube);
 	std::cout << complete;
-
+	
 	return 0;
 }
-
-//think about maybe doing OOP for the facelet cube
-//also once CV stuff is started, reorgranize non- CV and CV things
-//maybe add namespaces after doing cv stuff
-//g2 -> g3, g3 -> solved
-//rework to make the functions apart of a cube class after testing
-
-//review and clean up code
-//section of into folder(search up first)

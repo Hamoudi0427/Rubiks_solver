@@ -3,6 +3,7 @@
 #include <string>
 #include <array>
 #include <map>
+#include <unordered_map>
 
 /*
     This file contains the rotation functions for a Rubik's cube defined as a
@@ -30,9 +31,11 @@ enum class ROT
 constexpr int PHASE_G1_TABLE = 5;
 constexpr int PHASE_G2_TABLE = 6;
 constexpr int PHASE_G3_TABLE = 6;
+constexpr int PHASE_G4_TABLE = 6;
 constexpr int PHASE_G1_DEPTH = 7;
 constexpr int PHASE_G2_DEPTH = 10;
 constexpr int PHASE_G3_DEPTH = 13;
+constexpr int PHASE_G4_DEPTH = 14;
 constexpr int PHASE_G3_ORBIT = 7;
 
 //printing function to help with testing
@@ -545,7 +548,7 @@ std::vector<ROT> iterativeDeepeningSearchCube(std::string target, std::string cu
 
 //depth first search (DFS) to find one of many target states
 std::vector<ROT> depthFirstSearchCubes(std::vector<std::string> targets, std::string cube, std::vector<ROT> moves, int depth,
-    std::map<std::string, int>& table, int phase, std::vector<ROT> solution = {})
+    std::unordered_map<std::string, int>& table, int phase, std::vector<ROT> solution = {})
 {
     //solution found return array of moves to get to target cube
     for (auto target : targets)
@@ -563,16 +566,13 @@ std::vector<ROT> depthFirstSearchCubes(std::vector<std::string> targets, std::st
     }
 
     //if solution is farther than remaining depth exit early
-    if (table.find(cube) != table.end())
+    int lower_bound = table[cube];
+    if (lower_bound > depth)
     {
-        if (table[cube] > depth)
-        {
-            return {};
-        }
+        return {};
     }
-    else if (table.find(cube) == table.end())
+    else if  (lower_bound == 0)
     {
-        //Note: this value must be modified if the depth is changed
         table[cube] = phase + 1;
     }
 
@@ -598,7 +598,7 @@ std::vector<ROT> depthFirstSearchCubes(std::vector<std::string> targets, std::st
 
 //iterative deepening DFS function which looks for more than one target solution
 std::vector<ROT> iterativeDeepeningSearchCubes(std::vector<std::string> targets, std::string cube, std::vector<ROT> moves, int depth,
-    std::map<std::string, int>& table, int phase)
+    std::unordered_map<std::string, int>& table, int phase)
 {
     //continues searching deeper until a solution is found, garentees optimal solution if one exists
     for (int i = 1; i <= depth; i++)

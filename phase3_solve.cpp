@@ -138,7 +138,7 @@ std::vector<ROT> getG3Moves(std::string g3_mask)
 	std::vector<std::string> corner_orbits = generateCornerOrbits(PHASE_G3_ORBIT);
 
 	//generate the pruning table
-	std::map<std::string, int> table = generateG3Table(PHASE_G3_TABLE, corner_orbits);
+	std::unordered_map<std::string, int> table = generateG3Table(PHASE_G3_TABLE, corner_orbits);
 
 	return depthFirstSearchCubes(corner_orbits, g3_mask, moves, PHASE_G3_DEPTH, table, PHASE_G3_TABLE);
 }
@@ -147,13 +147,13 @@ std::vector<ROT> getG3Moves(std::string g3_mask)
 std::vector<ROT> getShortestG3Moves(std::string g3_mask)
 {
 	//available moves
-	std::vector<ROT> moves = { ROT::U, ROT::UP, ROT::U2, ROT::D, ROT::DP, ROT::D2, ROT::F2, ROT::R2, ROT::L2, ROT::B2 };
+	std::vector<ROT> moves = { ROT::U, ROT::DP, ROT::U2, ROT::D, ROT::UP, ROT::D2, ROT::F2, ROT::R2, ROT::L2, ROT::B2 };
 
 	//generate the corner orbits
 	std::vector<std::string> corner_orbits = generateCornerOrbits(PHASE_G3_ORBIT);
 
 	//generate the pruning table
-	std::map<std::string, int> table = generateG3Table(PHASE_G3_TABLE, corner_orbits);
+	std::unordered_map<std::string, int> table = generateG3Table(PHASE_G3_TABLE, corner_orbits); 
 
 	return iterativeDeepeningSearchCubes(corner_orbits, g3_mask, moves, PHASE_G3_DEPTH, table, PHASE_G3_TABLE);
 }

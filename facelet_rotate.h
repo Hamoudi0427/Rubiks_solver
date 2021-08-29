@@ -4,6 +4,7 @@
 #include <vector>
 #include <string>
 #include <map>
+#include <unordered_map>
 
 //cube rotations
 enum class ROT
@@ -15,9 +16,11 @@ enum class ROT
 constexpr int PHASE_G1_TABLE = 5;
 constexpr int PHASE_G2_TABLE = 6;
 constexpr int PHASE_G3_TABLE = 6;
+constexpr int PHASE_G4_TABLE = 6;
 constexpr int PHASE_G1_DEPTH = 7;
 constexpr int PHASE_G2_DEPTH = 10;
 constexpr int PHASE_G3_DEPTH = 13;
+constexpr int PHASE_G4_DEPTH = 14;
 constexpr int PHASE_G3_ORBIT = 7;
 
 //rotation functions for facelet model
@@ -47,8 +50,8 @@ std::vector<ROT> depthFirstSearchCube(std::string target, std::string cube, std:
 std::vector<ROT> iterativeDeepeningSearchCube(std::string target, std::string cube, std::vector<ROT> moves, int depth,
     std::map<std::string, int>& table, int phase);
 std::vector<ROT> depthFirstSearchCubes(std::vector<std::string> targets, std::string cube, std::vector<ROT> moves, int depth,
-    std::map<std::string, int>& table, int phase, std::vector<ROT> solution = {});
+    std::unordered_map<std::string, int>& table, int phase, std::vector<ROT> solution = {});
 std::vector<ROT> iterativeDeepeningSearchCubes(std::vector<std::string> targets, std::string cube, std::vector<ROT> moves, int depth,
-    std::map<std::string, int>& table, int phase);
+    std::unordered_map<std::string, int>& table, int phase);
 
 #endif

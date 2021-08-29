@@ -3,6 +3,7 @@
 #include <iostream>
 #include <vector>
 #include <map>
+#include <unordered_map>
 
 /*
 	This file contains functions that generate the prune tables to speed up the move solvers. These tables
@@ -90,29 +91,27 @@ std::map<std::string, int> generateG2Table(int depth)
 }
 
 //pruning table for G2 -> G3, takes in all 96 corner orbits to apply rotations to
-std::map<std::string, int> generateG3Table(int depth, std::vector<std::string> g2_corner_orbits)
+std::unordered_map<std::string, int> generateG3Table(int depth, std::vector<std::string> g2_corner_orbits)
 {
-	//use all moves except F, B, L, R half turns
+	//use all moves except F, B, L, R quarter turns
 	std::vector<ROT> moves = {ROT::U, ROT::UP, ROT::U2, ROT::D, ROT::DP, ROT::D2, ROT::F2, ROT::R2, ROT::L2, ROT::B2};
 
 	//map will have the cube state as the key and the depth from the solved state as the value
-	std::map<std::string, int> states;
+	std::unordered_map<std::string, int> states;
+	for (auto corner : g2_corner_orbits)
+	{
+		states[corner] = -1;
+	}
 
 	//we start from one of 96 permissible states in G3
 	std::vector<std::string> previous_frontier = g2_corner_orbits;
-
-	//enter the possible corner orbits in the map
-	for (auto orbit : previous_frontier)
-	{
-		states[orbit] = -1;
-	}
 
 	//generate states
 	for (int i = 1; i <= depth; i++)
 	{
 		std::vector<std::string> frontier;
 		for (auto previous_state : previous_frontier)
-		{
+		{	
 			for (auto move : moves)
 			{
 				//add to map if not previously discovered

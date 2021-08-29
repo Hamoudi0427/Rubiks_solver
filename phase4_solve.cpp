@@ -20,9 +20,9 @@ std::vector<ROT> getSolvedMoves(std::string g3_cube)
 	std::string target = "WWWWWWWWWRRRRRRRRRGGGGGGGGGYYYYYYYYYOOOOOOOOOBBBBBBBBB";
 
 	//generate the pruning table
-	std::map<std::string, int> table = generateSolvedTable(6);
+	std::map<std::string, int> table = generateSolvedTable(PHASE_G4_TABLE);
 
-	return depthFirstSearchCube(target, g3_cube, moves, 14, table, 6);
+	return depthFirstSearchCube(target, g3_cube, moves, PHASE_G4_DEPTH, table, PHASE_G4_TABLE);
 }
 
 //return the optimal solution needed to solve the cube
@@ -35,7 +35,7 @@ std::vector<ROT> getShortestSolvedMoves(std::string g3_cube)
 	std::string target = "WWWWWWWWWRRRRRRRRRGGGGGGGGGYYYYYYYYYOOOOOOOOOBBBBBBBBB";
 
 	//generate the pruning table
-	std::map<std::string, int> table = generateSolvedTable(6);
+	std::map<std::string, int> table = generateSolvedTable(PHASE_G4_TABLE);
 
-	return iterativeDeepeningSearchCube(target, g3_cube, moves, 14, table, 6);
+	return iterativeDeepeningSearchCube(target, g3_cube, moves, PHASE_G4_DEPTH, table, PHASE_G4_TABLE);
 }
