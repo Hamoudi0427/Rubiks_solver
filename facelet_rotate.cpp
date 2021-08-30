@@ -4,6 +4,7 @@
 #include <array>
 #include <map>
 #include <unordered_map>
+#include "facelet_rotate.h"
 
 /*
     This file contains the rotation functions for a Rubik's cube defined as a
@@ -20,23 +21,6 @@
                   D30 D31 D32
                   D33 D34 D35
 */
-
-//possible rotations
-enum class ROT
-{
-    U, UP, U2, D, DP, D2, F, FP, F2, R, RP, R2, L, LP, L2, B, BP, B2
-};
-
-//number of moves in a phase needed for depth limit
-constexpr int PHASE_G1_TABLE = 5;
-constexpr int PHASE_G2_TABLE = 6;
-constexpr int PHASE_G3_TABLE = 6;
-constexpr int PHASE_G4_TABLE = 6;
-constexpr int PHASE_G1_DEPTH = 7;
-constexpr int PHASE_G2_DEPTH = 10;
-constexpr int PHASE_G3_DEPTH = 13;
-constexpr int PHASE_G4_DEPTH = 14;
-constexpr int PHASE_G3_ORBIT = 7;
 
 //printing function to help with testing
 void printCube(const std::string& cube)
@@ -546,7 +530,7 @@ std::string rotationToString(ROT rotation)
 
 //depth first search (DFS) to find possible solution at a given depth
 std::vector<ROT> depthFirstSearchCube(std::string target, std::string cube, std::vector<ROT> moves, int depth,
-    std::map<std::string, int>& table, int phase, std::vector<ROT> solution = {})
+    std::map<std::string, int>& table, int phase, std::vector<ROT> solution)
 {
     //solution found return array of moves to get to target cube
     if (cube == target)
@@ -622,7 +606,7 @@ std::vector<ROT> iterativeDeepeningSearchCube(std::string target, std::string cu
 
 //depth first search (DFS) to find one of many target states
 std::vector<ROT> depthFirstSearchCubes(std::vector<std::string> targets, std::string cube, std::vector<ROT> moves, int depth,
-    std::unordered_map<std::string, int>& table, int phase, std::vector<ROT> solution = {})
+    std::unordered_map<std::string, int>& table, int phase, std::vector<ROT> solution)
 {
     //solution found return array of moves to get to target cube
     for (auto target : targets)
