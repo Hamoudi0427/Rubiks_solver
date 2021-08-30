@@ -32,7 +32,6 @@ public:
 	void setFaceletColor(int index, COLOR color);
 	void setFace(std::array<std::array<COLOR, 3>, 3> face_construct);
 	void printFace(void);
-
 private:
 	//geometric reresentation of a face
 	std::array<std::array<COLOR, 3>, 3> face;
@@ -44,6 +43,7 @@ class Cube
 public:
 
 private:
+	std::array<Face, 6> cube;
 };
 
 #endif
