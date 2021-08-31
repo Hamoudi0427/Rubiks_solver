@@ -44,6 +44,7 @@ public:
 
 private:
 	std::array<Face, 6> cube;
+	std::string facelet_cube;
 };
 
 #endif

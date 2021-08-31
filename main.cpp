@@ -4,6 +4,7 @@
 #include "phase3_solve.h"
 #include "phase4_solve.h"
 #include "pruning_table.h"
+#include "cube_structure.h"
 #include <string>
 #include <iostream>
 #include <map>
@@ -13,9 +14,10 @@ int main(void)
 {
 
 	std::string cube = "WWWWWWWWWRRRRRRRRRGGGGGGGGGYYYYYYYYYOOOOOOOOOBBBBBBBBB";
-	cube = rotateCube(cube, { ROT::L, ROT::R, ROT::U, ROT::D2, ROT::D, ROT::L, ROT::UP, ROT::B, ROT::F2, ROT::L, 
-		ROT::LP, ROT::UP, ROT::B, ROT::L, ROT::RP, ROT::BP});
-	//cube = "BWYYWWBOYBBGRROGRWWGOBGWROWGBOYYGRYRYBOYORGOWOGRWBGBRY";
+	cube = rotateCube(cube, { ROT::L, ROT::R, ROT::U, ROT::D2, ROT::D, ROT::L, ROT::R, ROT::UP, ROT::D, ROT::BP, ROT::U2, ROT::L, ROT::U, ROT::BP, ROT::D2, ROT::L2
+		, ROT::U, ROT::B, ROT::L, ROT::U2, ROT::D, ROT::R, ROT::L, ROT::D2, ROT::UP, ROT::L, ROT::D, ROT::B2
+		, ROT::L, ROT::D, ROT::F2, ROT::LP, ROT::U2, ROT::D, ROT::B2, ROT::F2});
+	//cube = "ORRYWRGYRGBGRRBGOBORWWGGRGOBWYBYBRYYBOWGOOBWYYWWYBOOGW";
 	std::vector<ROT> complete;
 
 	//g1
@@ -48,6 +50,7 @@ int main(void)
 	std::cout << sol.size() << std::endl;
 	cube = rotateCube(cube, sol);
 	printCube(cube);
+	
 
 	//g4
 	sol = getShortestSolvedMoves(cube);

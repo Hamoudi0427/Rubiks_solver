@@ -46,7 +46,7 @@ std::string rotateDownCounterClockwise(const std::string& cube);
 std::string& rotateDownTwice(std::string& cube);
 std::string rotateCube(std::string cube, std::vector<ROT> moves);
 std::string rotationToString(ROT rotation);
-std::vector<ROT> depthFirstSearchCube(const std::string target, std::string cube, const std::vector<ROT>& moves, int depth,
+std::vector<ROT> depthFirstSearchCube(const std::string& target, std::string cube, const std::vector<ROT>& moves, int depth,
     std::map<std::string, int>& table, int phase, std::vector<ROT> solution = {});
 std::vector<ROT> iterativeDeepeningSearchCube(std::string target, std::string cube, std::vector<ROT> moves, int depth,
     std::map<std::string, int>& table, int phase);

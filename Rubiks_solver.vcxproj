@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="cube_structure.cpp" />
     <ClCompile Include="facelet_rotate.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="phase1_solve.cpp" />
@@ -148,6 +149,7 @@
     <ClCompile Include="pruning_table.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="cube_structure.h" />
     <ClInclude Include="facelet_rotate.h" />
     <ClInclude Include="phase1_solve.h" />
     <ClInclude Include="phase2_solve.h" />

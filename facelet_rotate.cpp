@@ -529,7 +529,7 @@ std::string rotationToString(ROT rotation)
 }
 
 //depth first search (DFS) to find possible solution at a given depth
-std::vector<ROT> depthFirstSearchCube(const std::string target, std::string cube, const std::vector<ROT>& moves, int depth,
+std::vector<ROT> depthFirstSearchCube(const std::string& target, std::string cube, const std::vector<ROT>& moves, int depth,
     std::map<std::string, int>& table, int phase, std::vector<ROT> solution)
 {
     //solution found return array of moves to get to target cube

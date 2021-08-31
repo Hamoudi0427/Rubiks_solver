@@ -13,6 +13,12 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
+    <Filter Include="openCV">
+      <UniqueIdentifier>{569aca3c-d6fb-48b2-b8c7-2998b637a576}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="openCV Headers">
+      <UniqueIdentifier>{1469d013-810a-4f41-8f13-b454fd083604}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="facelet_rotate.cpp">
@@ -36,6 +42,9 @@
     <ClCompile Include="phase4_solve.cpp">
       <Filter>Cube Solver</Filter>
     </ClCompile>
+    <ClCompile Include="cube_structure.cpp">
+      <Filter>openCV</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="facelet_rotate.h">
@@ -55,6 +64,9 @@
     </ClInclude>
     <ClInclude Include="phase4_solve.h">
       <Filter>Cube Solver Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="cube_structure.h">
+      <Filter>openCV Headers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
