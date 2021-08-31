@@ -529,7 +529,7 @@ std::string rotationToString(ROT rotation)
 }
 
 //depth first search (DFS) to find possible solution at a given depth
-std::vector<ROT> depthFirstSearchCube(std::string target, std::string cube, std::vector<ROT> moves, int depth,
+std::vector<ROT> depthFirstSearchCube(const std::string target, std::string cube, const std::vector<ROT>& moves, int depth,
     std::map<std::string, int>& table, int phase, std::vector<ROT> solution)
 {
     //solution found return array of moves to get to target cube
@@ -605,16 +605,13 @@ std::vector<ROT> iterativeDeepeningSearchCube(std::string target, std::string cu
 }
 
 //depth first search (DFS) to find one of many target states
-std::vector<ROT> depthFirstSearchCubes(std::vector<std::string> targets, std::string cube, std::vector<ROT> moves, int depth,
+std::vector<ROT> depthFirstSearchCubes(const std::vector<std::string>& targets, std::string cube, const std::vector<ROT>& moves, int depth,
     std::unordered_map<std::string, int>& table, int phase, std::vector<ROT> solution)
 {
-    //solution found return array of moves to get to target cube
-    for (auto target : targets)
+    //checks if the current cube is the target
+    if (table[cube] == -1)
     {
-        if (cube == target)
-        {
-            return solution;
-        }
+        return solution;
     }
 
     //no solution found if maximum depth is used
