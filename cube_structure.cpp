@@ -62,6 +62,12 @@ COLOR Face::getFaceletColor(int index) const
 	return (this -> face)[index / 3][index % 3];
 }
 
+//index overloading to get the facelet
+COLOR Face::operator[](int index)
+{
+	return getFaceletColor(index);
+}
+
 //returns the entire face
 std::array<std::array<COLOR, 3>, 3> Face::getFace(void) const
 {

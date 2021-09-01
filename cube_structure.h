@@ -28,6 +28,7 @@ public:
 
 	//color retrieval and entry
 	COLOR getFaceletColor(int index) const;
+	COLOR operator[](int index);
 	std::array<std::array<COLOR, 3>, 3> getFace(void) const;
 	void setFaceletColor(int index, COLOR color);
 	void setFace(std::array<std::array<COLOR, 3>, 3> face_construct);

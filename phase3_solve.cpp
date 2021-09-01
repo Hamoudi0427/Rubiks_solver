@@ -153,7 +153,7 @@ std::vector<ROT> getShortestG3Moves(std::string g3_mask)
 	std::vector<std::string> corner_orbits = generateCornerOrbits(PHASE_G3_ORBIT); 
 
 	//generate the pruning table
-	std::unordered_map<std::string, int> table = generateG3Table(PHASE_G3_TABLE, corner_orbits);
+	std::unordered_map<std::string, int> table = generateG3Table(PHASE_G3_TABLE, corner_orbits); 
 
 	return iterativeDeepeningSearchCubes(corner_orbits, g3_mask, moves, PHASE_G3_DEPTH, table, PHASE_G3_TABLE);
 }

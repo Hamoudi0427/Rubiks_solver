@@ -14,9 +14,11 @@
                   U0  U1  U2
                   U3  U4  U5
                   U6  U7  U8
+
     L36 L37 L38   F18 F19 F20   R9  R10 R11   B45 B46 B47
     L39 L40 L41   F21 F22 F23   R12 R13 R14   B48 B49 B50
     L42 L43 L44   F24 F25 F26   R15 R16 R17   B51 B52 B53
+
                   D27 D28 D29
                   D30 D31 D32
                   D33 D34 D35
@@ -664,6 +666,7 @@ std::vector<ROT> iterativeDeepeningSearchCubes(std::vector<std::string> targets,
     //continues searching deeper until a solution is found, garentees optimal solution if one exists
     for (int i = 1; i <= depth; i++)
     {
+        std::cout << i;
         std::vector<ROT> solution = depthFirstSearchCubes(targets, cube, moves, i, table, phase);
 
         //return first solution found

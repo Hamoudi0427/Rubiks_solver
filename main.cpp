@@ -16,9 +16,16 @@ int main(void)
 	std::string cube = "WWWWWWWWWRRRRRRRRRGGGGGGGGGYYYYYYYYYOOOOOOOOOBBBBBBBBB";
 	cube = rotateCube(cube, { ROT::L, ROT::R, ROT::U, ROT::D2, ROT::D, ROT::L, ROT::R, ROT::UP, ROT::D, ROT::BP, ROT::U2, ROT::L, ROT::U, ROT::BP, ROT::D2, ROT::L2
 		, ROT::U, ROT::B, ROT::L, ROT::U2, ROT::D, ROT::R, ROT::L, ROT::D2, ROT::UP, ROT::L, ROT::D, ROT::B2
-		, ROT::L, ROT::D, ROT::F2, ROT::LP, ROT::U2, ROT::D, ROT::B2, ROT::F2});
-	//cube = "ORRYWRGYRGBGRRBGOBORWWGGRGOBWYBYBRYYBOWGOOBWYYWWYBOOGW";
+		, ROT::L, ROT::D, ROT::F2, ROT::LP, ROT::U2, ROT::D, ROT::B2, ROT::F2, ROT::L, ROT::D2, ROT::B});
+	//cube = "YWWYWWYYWORRORRORRGGBGGBGBBWWYWYYWYYOORROOOORBGGBBGBBG";
 	std::vector<ROT> complete;
+
+	//test
+	Face up{ {{{COLOR::B, COLOR::B, COLOR::B}, {COLOR::B, COLOR::B, COLOR::B}, {COLOR::B, COLOR::B, COLOR::B}}} };
+	if (up[8] == COLOR::B)
+	{
+		std::cout << "blue here";
+	}
 
 	//g1
 	std::vector<ROT> sol = getShortestG1Moves(getEdgeMask(cube));
