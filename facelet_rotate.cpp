@@ -666,7 +666,6 @@ std::vector<ROT> iterativeDeepeningSearchCubes(std::vector<std::string> targets,
     //continues searching deeper until a solution is found, garentees optimal solution if one exists
     for (int i = 1; i <= depth; i++)
     {
-        std::cout << i;
         std::vector<ROT> solution = depthFirstSearchCubes(targets, cube, moves, i, table, phase);
 
         //return first solution found
