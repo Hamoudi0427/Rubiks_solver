@@ -16,8 +16,7 @@ int main(void)
 	std::string cube = "WWWWWWWWWRRRRRRRRRGGGGGGGGGYYYYYYYYYOOOOOOOOOBBBBBBBBB";
 	cube = rotateCube(cube, { ROT::L, ROT::R, ROT::U, ROT::D2, ROT::D, ROT::L, ROT::R, ROT::UP, ROT::D, ROT::BP, ROT::U2, ROT::L, ROT::U, ROT::BP, ROT::D2, ROT::L2
 		, ROT::U, ROT::B, ROT::L, ROT::U2, ROT::D, ROT::R, ROT::L, ROT::D2, ROT::UP, ROT::L, ROT::D, ROT::B2
-		, ROT::L, ROT::D, ROT::F2, ROT::LP, ROT::U2, ROT::D, ROT::B2, ROT::F2, ROT::L, ROT::D2, ROT::B, 
-		ROT::LP, ROT::B2, ROT::D, ROT::F});
+		, ROT::L, ROT::D});
 	//cube = "YWWYWWYYWORRORRORRGGBGGBGBBWWYWYYWYYOORROOOORBGGBBGBBG";
 	std::vector<ROT> complete;
 

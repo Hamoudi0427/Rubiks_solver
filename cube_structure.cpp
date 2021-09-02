@@ -130,3 +130,78 @@ void Face::printFace(void)
 }
 
 /* Cube class definitions */
+
+//default constructor
+Cube::Cube(void) : facelet_cube{"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"}
+{}
+
+//constructor when given the face (assumed to be given in the proper order <U, R, F, D, L, B>)
+Cube::Cube(std::array<Face, 6> faces)
+{
+	//update the cube (array of faces)
+	for (int i = 0; i < 6; i++)
+	{
+		cube[i] = faces[i];
+	}
+
+	//update the string equivalent of the cube
+	facelet_cube = this -> convertToString();
+}
+
+//convert geometric cube to facelet cube
+std::string Cube::convertToString(void)
+{
+	std::string temp_facelet_cube = "";
+
+	for (auto& face : cube)
+	{
+		for (int i = 0; i < 9; i++)
+		{
+			COLOR temp = face.getFaceletColor(i);
+
+			switch (temp)
+			{
+			case COLOR::W:
+				temp_facelet_cube += 'U';
+				break;
+			case COLOR::R:
+				temp_facelet_cube += 'R';
+				break;
+			case COLOR::B:
+				temp_facelet_cube += 'B';
+				break;
+			case COLOR::G:
+				temp_facelet_cube += 'F';
+				break;
+			case COLOR::Y:
+				temp_facelet_cube += 'D';
+				break;
+			case COLOR::O:
+				temp_facelet_cube += 'L';
+				break;
+			}
+		}
+	}
+
+	return temp_facelet_cube;
+}
+
+//returns the face corresponding to the side
+Face Cube::getFace(SIDE side)
+{
+	switch (side)
+	{
+	case SIDE::U:
+		return cube[0];
+	case SIDE::D:
+		return cube[3];
+	case SIDE::R:
+		return cube[1];
+	case SIDE::F:
+		return cube[2];
+	case SIDE::L:
+		return cube[4];
+	case SIDE::B:
+		return cube[5];
+	}
+}

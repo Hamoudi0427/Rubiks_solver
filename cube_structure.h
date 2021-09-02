@@ -38,11 +38,18 @@ private:
 	std::array<std::array<COLOR, 3>, 3> face;
 };
 
+
 //geometric representation of the cube
 class Cube
 {
 public:
+	//constructors
+	Cube(void);
+	Cube(std::array<Face, 6> faces);
 
+	//accessor methods
+	std::string convertToString(void);
+	Face getFace(SIDE side);
 private:
 	std::array<Face, 6> cube;
 	std::string facelet_cube;
