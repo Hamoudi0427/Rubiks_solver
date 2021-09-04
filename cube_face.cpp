@@ -16,7 +16,7 @@ std::vector<cv::Mat> faceletCrop(const cv::Mat& img)
 	//pre-process by bluring and converting to the HSV color space
 	cv::Mat img_blur, img_hsv;
 	cv::cvtColor(img, img_hsv, cv::COLOR_BGR2HSV);
-	cv::GaussianBlur(img_hsv, img_blur, cv::Size(3, 3), 3, 0);
+	cv::GaussianBlur(img_hsv, img_blur, cv::Size(11, 11), 3, 0);
 
 	//crop images
 	cv::Mat upper_left = img_blur(cv::Range(270, 330), cv::Range(200, 260));
