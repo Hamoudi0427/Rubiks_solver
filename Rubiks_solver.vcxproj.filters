@@ -45,6 +45,12 @@
     <ClCompile Include="cube_structure.cpp">
       <Filter>openCV</Filter>
     </ClCompile>
+    <ClCompile Include="cube_colors.cpp">
+      <Filter>openCV</Filter>
+    </ClCompile>
+    <ClCompile Include="cube_face.cpp">
+      <Filter>openCV</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="facelet_rotate.h">
@@ -66,6 +72,12 @@
       <Filter>Cube Solver Headers</Filter>
     </ClInclude>
     <ClInclude Include="cube_structure.h">
+      <Filter>openCV Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="cube_colors.h">
+      <Filter>openCV Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="cube_face.h">
       <Filter>openCV Headers</Filter>
     </ClInclude>
   </ItemGroup>

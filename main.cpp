@@ -5,14 +5,46 @@
 #include "phase4_solve.h"
 #include "pruning_table.h"
 #include "cube_structure.h"
+#include "cube_face.h"
 #include <string>
 #include <iostream>
 #include <map>
 #include <algorithm>
+#include "opencv2/opencv.hpp"
+#include <opencv2/imgcodecs.hpp>
+#include <opencv2/highgui.hpp>
+#include <opencv2/imgproc.hpp>
 
 int main(void)
 {
+	cv::VideoCapture webcam(0);
+	while (webcam.isOpened())
+	{
+		cv::Mat img, img_resize;
+		webcam.read(img);
+		cv::resize(img, img_resize, cv::Size(800, 600), cv::INTER_LINEAR);
 
+		cv::rectangle(img_resize, cv::Point(270, 200), cv::Point(330, 260), cv::Scalar(255, 255, 255), 2);
+		cv::rectangle(img_resize, cv::Point(350, 200), cv::Point(410, 260), cv::Scalar(255, 255, 255), 2);
+		cv::rectangle(img_resize, cv::Point(430, 200), cv::Point(490, 260), cv::Scalar(255, 255, 255), 2);
+		cv::rectangle(img_resize, cv::Point(270, 280), cv::Point(330, 340), cv::Scalar(255, 255, 255), 2);
+		cv::rectangle(img_resize, cv::Point(350, 280), cv::Point(410, 340), cv::Scalar(255, 255, 255), 2);
+		cv::rectangle(img_resize, cv::Point(430, 280), cv::Point(490, 340), cv::Scalar(255, 255, 255), 2);
+		cv::rectangle(img_resize, cv::Point(270, 360), cv::Point(330, 420), cv::Scalar(255, 255, 255), 2);
+		cv::rectangle(img_resize, cv::Point(350, 360), cv::Point(410, 420), cv::Scalar(255, 255, 255), 2);
+		cv::rectangle(img_resize, cv::Point(430, 360), cv::Point(490, 420), cv::Scalar(255, 255, 255), 2);
+
+		Face face = getCubeFace(img_resize);
+		face.printFace();
+		std::cout << std::endl;
+
+		cv::imshow("img", img_resize);
+		cv::waitKey(100);
+	}
+
+	
+	
+	/*
 	std::string cube = "WWWWWWWWWRRRRRRRRRGGGGGGGGGYYYYYYYYYOOOOOOOOOBBBBBBBBB";
 	cube = rotateCube(cube, { ROT::L, ROT::R, ROT::U, ROT::D2, ROT::D, ROT::L, ROT::R, ROT::UP, ROT::D, ROT::BP, ROT::U2, ROT::L, ROT::U, ROT::BP, ROT::D2, ROT::L2
 		, ROT::U, ROT::B, ROT::L, ROT::U2, ROT::D, ROT::R, ROT::L, ROT::D2, ROT::UP, ROT::L, ROT::D, ROT::B2
@@ -72,18 +104,21 @@ int main(void)
 	std::cout << complete;
 	
 	return 0;
+
+	*/
 }
 
 /*
-	Left for solver:
-	-OOP if it improves code
-	-file database not done at run time using hashes
-	-both after we impliment CV
-	OpenCV:
-	-add depnedencies
-	-plan code thourogly
-	-plan rubiks class
-	-code
-	Web:
-	-python impliment and use django 
+	note: facelet string is repped by sides, geometric is based on 6 sides with 9 colors
+	tmrw: -cube contour getter
+	      -cropper once given contour coordinates
+		  -get face (based on given side)
+		  -get init cube
+	After tmrw:
+			-webcam setter with cube guid
+			-finish cube class/refactor based on opencv
+			-finish solver
+			
+	After After tmrw:
+			-arrows to rotation, etc
 */
