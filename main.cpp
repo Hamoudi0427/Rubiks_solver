@@ -39,7 +39,7 @@ int main(void)
 		std::cout << std::endl;
 
 		cv::imshow("img", img_resize);
-		cv::waitKey(100);
+		cv::waitKey(10);
 	}
 
 	
@@ -109,16 +109,12 @@ int main(void)
 }
 
 /*
-	note: facelet string is repped by sides, geometric is based on 6 sides with 9 colors
-	tmrw: -cube contour getter
-	      -cropper once given contour coordinates
-		  -get face (based on given side)
-		  -get init cube
-	After tmrw:
-			-webcam setter with cube guid
-			-finish cube class/refactor based on opencv
-			-finish solver
-			
-	After After tmrw:
-			-arrows to rotation, etc
+	to-do:
+	-tweak colors and thresholds
+	-make cube face function have a threshold where it must have got the same read 500 times
+	-get init face function (gets sides in order and inits cube class)
+	-impliment solver within class
+	-arrow maker and state checker using generated moves
+	-make interface nicer, have intro when starting, show upcoming moves, make it turn green when face is found, etc
+	--publish extensive on github, refactor and clean up, put in folders, email zhengzou
 */

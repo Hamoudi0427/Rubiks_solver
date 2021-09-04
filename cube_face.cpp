@@ -19,17 +19,17 @@ std::vector<cv::Mat> faceletCrop(const cv::Mat& img)
 	cv::GaussianBlur(img_hsv, img_blur, cv::Size(11, 11), 3, 0);
 
 	//crop images
-	cv::Mat upper_left = img_blur(cv::Range(270, 330), cv::Range(200, 260));
-	cv::Mat upper_middle = img_blur(cv::Range(350, 410), cv::Range(200, 260));
-	cv::Mat upper_right = img_blur(cv::Range(430, 490), cv::Range(200, 260));
+	cv::Mat upper_left = img_blur(cv::Range(200, 260), cv::Range(270, 330)); 
+	cv::Mat upper_middle = img_blur(cv::Range(200, 260), cv::Range(350, 410)); 
+	cv::Mat upper_right = img_blur(cv::Range(200, 260), cv::Range(430, 490)); 
 
-	cv::Mat middle_left = img_blur(cv::Range(270, 330), cv::Range(280, 340));
-	cv::Mat middle_middle = img_blur(cv::Range(350, 410), cv::Range(280, 340));
-	cv::Mat middle_right = img_blur(cv::Range(430, 490), cv::Range(280, 340));
+	cv::Mat middle_left = img_blur(cv::Range(280, 340), cv::Range(270, 330)); 
+	cv::Mat middle_middle = img_blur(cv::Range(280, 340), cv::Range(350, 410));
+	cv::Mat middle_right = img_blur(cv::Range(280, 340), cv::Range(430, 490));
 
-	cv::Mat lower_left = img_blur(cv::Range(270, 330), cv::Range(360, 420));
-	cv::Mat lower_middle = img_blur(cv::Range(350, 410), cv::Range(360, 420));
-	cv::Mat lower_right = img_blur(cv::Range(430, 490), cv::Range(360, 420));
+	cv::Mat lower_left = img_blur(cv::Range(360, 420), cv::Range(270, 330)); //360, 420
+	cv::Mat lower_middle = img_blur(cv::Range(360, 420), cv::Range(350, 410));
+	cv::Mat lower_right = img_blur(cv::Range(360, 420), cv::Range(430, 490));
 
 	return {upper_left, upper_middle, upper_right, middle_left, middle_middle, middle_right, lower_left, lower_middle, lower_right};
 }
@@ -39,6 +39,13 @@ Face getCubeFace(const cv::Mat& img)
 {
 	//get cropped facelets
 	std::vector<cv::Mat> cropped_facelets = faceletCrop(img);
+
+	for (auto facelet : cropped_facelets)
+	{
+		cv::Mat bgr;
+		cv::cvtColor(facelet, bgr, cv::COLOR_HSV2RGB);
+		cv::imshow("facelet", bgr);
+	}
 
 	//get the face with the facelet colors
 	Face face;

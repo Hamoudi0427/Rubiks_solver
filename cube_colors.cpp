@@ -14,8 +14,8 @@
 bool isGreen(const cv::Mat& cropped_img)
 {
 	//upper and lower bound HSV green values
-	int hmin = 40, smin = 50, vmin = 0;
-	int hmax = 75, smax = 255, vmax = 255;
+	int hmin = 40, smin = 25, vmin = 0;
+	int hmax = 85, smax = 255, vmax = 255;
 
 	//mask facelet with upper and lower bound green color values
 	cv::Mat masked_img;
