@@ -110,9 +110,9 @@ bool isOrange(const cv::Mat& cropped_img)
 bool isRed(const cv::Mat& cropped_img)
 {
 	//upper and lower bound HSV red values (red has two thresholds)
-	int hmin_dark = 0, smin_dark = 50, vmin_dark = 20;
-	int hmax_dark = 5, smax_dark = 255, vmax_dark = 255;
-	int hmin_light = 170, smin_light = 50, vmin_light = 20;
+	int hmin_dark = 0, smin_dark = 0, vmin_dark = 0;
+	int hmax_dark = 10, smax_dark = 255, vmax_dark = 255;
+	int hmin_light = 160, smin_light = 0, vmin_light = 0;
 	int hmax_light = 180, smax_light = 255, vmax_light = 255;
 
 	//mask facelet with upper and lower bound red color values
@@ -121,12 +121,12 @@ bool isRed(const cv::Mat& cropped_img)
 	cv::inRange(cropped_img, cv::Scalar(hmin_light, smin_light, vmin_light), cv::Scalar(hmax_light, smax_light, vmax_light), masked_img_light);
 	cv::bitwise_or(masked_img_dark, masked_img_light, masked_img);
 
-	//if 60% or more of the facelet is red then the color can be determined
+	//if 40% or more of the facelet is red then the color can be determined (lower threshold as it is more sensitive to reflections)
 	float img_size = cropped_img.rows * cropped_img.cols;
 	float num_masked_pixels = cv::countNonZero(masked_img);
 	float masked_percentage = (num_masked_pixels / img_size) * 100;
 
-	if (masked_percentage >= 60.0)
+	if (masked_percentage >= 40.0)
 	{
 		return true;
 	}

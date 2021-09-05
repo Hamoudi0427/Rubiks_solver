@@ -27,7 +27,7 @@ std::vector<cv::Mat> faceletCrop(const cv::Mat& img)
 	cv::Mat middle_middle = img_blur(cv::Range(280, 340), cv::Range(350, 410));
 	cv::Mat middle_right = img_blur(cv::Range(280, 340), cv::Range(430, 490));
 
-	cv::Mat lower_left = img_blur(cv::Range(360, 420), cv::Range(270, 330)); //360, 420
+	cv::Mat lower_left = img_blur(cv::Range(360, 420), cv::Range(270, 330)); 
 	cv::Mat lower_middle = img_blur(cv::Range(360, 420), cv::Range(350, 410));
 	cv::Mat lower_right = img_blur(cv::Range(360, 420), cv::Range(430, 490));
 
@@ -39,13 +39,6 @@ Face getCubeFace(const cv::Mat& img)
 {
 	//get cropped facelets
 	std::vector<cv::Mat> cropped_facelets = faceletCrop(img);
-
-	for (auto facelet : cropped_facelets)
-	{
-		cv::Mat bgr;
-		cv::cvtColor(facelet, bgr, cv::COLOR_HSV2RGB);
-		cv::imshow("facelet", bgr);
-	}
 
 	//get the face with the facelet colors
 	Face face;
