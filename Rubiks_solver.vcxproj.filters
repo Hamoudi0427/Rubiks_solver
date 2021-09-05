@@ -51,6 +51,9 @@
     <ClCompile Include="cube_face.cpp">
       <Filter>openCV</Filter>
     </ClCompile>
+    <ClCompile Include="cube_solve.cpp">
+      <Filter>openCV</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="facelet_rotate.h">

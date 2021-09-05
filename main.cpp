@@ -17,9 +17,10 @@
 int main(void)
 {
 
-	cv::VideoCapture webcam(0);
-	Cube cube;
-	cube.initializeCube(webcam);
+	//cv::VideoCapture webcam(0);
+	//Cube cube;
+	//cube.initializeCube(webcam);
+	//cube.solveCube();
 
 
 
@@ -46,22 +47,15 @@ int main(void)
 		}
 		std::cout << std::endl; break;
 	}
-	*.
-	/*
+	*/
+
 	std::string cube = "WWWWWWWWWRRRRRRRRRGGGGGGGGGYYYYYYYYYOOOOOOOOOBBBBBBBBB";
 	cube = rotateCube(cube, { ROT::L, ROT::R, ROT::U, ROT::D2, ROT::D, ROT::L, ROT::R, ROT::UP, ROT::D, ROT::BP, ROT::U2, ROT::L, ROT::U, ROT::BP, ROT::D2, ROT::L2
 		, ROT::U, ROT::B, ROT::L, ROT::U2, ROT::D, ROT::R, ROT::L, ROT::D2, ROT::UP, ROT::L, ROT::D, ROT::B2
-		, ROT::L, ROT::D});
+		, ROT::L, ROT::D, ROT::LP, ROT::D2, ROT::B, ROT::D, ROT::U, ROT::F, ROT::D2, ROT::LP, ROT::F, ROT::L, ROT::D, ROT::LP, ROT::U2});
 	//cube = "YWWYWWYYWORRORRORRGGBGGBGBBWWYWYYWYYOORROOOORBGGBBGBBG";
+	//cube = "LLLUUUUUURRURRURRUFFFFFFFFFDDDDDDRRRDLLDLLDLLBBBBBBBBB";
 	std::vector<ROT> complete;
-
-	//test
-	Face up{ {{{COLOR::B, COLOR::B, COLOR::B}, {COLOR::B, COLOR::B, COLOR::B}, {COLOR::B, COLOR::B, COLOR::B}}} };
-	up.setFaceletColor(8, COLOR::R);
-	if (up[8] == COLOR::R)
-	{
-		std::cout << "blue here";
-	}
 
 	//g1
 	std::vector<ROT> sol = getShortestG1Moves(getEdgeMask(cube));
@@ -108,7 +102,7 @@ int main(void)
 	
 	return 0;
 
-	*/
+	
 }
 
 /*

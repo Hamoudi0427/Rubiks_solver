@@ -147,6 +147,7 @@
   <ItemGroup>
     <ClCompile Include="cube_colors.cpp" />
     <ClCompile Include="cube_face.cpp" />
+    <ClCompile Include="cube_solve.cpp" />
     <ClCompile Include="cube_structure.cpp" />
     <ClCompile Include="facelet_rotate.cpp" />
     <ClCompile Include="main.cpp" />

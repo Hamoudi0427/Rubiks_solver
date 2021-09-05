@@ -158,5 +158,5 @@ void Cube::initializeCube(cv::VideoCapture& webcam)
 	cube[5] = back_face;
 
 	//convert string representation
-	facelet_cube = this->convertToString(); std::cout << this->facelet_cube << std::endl;
+	facelet_cube = this -> convertToString(); 
 }

@@ -51,7 +51,7 @@ std::vector<ROT> depthFirstSearchCube(const std::string& target, std::string cub
 std::vector<ROT> iterativeDeepeningSearchCube(std::string target, std::string cube, std::vector<ROT> moves, int depth,
     std::map<std::string, int>& table, int phase);
 std::vector<ROT> depthFirstSearchCubes(const std::vector<std::string>& targets, std::string cube, const std::vector<ROT>& moves, int depth,
-    std::unordered_map<std::string, int>& table, int phase, std::vector<ROT> solution = {});
+    std::unordered_map<std::string, int>& table, int phase, std::vector<ROT>& solution);
 std::vector<ROT> iterativeDeepeningSearchCubes(std::vector<std::string> targets, std::string cube, std::vector<ROT> moves, int depth,
     std::unordered_map<std::string, int>& table, int phase);
 

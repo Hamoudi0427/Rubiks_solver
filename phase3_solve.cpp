@@ -140,7 +140,10 @@ std::vector<ROT> getG3Moves(std::string g3_mask)
 	//generate the pruning table
 	std::unordered_map<std::string, int> table = generateG3Table(PHASE_G3_TABLE, corner_orbits);
 
-	return depthFirstSearchCubes(corner_orbits, g3_mask, moves, PHASE_G3_DEPTH, table, PHASE_G3_TABLE);
+	//solution vector
+	std::vector<ROT> sol;
+
+	return depthFirstSearchCubes(corner_orbits, g3_mask, moves, PHASE_G3_DEPTH, table, PHASE_G3_TABLE, sol);
 }
 
 //return the optimal solution needed to get to G3

@@ -60,11 +60,13 @@ public:
 
 	//solving and getting the cube
 	void initializeCube(cv::VideoCapture& webcam);
+	void solveCube(void);
 
 private:
 	//cube implementation
 	std::array<Face, 6> cube;
 	std::string facelet_cube;
+	std::vector<ROT> solution;
 
 	//solving and getting the cube
 	std::vector<cv::Mat> faceletCrop(const cv::Mat& img);

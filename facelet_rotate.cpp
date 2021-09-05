@@ -608,7 +608,7 @@ std::vector<ROT> iterativeDeepeningSearchCube(std::string target, std::string cu
 
 //depth first search (DFS) to find one of many target states
 std::vector<ROT> depthFirstSearchCubes(const std::vector<std::string>& targets, std::string cube, const std::vector<ROT>& moves, int depth,
-    std::unordered_map<std::string, int>& table, int phase, std::vector<ROT> solution)
+    std::unordered_map<std::string, int>& table, int phase, std::vector<ROT>& solution)
 {
     //checks if the current cube is the target
     if (table[cube] == -1)
@@ -666,7 +666,8 @@ std::vector<ROT> iterativeDeepeningSearchCubes(std::vector<std::string> targets,
     //continues searching deeper until a solution is found, garentees optimal solution if one exists
     for (int i = 1; i <= depth; i++)
     {
-        std::vector<ROT> solution = depthFirstSearchCubes(targets, cube, moves, i, table, phase);
+        std::vector<ROT> sol;
+        std::vector<ROT> solution = depthFirstSearchCubes(targets, cube, moves, i, table, phase, sol);
 
         //return first solution found
         if (solution.size() != 0)
