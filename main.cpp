@@ -19,6 +19,12 @@ int main(void)
 {
 
 	cv::VideoCapture webcam(0);
+	Cube cube;
+	cube.initializeCube(webcam);
+
+
+
+	/*
 	prac2(webcam); return 0;
 	while (webcam.isOpened())
 	{
@@ -41,60 +47,7 @@ int main(void)
 		}
 		std::cout << std::endl; break;
 	}
-	//convert back
-
-	//convert cube string back to Face and return
-	/*
-		Face found;
-		for (int i = 0; i < 9; i++)
-		{
-			switch (found_face[i])
-			{
-			case 'W':
-				found.setFaceletColor(i, COLOR::W);
-				break;
-			case 'R':
-				found.setFaceletColor(i, COLOR::R);
-				break;
-			case 'B':
-				found.setFaceletColor(i, COLOR::B);
-				break;
-			case 'G':
-				found.setFaceletColor(i, COLOR::G);
-				break;
-			case 'O':
-				found.setFaceletColor(i, COLOR::O);
-				break;
-			case 'Y':
-				found.setFaceletColor(i, COLOR::Y);
-				break;
-			}
-		}
-	}
-	*/
-
-	/*
-	while (webcam.isOpened())
-	{
-		cv::Mat img, img_resize;
-		webcam.read(img);
-	    cv::resize(img, img_resize, cv::Size(800, 600), cv::INTER_LINEAR);
-
-		//while(face gotten)
-
-		drawFacelets(img_resize);
-		//Face face = getCubeFace(img_resize);
-		//face.printFace();
-		std::cout << std::endl;
-		
-
-		cv::imshow("img", img_resize);
-		cv::waitKey(10);
-	}
-	*/
-
-	
-	
+	*.
 	/*
 	std::string cube = "WWWWWWWWWRRRRRRRRRGGGGGGGGGYYYYYYYYYOOOOOOOOOBBBBBBBBB";
 	cube = rotateCube(cube, { ROT::L, ROT::R, ROT::U, ROT::D2, ROT::D, ROT::L, ROT::R, ROT::UP, ROT::D, ROT::BP, ROT::U2, ROT::L, ROT::U, ROT::BP, ROT::D2, ROT::L2

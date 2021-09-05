@@ -11,10 +11,11 @@
 /*
 	This file provides the functions needed to extract the cube face from image.
 	This is done by using the facelet borders that will be displayed in the 800 x 600 webcam.
+	Part of the cube class.
 */
 
 //crops 9 facelets from the image and returns them in a vector (converted to HSV and blurred for the color functions)
-std::vector<cv::Mat> faceletCrop(const cv::Mat& img)
+std::vector<cv::Mat> Cube::faceletCrop(const cv::Mat& img)
 {
 	//pre-process by bluring and converting to the HSV color space
 	cv::Mat img_blur, img_hsv;
@@ -37,7 +38,7 @@ std::vector<cv::Mat> faceletCrop(const cv::Mat& img)
 	return {upper_left, upper_middle, upper_right, middle_left, middle_middle, middle_right, lower_left, lower_middle, lower_right};
 }
 
-void drawFacelets(cv::Mat& img_resize)
+void Cube::drawFacelets(cv::Mat& img_resize)
 {
 	cv::rectangle(img_resize, cv::Point(270, 200), cv::Point(330, 260), cv::Scalar(255, 255, 255), 2);
 	cv::rectangle(img_resize, cv::Point(350, 200), cv::Point(410, 260), cv::Scalar(255, 255, 255), 2);
@@ -51,7 +52,7 @@ void drawFacelets(cv::Mat& img_resize)
 }
 
 //will check if a face is found
-bool isFaceFound(const std::map<std::string, int>& face_count)
+bool Cube::isFaceFound(const std::map<std::string, int>& face_count)
 {
 	for (auto face : face_count)
 	{
@@ -65,7 +66,7 @@ bool isFaceFound(const std::map<std::string, int>& face_count)
 }
 
 //add face to the map to keep track of previously found faces
-void addFaceToMap(std::map<std::string, int>& face_count, Face& face)
+void Cube::addFaceToMap(std::map<std::string, int>& face_count, Face& face)
 {
 	if (face_count.find(face.getFaceString()) == face_count.end())
 	{
@@ -78,7 +79,7 @@ void addFaceToMap(std::map<std::string, int>& face_count, Face& face)
 }
 
 //returns the face coresponding to the image
-Face getCubeFace(const cv::Mat& img)
+Face Cube::getCubeFace(const cv::Mat& img)
 {
 	//get cropped facelet
 	std::vector<cv::Mat> cropped_facelets = faceletCrop(img);
@@ -94,27 +95,65 @@ Face getCubeFace(const cv::Mat& img)
 	return face;
 }
 
-void prac2(cv::VideoCapture& webcam)
+//returns the specified cube face (U, D, R, L, B, F) by checking the middle facelet
+Face Cube::getValidCubeFace(cv::VideoCapture& webcam, COLOR side)
 {
 	while (webcam.isOpened())
 	{
+		//map to keep track of previous faces
 		std::map<std::string, int> face_count;
+
+		//face that will be returned
+		Face face;
+
+		//will continue until the face is verified
 		while (!isFaceFound(face_count))
-		{	//raad image
+		{	
+			//read the image from the webcam
 			cv::Mat img, img_resize;
 			webcam.read(img);
 			cv::resize(img, img_resize, cv::Size(800, 600), cv::INTER_LINEAR);
 			drawFacelets(img_resize);
 
-
 			//get face
-			Face face = getCubeFace(img_resize);
+			face = getCubeFace(img_resize);
 			addFaceToMap(face_count, face);
-			face.printFace();
-			std::cout << "hi" << std::endl;
+
+			//display the image
 			cv::imshow("Rubik's Cube Solver", img_resize);
 			cv::waitKey(10);
 		}
-		std::cout << std::endl; break;
+
+		//will check if the correct face was found
+		if (face.getFaceletColor(4) == side)
+		{
+			return face;
+		}
 	}
+}
+
+//initializes cube structure
+void Cube::initializeCube(cv::VideoCapture& webcam)
+{
+	//get each face
+	Face front_face = this -> getValidCubeFace(webcam, COLOR::G); 
+	front_face.printFace(); 
+	Face right_face = this -> getValidCubeFace(webcam, COLOR::R); 
+	right_face.printFace(); 
+	Face back_face = this -> getValidCubeFace(webcam, COLOR::B); 
+	back_face.printFace();
+	Face left_face = this -> getValidCubeFace(webcam, COLOR::O); 
+	left_face.printFace();
+	Face up_face = this -> getValidCubeFace(webcam, COLOR::W); 
+	up_face.printFace();
+	Face down_face = this -> getValidCubeFace(webcam, COLOR::Y); 
+	down_face.printFace();
+
+	//initialize the cube
+	cube[0] = front_face;
+	cube[1] = right_face;
+	cube[2] = up_face;
+	cube[3] = down_face;
+	cube[4] = left_face;
+	cube[5] = back_face;
 }

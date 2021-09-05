@@ -4,6 +4,10 @@
 #include "facelet_rotate.h"
 #include <array>
 #include <string>
+#include <opencv2/imgcodecs.hpp>
+#include <opencv2/highgui.hpp>
+#include <opencv2/imgproc.hpp>
+#include "opencv2/opencv.hpp"
 
 enum class COLOR
 {
@@ -35,6 +39,7 @@ public:
 	void setFaceletColor(int index, COLOR color);
 	void setFace(std::array<std::array<COLOR, 3>, 3> face_construct);
 	void printFace(void);
+
 private:
 	//geometric reresentation of a face
 	std::array<std::array<COLOR, 3>, 3> face;
@@ -52,9 +57,22 @@ public:
 	//accessor methods
 	std::string convertToString(void);
 	Face getFace(SIDE side);
+
+	//solving and getting the cube
+	void initializeCube(cv::VideoCapture& webcam);
+
 private:
+	//cube implimentation
 	std::array<Face, 6> cube;
 	std::string facelet_cube;
+
+	//solving and getting the cube
+	std::vector<cv::Mat> faceletCrop(const cv::Mat& img);
+	void drawFacelets(cv::Mat& img_resize);
+	bool isFaceFound(const std::map<std::string, int>& face_count);
+	void addFaceToMap(std::map<std::string, int>& face_count, Face& face);
+	Face getCubeFace(const cv::Mat& img);
+	Face getValidCubeFace(cv::VideoCapture& webcam, COLOR side);
 };
 
 #endif

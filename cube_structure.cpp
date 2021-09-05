@@ -3,6 +3,10 @@
 #include <string>
 #include "facelet_rotate.h"
 #include "cube_structure.h"
+#include <opencv2/imgcodecs.hpp>
+#include <opencv2/highgui.hpp>
+#include <opencv2/imgproc.hpp>
+#include "opencv2/opencv.hpp"
 
 /* Face class definitions */
 
