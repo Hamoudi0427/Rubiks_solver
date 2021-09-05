@@ -3,6 +3,7 @@
 
 #include "facelet_rotate.h"
 #include <array>
+#include <string>
 
 enum class COLOR
 {
@@ -30,6 +31,7 @@ public:
 	COLOR getFaceletColor(int index) const;
 	COLOR operator[](int index);
 	std::array<std::array<COLOR, 3>, 3> getFace(void) const;
+	std::string getFaceString(void) const;
 	void setFaceletColor(int index, COLOR color);
 	void setFace(std::array<std::array<COLOR, 3>, 3> face_construct);
 	void printFace(void);

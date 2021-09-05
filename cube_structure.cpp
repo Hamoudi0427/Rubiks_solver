@@ -1,5 +1,6 @@
 #include <array>
 #include <iostream>
+#include <string>
 #include "facelet_rotate.h"
 #include "cube_structure.h"
 
@@ -72,6 +73,45 @@ COLOR Face::operator[](int index)
 std::array<std::array<COLOR, 3>, 3> Face::getFace(void) const
 {
 	return this -> face;
+}
+
+//returns face as a string
+std::string Face::getFaceString(void) const
+{
+	std::string face_string;
+
+	//convert face to string
+	for (auto row : this->face)
+	{
+		for (auto facelet : row)
+		{
+			switch (facelet)
+			{
+			case COLOR::W:
+				face_string += 'W';
+				break;
+			case COLOR::Y:
+				face_string += 'Y';
+				break;
+			case COLOR::B:
+				face_string += 'B';
+				break;
+			case COLOR::G:
+				face_string += 'G';
+				break;
+			case COLOR::R:
+				face_string += 'R';
+				break;
+			case COLOR::O:
+				face_string += 'O';
+				break;
+			default:
+				break;
+			}
+		}
+	}
+
+	return face_string;
 }
 
 //set individual facelet to a color

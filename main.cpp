@@ -17,30 +17,81 @@
 
 int main(void)
 {
+
 	cv::VideoCapture webcam(0);
+	prac2(webcam); return 0;
+	while (webcam.isOpened())
+	{
+		std::map<std::string, int> face_count;
+		while (!isFaceFound(face_count))
+		{	//raad image
+			cv::Mat img, img_resize;
+			webcam.read(img);
+			cv::resize(img, img_resize, cv::Size(800, 600), cv::INTER_LINEAR);
+			drawFacelets(img_resize);
+
+
+			//get face
+			Face face = getCubeFace(img_resize);
+			addFaceToMap(face_count, face);
+			face.printFace();
+			std::cout << "hi" << std::endl;
+			cv::imshow("Rubik's Cube Solver", img_resize);
+			cv::waitKey(10);
+		}
+		std::cout << std::endl; break;
+	}
+	//convert back
+
+	//convert cube string back to Face and return
+	/*
+		Face found;
+		for (int i = 0; i < 9; i++)
+		{
+			switch (found_face[i])
+			{
+			case 'W':
+				found.setFaceletColor(i, COLOR::W);
+				break;
+			case 'R':
+				found.setFaceletColor(i, COLOR::R);
+				break;
+			case 'B':
+				found.setFaceletColor(i, COLOR::B);
+				break;
+			case 'G':
+				found.setFaceletColor(i, COLOR::G);
+				break;
+			case 'O':
+				found.setFaceletColor(i, COLOR::O);
+				break;
+			case 'Y':
+				found.setFaceletColor(i, COLOR::Y);
+				break;
+			}
+		}
+	}
+	*/
+
+	/*
 	while (webcam.isOpened())
 	{
 		cv::Mat img, img_resize;
 		webcam.read(img);
-		cv::resize(img, img_resize, cv::Size(800, 600), cv::INTER_LINEAR);
+	    cv::resize(img, img_resize, cv::Size(800, 600), cv::INTER_LINEAR);
 
-		cv::rectangle(img_resize, cv::Point(270, 200), cv::Point(330, 260), cv::Scalar(255, 255, 255), 2);
-		cv::rectangle(img_resize, cv::Point(350, 200), cv::Point(410, 260), cv::Scalar(255, 255, 255), 2);
-		cv::rectangle(img_resize, cv::Point(430, 200), cv::Point(490, 260), cv::Scalar(255, 255, 255), 2);
-		cv::rectangle(img_resize, cv::Point(270, 280), cv::Point(330, 340), cv::Scalar(255, 255, 255), 2);
-		cv::rectangle(img_resize, cv::Point(350, 280), cv::Point(410, 340), cv::Scalar(255, 255, 255), 2);
-		cv::rectangle(img_resize, cv::Point(430, 280), cv::Point(490, 340), cv::Scalar(255, 255, 255), 2);
-		cv::rectangle(img_resize, cv::Point(270, 360), cv::Point(330, 420), cv::Scalar(255, 255, 255), 2);
-		cv::rectangle(img_resize, cv::Point(350, 360), cv::Point(410, 420), cv::Scalar(255, 255, 255), 2);
-		cv::rectangle(img_resize, cv::Point(430, 360), cv::Point(490, 420), cv::Scalar(255, 255, 255), 2);
+		//while(face gotten)
 
-		Face face = getCubeFace(img_resize);
-		face.printFace();
+		drawFacelets(img_resize);
+		//Face face = getCubeFace(img_resize);
+		//face.printFace();
 		std::cout << std::endl;
+		
 
 		cv::imshow("img", img_resize);
 		cv::waitKey(10);
 	}
+	*/
 
 	
 	
@@ -110,8 +161,7 @@ int main(void)
 
 /*
 	to-do:
-	-tweak colors and thresholds
-	-make cube face function have a threshold where it must have got the same read 500 times
+	-make cube face function have a threshold where it must have got the same read 500 times (tweak to accept face and have checker)
 	-get init face function (gets sides in order and inits cube class)
 	-impliment solver within class
 	-arrow maker and state checker using generated moves
