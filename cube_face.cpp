@@ -150,10 +150,13 @@ void Cube::initializeCube(cv::VideoCapture& webcam)
 	down_face.printFace();
 
 	//initialize the cube
-	cube[0] = front_face;
+	cube[0] = up_face;
 	cube[1] = right_face;
-	cube[2] = up_face;
+	cube[2] = front_face;
 	cube[3] = down_face;
 	cube[4] = left_face;
 	cube[5] = back_face;
+
+	//convert string representation
+	facelet_cube = this->convertToString(); std::cout << this->facelet_cube << std::endl;
 }

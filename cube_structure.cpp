@@ -8,6 +8,10 @@
 #include <opencv2/imgproc.hpp>
 #include "opencv2/opencv.hpp"
 
+/*
+	 Contains the implementaion of the Cube and Face class.
+*/
+
 /* Face class definitions */
 
 //construct when initialized with the colors

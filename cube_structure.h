@@ -62,7 +62,7 @@ public:
 	void initializeCube(cv::VideoCapture& webcam);
 
 private:
-	//cube implimentation
+	//cube implementation
 	std::array<Face, 6> cube;
 	std::string facelet_cube;
 

@@ -5,7 +5,6 @@
 #include "phase4_solve.h"
 #include "pruning_table.h"
 #include "cube_structure.h"
-#include "cube_face.h"
 #include <string>
 #include <iostream>
 #include <map>
