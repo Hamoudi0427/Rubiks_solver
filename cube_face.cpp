@@ -117,6 +117,7 @@ Face Cube::getValidCubeFace(cv::VideoCapture& webcam, COLOR side)
 			addFaceToMap(face_count, face);
 
 			//display the image
+			cv::putText(img_resize, "Orient the white face as Up", cv::Point(10, 590), cv::FONT_HERSHEY_DUPLEX, 1.0, CV_RGB(200, 200, 150), 1);
 			cv::imshow("Rubik's Cube Solver", img_resize);
 			cv::waitKey(10);
 		}
