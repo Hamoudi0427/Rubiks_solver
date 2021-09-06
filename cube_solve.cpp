@@ -5,6 +5,11 @@
 #include "phase3_solve.h"
 #include "phase4_solve.h"
 
+/*
+	Cube solver that solves cube once the cube is initialized from the webcam.
+	Average runtime is about 45 seconds.
+*/
+
 void Cube::solveCube(void)
 {
 	std::string temp_cube = facelet_cube; 
