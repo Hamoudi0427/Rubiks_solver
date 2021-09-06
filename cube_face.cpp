@@ -140,18 +140,23 @@ void Cube::initializeCube(cv::VideoCapture& webcam)
 	Face front_face = this -> getValidCubeFace(webcam, COLOR::G); 
 	front_face.printFace();
 	std::cout << std::endl;
+
 	Face right_face = this -> getValidCubeFace(webcam, COLOR::R); 
 	right_face.printFace();
 	std::cout << std::endl;
+
 	Face back_face = this -> getValidCubeFace(webcam, COLOR::B);
 	back_face.printFace();
 	std::cout << std::endl;
+
 	Face left_face = this -> getValidCubeFace(webcam, COLOR::O); 
 	left_face.printFace();
 	std::cout << std::endl;
+
 	Face up_face = this -> getValidCubeFace(webcam, COLOR::W);
 	up_face.printFace();
 	std::cout << std::endl;
+
 	Face down_face = this -> getValidCubeFace(webcam, COLOR::Y); 
 	down_face.printFace();
 	std::cout << std::endl;
