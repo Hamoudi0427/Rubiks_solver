@@ -38,17 +38,17 @@ std::vector<cv::Mat> Cube::faceletCrop(const cv::Mat& img)
 	return {upper_left, upper_middle, upper_right, middle_left, middle_middle, middle_right, lower_left, lower_middle, lower_right};
 }
 
-void Cube::drawFacelets(cv::Mat& img_resize)
+void Cube::drawFacelets(cv::Mat& img_resize, cv::Scalar color)
 {
-	cv::rectangle(img_resize, cv::Point(270, 200), cv::Point(330, 260), cv::Scalar(255, 255, 255), 2);
-	cv::rectangle(img_resize, cv::Point(350, 200), cv::Point(410, 260), cv::Scalar(255, 255, 255), 2);
-	cv::rectangle(img_resize, cv::Point(430, 200), cv::Point(490, 260), cv::Scalar(255, 255, 255), 2);
-	cv::rectangle(img_resize, cv::Point(270, 280), cv::Point(330, 340), cv::Scalar(255, 255, 255), 2);
-	cv::rectangle(img_resize, cv::Point(350, 280), cv::Point(410, 340), cv::Scalar(255, 255, 255), 2);
-	cv::rectangle(img_resize, cv::Point(430, 280), cv::Point(490, 340), cv::Scalar(255, 255, 255), 2);
-	cv::rectangle(img_resize, cv::Point(270, 360), cv::Point(330, 420), cv::Scalar(255, 255, 255), 2);
-	cv::rectangle(img_resize, cv::Point(350, 360), cv::Point(410, 420), cv::Scalar(255, 255, 255), 2);
-	cv::rectangle(img_resize, cv::Point(430, 360), cv::Point(490, 420), cv::Scalar(255, 255, 255), 2);
+	cv::rectangle(img_resize, cv::Point(270, 200), cv::Point(330, 260), color, 2);
+	cv::rectangle(img_resize, cv::Point(350, 200), cv::Point(410, 260), color, 2);
+	cv::rectangle(img_resize, cv::Point(430, 200), cv::Point(490, 260), color, 2);
+	cv::rectangle(img_resize, cv::Point(270, 280), cv::Point(330, 340), color, 2);
+	cv::rectangle(img_resize, cv::Point(350, 280), cv::Point(410, 340), color, 2);
+	cv::rectangle(img_resize, cv::Point(430, 280), cv::Point(490, 340), color, 2);
+	cv::rectangle(img_resize, cv::Point(270, 360), cv::Point(330, 420), color, 2);
+	cv::rectangle(img_resize, cv::Point(350, 360), cv::Point(410, 420), color, 2);
+	cv::rectangle(img_resize, cv::Point(430, 360), cv::Point(490, 420), color, 2);
 }
 
 //will check if a face is found
@@ -56,7 +56,7 @@ bool Cube::isFaceFound(const std::map<std::string, int>& face_count)
 {
 	for (auto face : face_count)
 	{
-		if (face.second >= 30)
+		if (face.second >= 20)
 		{
 			return true;
 		}
@@ -100,20 +100,17 @@ Face Cube::getValidCubeFace(cv::VideoCapture& webcam, COLOR side)
 {
 	while (webcam.isOpened())
 	{
-		//map to keep track of previous faces
 		std::map<std::string, int> face_count;
-
-		//face that will be returned
 		Face face;
+		cv::Mat img, img_resize;
 
 		//will continue until the face is verified
 		while (!isFaceFound(face_count))
 		{	
 			//read the image from the webcam
-			cv::Mat img, img_resize;
 			webcam.read(img);
 			cv::resize(img, img_resize, cv::Size(800, 600), cv::INTER_LINEAR);
-			drawFacelets(img_resize);
+			drawFacelets(img_resize, cv::Scalar(255, 255, 255));
 
 			//get face
 			face = getCubeFace(img_resize);
@@ -127,6 +124,9 @@ Face Cube::getValidCubeFace(cv::VideoCapture& webcam, COLOR side)
 		//will check if the correct face was found
 		if (face.getFaceletColor(4) == side)
 		{
+			drawFacelets(img_resize, cv::Scalar(0, 255, 0));
+			cv::imshow("Rubik's Cube Solver", img_resize);
+			cv::waitKey(500);
 			return face;
 		}
 	}
@@ -137,26 +137,32 @@ void Cube::initializeCube(cv::VideoCapture& webcam)
 {
 	//get each face
 	Face front_face = this -> getValidCubeFace(webcam, COLOR::G); 
-	front_face.printFace(); 
+	front_face.printFace();
+	std::cout << std::endl;
 	Face right_face = this -> getValidCubeFace(webcam, COLOR::R); 
-	right_face.printFace(); 
-	Face back_face = this -> getValidCubeFace(webcam, COLOR::B); 
+	right_face.printFace();
+	std::cout << std::endl;
+	Face back_face = this -> getValidCubeFace(webcam, COLOR::B);
 	back_face.printFace();
+	std::cout << std::endl;
 	Face left_face = this -> getValidCubeFace(webcam, COLOR::O); 
 	left_face.printFace();
-	Face up_face = this -> getValidCubeFace(webcam, COLOR::W); 
+	std::cout << std::endl;
+	Face up_face = this -> getValidCubeFace(webcam, COLOR::W);
 	up_face.printFace();
+	std::cout << std::endl;
 	Face down_face = this -> getValidCubeFace(webcam, COLOR::Y); 
 	down_face.printFace();
+	std::cout << std::endl;
 
 	//initialize the cube
-	cube[0] = up_face;
-	cube[1] = right_face;
-	cube[2] = front_face;
-	cube[3] = down_face;
-	cube[4] = left_face;
-	cube[5] = back_face;
+	cube[0] = up_face; 
+	cube[1] = right_face; 
+	cube[2] = front_face; 
+	cube[3] = down_face; 
+	cube[4] = left_face; 
+	cube[5] = back_face; 
 
 	//convert string representation
-	facelet_cube = this -> convertToString(); 
+	facelet_cube = this->convertToString(); 
 }

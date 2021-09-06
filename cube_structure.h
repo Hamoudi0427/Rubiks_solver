@@ -70,7 +70,7 @@ private:
 
 	//solving and getting the cube
 	std::vector<cv::Mat> faceletCrop(const cv::Mat& img);
-	void drawFacelets(cv::Mat& img_resize);
+	void drawFacelets(cv::Mat& img_resize, cv::Scalar color);
 	bool isFaceFound(const std::map<std::string, int>& face_count);
 	void addFaceToMap(std::map<std::string, int>& face_count, Face& face);
 	Face getCubeFace(const cv::Mat& img);

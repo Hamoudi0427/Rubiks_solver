@@ -210,7 +210,7 @@ std::string Cube::convertToString(void)
 			switch (temp)
 			{
 			case COLOR::W:
-				temp_facelet_cube += 'U';
+				temp_facelet_cube += 'W';
 				break;
 			case COLOR::R:
 				temp_facelet_cube += 'R';
@@ -219,13 +219,13 @@ std::string Cube::convertToString(void)
 				temp_facelet_cube += 'B';
 				break;
 			case COLOR::G:
-				temp_facelet_cube += 'F';
+				temp_facelet_cube += 'G';
 				break;
 			case COLOR::Y:
-				temp_facelet_cube += 'D';
+				temp_facelet_cube += 'Y';
 				break;
 			case COLOR::O:
-				temp_facelet_cube += 'L';
+				temp_facelet_cube += 'O';
 				break;
 			}
 		}
