@@ -12,3 +12,5 @@ Cube Groups:
 
 3) G2 = <L2, R2, F2, B2, U, D> contains 1.95 x 10^10 possibles positions and allows 10 moves moves (no more L and R quarter turns as they affect corner orientation. In this phase we move from G2 to G3 by moving the cube into 1 of the 96 permisible corner orbits to allow the cube to be half turn solvable.
 
+4) G3 = <L2, R2, F2, B2, U2, D2> contains 6.63 x 10^5 permuations and allows only half turns (6 moves total). From this group we can reach the solved state G4 = Solved Cube.
+
