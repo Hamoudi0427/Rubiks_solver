@@ -72,7 +72,7 @@ Once all the HSV values were collected getting the cube faces was trivial as all
 
 2) Set up openCV dependencies and include opencv_world453d.lib in the linker. A tutorial can be found here: https://www.geeksforgeeks.org/opencv-c-windows-setup-using-visual-studio-2019/.
 
-3) Compile and Run.
+3) Clone repository and Run.
 
 # References
 1) https://www.jaapsch.net/puzzles/thistle.htm (contains Thistlewaite's papers)
