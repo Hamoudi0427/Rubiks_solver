@@ -18,5 +18,4 @@ Pattern Databases:
 
 To get from one group to another the cube is masked for important facelets and then iteratively deepening depth first search (IDDFS) is used to search for the set of moves to reach the target state. However only using IDDFS is still not efficient enough so pruning tables are used as a heuristic to exit unfruitful searches early. The tables are generated before each phase at a certain depth and are then consulted during IDDFS. 
 
-The current solver takes about 40 seconds to reach a solution (with most of the time being used to generate the pruning tables).
-
+# Computer Vision For Input
