@@ -56,3 +56,7 @@ Once all the HSV values were collected getting the cube faces was trivial as all
 </p>
 
 2) The solution is then calculated using the algorithm described above.
+
+<p align="center">
+  <img width="600" height="381" src="https://github.com/Hamoudi0427/Rubiks_solver/blob/master/Test_Demo/cube_solver.gif">
+</p>
