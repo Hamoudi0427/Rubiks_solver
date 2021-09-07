@@ -1,5 +1,5 @@
 # Rubik's Cube Solver
-This is a Rubik's Cube solver that uses Thistlewaite's algorithm and openCV to solve the cube.
+This is a Rubik's Cube solver that uses Thistlewaite's algorithm to solve the cube and openCV to get input from a webcam.
 
 # How It Works
 Conway's Game of Life is a cellular automataton simulation on a 2D grid, where each cell has two possible states: dead or alive. Each cell has neighbours in every direction including diagonally (eight neighbours total). The simulation follows these rules:
