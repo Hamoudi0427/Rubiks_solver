@@ -23,4 +23,7 @@ To get input from the webcam openCV is used. The most difficult aspect of of get
 
 <p align="center">
   <img width="250" height="250" src="https://github.com/Hamoudi0427/Rubiks_solver/blob/master/Test_Demo/dark.png">
+  <img width="250" height="250" src="https://github.com/Hamoudi0427/Rubiks_solver/blob/master/Test_Demo/regular.png">
+  <img width="250" height="250" src="https://github.com/Hamoudi0427/Rubiks_solver/blob/master/Test_Demo/bright.png">
+  <img width="250" height="250" src="https://github.com/Hamoudi0427/Rubiks_solver/blob/master/Test_Demo/very_bright.png">
 </p>
