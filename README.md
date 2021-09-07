@@ -6,7 +6,7 @@ Thistlewaite's algorithm is an algorithm designed by Morwen B. Thistelwaite that
 
 Cube Groups:
 
-1) G0 = <L, R, F, B, U, D> is a group that contains any possible Rubik's cube state and allows all moves (18 in total). This group contains 4.33 x 10^19 positions so solving a cube using brute force from this state would take too long. To reduce the possible cube states we can move the cube to G1 by orienting all the edge facelets correctly. An edge facelet is said to be oriented if it can reached the solved state without front and back quarter turns.
+1) G0 = <L, R, F, B, U, D> is a group that contains any possible Rubik's cube state and allows all moves (18 in total). This group contains 4.33 x 10^19 positions so solving a cube using brute force from this state would take too long. To reduce the possible cube states we can move the cube to G1 by orienting all the edge facelets correctly. An edge facelet is said to be oriented if it can reach the solved state without front and back quarter turns.
 
 2) G1 = <L, R, F2, B2, U, D> contains 2.11 x 10^16 possible positions and allows 14 moves in total (no F and B quarter turns as they affect edge orientation). In this phase we orient the corners and move the edges to the correct slice tp reach G2. A corner is oriented if the facelet is on the the solved face or the opposite face.
 
