@@ -44,7 +44,7 @@ To get input from the webcam openCV is used. The most difficult aspect of of get
   <img width="230" height="230" src="https://github.com/Hamoudi0427/Rubiks_solver/blob/master/Test_Demo/very_bright_mask.png">
 </p>
 
-Rubik's cube in differnt lighting conditions. The first row contains the cube in RGB, the second contains the cube converted to the HSV color space and the third row shows the cube masked with the blue HSV color values ([90 140], [30 255], [20 255]).
+Rubik's cube in different lighting conditions. The first row contains the cube in RGB, the second contains the cube converted to the HSV color space and the third row shows the cube masked with the blue HSV color values ([90 140], [30 255], [20 255]).
 
 Once all the HSV values were collected getting the cube faces was trivial as all that was required was cropping the facelets from input images from the webcam. From there the starting cube can be initialized and the moves can be drawn on the webcam stream to solve the cube.
 
