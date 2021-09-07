@@ -22,26 +22,26 @@ To get from one group to another the cube is masked for important facelets and t
 To get input from the webcam openCV is used. The most difficult aspect of getting input was differentiating between different colors in the images. To help with this the images are preprocessed by being blurred and converted to the HSV color space. HSV is used over RGB as it only has one channel (Hue channel) dedicated to color making it easier to adjust for different colors. However, different lighting condtions reflect different HSV values for each color. To get accurate HSV values data was collected for four different lighting conditions. 
 
 <p align="center">
-  <img width="230" height="230" src="https://github.com/Hamoudi0427/Rubiks_solver/blob/master/Test_Demo/dark.png">
-  <img width="230" height="230" src="https://github.com/Hamoudi0427/Rubiks_solver/blob/master/Test_Demo/regular.png">
-  <img width="230" height="230" src="https://github.com/Hamoudi0427/Rubiks_solver/blob/master/Test_Demo/bright.png">
-  <img width="230" height="230" src="https://github.com/Hamoudi0427/Rubiks_solver/blob/master/Test_Demo/very_bright.png">
+  <img width="210" height="210" src="https://github.com/Hamoudi0427/Rubiks_solver/blob/master/Test_Demo/dark.png">
+  <img width="210" height="210" src="https://github.com/Hamoudi0427/Rubiks_solver/blob/master/Test_Demo/regular.png">
+  <img width="210" height="210" src="https://github.com/Hamoudi0427/Rubiks_solver/blob/master/Test_Demo/bright.png">
+  <img width="210" height="210" src="https://github.com/Hamoudi0427/Rubiks_solver/blob/master/Test_Demo/very_bright.png">
 </p>
 
 
 <p align="center">
-  <img width="230" height="230" src="https://github.com/Hamoudi0427/Rubiks_solver/blob/master/Test_Demo/dark_HSV.png">
-  <img width="230" height="230" src="https://github.com/Hamoudi0427/Rubiks_solver/blob/master/Test_Demo/regular_HSV.png">
-  <img width="230" height="230" src="https://github.com/Hamoudi0427/Rubiks_solver/blob/master/Test_Demo/bright_HSV.png">
-  <img width="230" height="230" src="https://github.com/Hamoudi0427/Rubiks_solver/blob/master/Test_Demo/very_bright_HSV.png">
+  <img width="210" height="210" src="https://github.com/Hamoudi0427/Rubiks_solver/blob/master/Test_Demo/dark_HSV.png">
+  <img width="210" height="210" src="https://github.com/Hamoudi0427/Rubiks_solver/blob/master/Test_Demo/regular_HSV.png">
+  <img width="210" height="210" src="https://github.com/Hamoudi0427/Rubiks_solver/blob/master/Test_Demo/bright_HSV.png">
+  <img width="210" height="210" src="https://github.com/Hamoudi0427/Rubiks_solver/blob/master/Test_Demo/very_bright_HSV.png">
 </p>
 
 
 <p align="center">
-  <img width="230" height="230" src="https://github.com/Hamoudi0427/Rubiks_solver/blob/master/Test_Demo/dark_mask.png">
-  <img width="230" height="230" src="https://github.com/Hamoudi0427/Rubiks_solver/blob/master/Test_Demo/regular_mask.png">
-  <img width="230" height="230" src="https://github.com/Hamoudi0427/Rubiks_solver/blob/master/Test_Demo/bright_mask.png">
-  <img width="230" height="230" src="https://github.com/Hamoudi0427/Rubiks_solver/blob/master/Test_Demo/very_bright_mask.png">
+  <img width="210" height="210" src="https://github.com/Hamoudi0427/Rubiks_solver/blob/master/Test_Demo/dark_mask.png">
+  <img width="210" height="210" src="https://github.com/Hamoudi0427/Rubiks_solver/blob/master/Test_Demo/regular_mask.png">
+  <img width="210" height="210" src="https://github.com/Hamoudi0427/Rubiks_solver/blob/master/Test_Demo/bright_mask.png">
+  <img width="210" height="210" src="https://github.com/Hamoudi0427/Rubiks_solver/blob/master/Test_Demo/very_bright_mask.png">
 </p>
 
 The images above show Rubik's cubes in different lighting conditions. The first row contains the cube in RGB, the second contains the cube converted to the HSV color space and the third row shows the cube masked with the blue HSV color values ([90 140], [30 255], [20 255]).
