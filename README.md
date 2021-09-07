@@ -27,3 +27,4 @@ To get input from the webcam openCV is used. The most difficult aspect of of get
   <img width="230" height="230" src="https://github.com/Hamoudi0427/Rubiks_solver/blob/master/Test_Demo/bright.png">
   <img width="230" height="230" src="https://github.com/Hamoudi0427/Rubiks_solver/blob/master/Test_Demo/very_bright.png">
 </p>
+Rubik's Cube in Different Lighting Conditions.
