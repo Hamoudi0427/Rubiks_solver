@@ -38,7 +38,7 @@ bool isGreen(const cv::Mat& cropped_img)
 bool isBlue(const cv::Mat& cropped_img)
 {
 	//upper and lower bound HSV blue values
-	int hmin = 90, smin = 140, vmin = 0;
+	int hmin = 90, smin = 120, vmin = 0;
 	int hmax = 140, smax = 255, vmax = 255;
 
 	//mask facelet with upper and lower bound blue color values
@@ -62,7 +62,7 @@ bool isBlue(const cv::Mat& cropped_img)
 bool isYellow(const cv::Mat& cropped_img)
 {
 	//upper and lower bound HSV yellow values
-	int hmin = 22, smin = 0, vmin = 0;
+	int hmin = 22, smin = 50, vmin = 0;
 	int hmax = 40, smax = 255, vmax = 255;
 
 	//mask facelet with upper and lower bound yellow color values
@@ -112,7 +112,7 @@ bool isRed(const cv::Mat& cropped_img)
 	//upper and lower bound HSV red values (red has two thresholds)
 	int hmin_dark = 0, smin_dark = 0, vmin_dark = 0;
 	int hmax_dark = 10, smax_dark = 255, vmax_dark = 255;
-	int hmin_light = 160, smin_light = 0, vmin_light = 0;
+	int hmin_light = 165, smin_light = 0, vmin_light = 0;
 	int hmax_light = 180, smax_light = 255, vmax_light = 255;
 
 	//mask facelet with upper and lower bound red color values

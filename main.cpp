@@ -1,14 +1,6 @@
-#include "facelet_rotate.h"
-#include "phase1_solve.h"
-#include "phase2_solve.h"
-#include "phase3_solve.h"
-#include "phase4_solve.h"
-#include "pruning_table.h"
 #include "cube_structure.h"
 #include <string>
 #include <iostream>
-#include <map>
-#include <algorithm>
 #include "opencv2/opencv.hpp"
 #include <opencv2/imgcodecs.hpp>
 #include <opencv2/highgui.hpp>
@@ -16,12 +8,22 @@
 
 int main(void)
 {
-
+	//initialize webcam
 	cv::VideoCapture webcam(0);
-	Cube cubes;
-	cubes.initializeCube(webcam);
-	cubes.solveCube();
+
+	//initialize Rubik's cube
+	Cube rubiks_cube;
+
+	//get each of the Rubik's cube faces from the webcam
+	rubiks_cube.initializeCube(webcam);
+
+	//generate cube solution
+	rubiks_cube.solveCube();
+
+	//apply moves to cube
+	rubiks_cube.applyMoves(webcam);
 }
+
 
 /*
 	to-do:

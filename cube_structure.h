@@ -28,7 +28,7 @@ public:
 	Face(void);
 	Face(const Face& face_copy);
 
-	//assignment
+	//assignment and equality
 	Face& operator=(const Face& copy);
 
 	//color retrieval and entry
@@ -45,6 +45,10 @@ private:
 	std::array<std::array<COLOR, 3>, 3> face;
 };
 
+//face equality operators
+bool operator==(const Face& face1, const Face& face2);
+bool operator!=(const Face& face1, const Face& face2);
+
 
 //geometric representation of the cube
 class Cube
@@ -57,10 +61,12 @@ public:
 	//accessor methods
 	std::string convertToString(void);
 	Face getFace(SIDE side);
+	int getSolutionSize(void) {return solution.size();}
 
 	//solving and getting the cube
 	void initializeCube(cv::VideoCapture& webcam);
 	void solveCube(void);
+	void applyMoves(cv::VideoCapture& webcam);
 
 private:
 	//cube implementation
@@ -71,10 +77,12 @@ private:
 	//solving and getting the cube
 	std::vector<cv::Mat> faceletCrop(const cv::Mat& img);
 	void drawFacelets(cv::Mat& img_resize, cv::Scalar color);
+	void drawArrows(cv::Mat& img_resize, ROT move);
 	bool isFaceFound(const std::map<std::string, int>& face_count);
 	void addFaceToMap(std::map<std::string, int>& face_count, Face& face);
 	Face getCubeFace(const cv::Mat& img);
-	Face getValidCubeFace(cv::VideoCapture& webcam, COLOR side);
+	Face getValidCubeFace(cv::VideoCapture& webcam, COLOR side, std::string message);
+	void stringToCube(void);
 };
 
 #endif

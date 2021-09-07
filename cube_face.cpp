@@ -3,6 +3,7 @@
 #include <opencv2/imgproc.hpp>
 #include "opencv2/opencv.hpp"
 #include "cube_structure.h"
+#include "facelet_rotate.h"
 #include "cube_colors.h"
 #include <string>
 #include <vector>
@@ -51,6 +52,83 @@ void Cube::drawFacelets(cv::Mat& img_resize, cv::Scalar color)
 	cv::rectangle(img_resize, cv::Point(430, 360), cv::Point(490, 420), color, 2);
 }
 
+void Cube::drawArrows(cv::Mat& img_resize, ROT move)
+{
+	switch (move)
+	{
+	case ROT::U:
+		cv::arrowedLine(img_resize, cv::Point(300, 230), cv::Point(460, 230), cv::Scalar(0, 0, 255), 3);
+		break;
+	case ROT::UP:
+		cv::arrowedLine(img_resize, cv::Point(460, 230), cv::Point(300, 230), cv::Scalar(0, 0, 255), 3);
+		break;
+	case ROT::U2:
+		cv::arrowedLine(img_resize, cv::Point(300, 215), cv::Point(460, 215), cv::Scalar(0, 0, 255), 3);
+		cv::arrowedLine(img_resize, cv::Point(300, 245), cv::Point(460, 245), cv::Scalar(0, 0, 255), 3);
+		break;
+	case ROT::DP:
+		cv::arrowedLine(img_resize, cv::Point(300, 390), cv::Point(460, 390), cv::Scalar(0, 0, 255), 3);
+		break;
+	case ROT::D:
+		cv::arrowedLine(img_resize, cv::Point(460, 390), cv::Point(300, 390), cv::Scalar(0, 0, 255), 3);
+		break;
+	case ROT::D2:
+		cv::arrowedLine(img_resize, cv::Point(460, 375), cv::Point(300, 375), cv::Scalar(0, 0, 255), 3);
+		cv::arrowedLine(img_resize, cv::Point(460, 405), cv::Point(300, 405), cv::Scalar(0, 0, 255), 3);
+		break;
+	case ROT::RP:
+		cv::arrowedLine(img_resize, cv::Point(460, 230), cv::Point(460, 390), cv::Scalar(0, 0, 255), 3);
+		break;
+	case ROT::R:
+		cv::arrowedLine(img_resize, cv::Point(460, 390), cv::Point(460, 230), cv::Scalar(0, 0, 255), 3);
+		break;
+	case ROT::R2:
+		cv::arrowedLine(img_resize, cv::Point(475, 230), cv::Point(475, 390), cv::Scalar(0, 0, 255), 3);
+		cv::arrowedLine(img_resize, cv::Point(445, 230), cv::Point(445, 390), cv::Scalar(0, 0, 255), 3);
+		break;
+	case ROT::L:
+		cv::arrowedLine(img_resize, cv::Point(300, 230), cv::Point(300, 390), cv::Scalar(0, 0, 255), 3);
+		break;
+	case ROT::LP:
+		cv::arrowedLine(img_resize, cv::Point(300, 390), cv::Point(300, 230), cv::Scalar(0, 0, 255), 3);
+		break;
+	case ROT::L2:
+		cv::arrowedLine(img_resize, cv::Point(315, 230), cv::Point(315, 390), cv::Scalar(0, 0, 255), 3);
+		cv::arrowedLine(img_resize, cv::Point(285, 230), cv::Point(285, 390), cv::Scalar(0, 0, 255), 3);
+		break;
+	case ROT::BP:
+		cv::arrowedLine(img_resize, cv::Point(300, 230), cv::Point(460, 230), cv::Scalar(0, 0, 255), 3);
+		break;
+	case ROT::B:
+		cv::arrowedLine(img_resize, cv::Point(460, 230), cv::Point(300, 230), cv::Scalar(0, 0, 255), 3);
+		break;
+	case ROT::B2:
+		cv::arrowedLine(img_resize, cv::Point(300, 215), cv::Point(460, 215), cv::Scalar(0, 0, 255), 3);
+		cv::arrowedLine(img_resize, cv::Point(300, 245), cv::Point(460, 245), cv::Scalar(0, 0, 255), 3);
+		break;
+	case ROT::F:
+		cv::arrowedLine(img_resize, cv::Point(300, 390), cv::Point(460, 390), cv::Scalar(0, 0, 255), 3);
+		break;
+	case ROT::FP:
+		cv::arrowedLine(img_resize, cv::Point(460, 390), cv::Point(300, 390), cv::Scalar(0, 0, 255), 3);
+		break;
+	case ROT::F2:
+		cv::arrowedLine(img_resize, cv::Point(460, 375), cv::Point(300, 375), cv::Scalar(0, 0, 255), 3);
+		cv::arrowedLine(img_resize, cv::Point(460, 405), cv::Point(300, 405), cv::Scalar(0, 0, 255), 3);
+		break;
+	case ROT::MD:
+		cv::arrowedLine(img_resize, cv::Point(460, 230), cv::Point(460, 390), cv::Scalar(0, 0, 255), 3);
+		cv::arrowedLine(img_resize, cv::Point(300, 230), cv::Point(300, 390), cv::Scalar(0, 0, 255), 3);
+		cv::arrowedLine(img_resize, cv::Point(380, 230), cv::Point(380, 390), cv::Scalar(0, 0, 255), 3);
+		break;
+	case ROT::MU:
+		cv::arrowedLine(img_resize, cv::Point(460, 390), cv::Point(460, 230), cv::Scalar(0, 0, 255), 3);
+		cv::arrowedLine(img_resize, cv::Point(300, 390), cv::Point(300, 230), cv::Scalar(0, 0, 255), 3);
+		cv::arrowedLine(img_resize, cv::Point(380, 390), cv::Point(380, 230), cv::Scalar(0, 0, 255), 3);
+		break;
+	}
+}
+
 //will check if a face is found
 bool Cube::isFaceFound(const std::map<std::string, int>& face_count)
 {
@@ -96,7 +174,7 @@ Face Cube::getCubeFace(const cv::Mat& img)
 }
 
 //returns the specified cube face (U, D, R, L, B, F) by checking the middle facelet
-Face Cube::getValidCubeFace(cv::VideoCapture& webcam, COLOR side)
+Face Cube::getValidCubeFace(cv::VideoCapture& webcam, COLOR side, std::string message)
 {
 	while (webcam.isOpened())
 	{
@@ -117,7 +195,7 @@ Face Cube::getValidCubeFace(cv::VideoCapture& webcam, COLOR side)
 			addFaceToMap(face_count, face);
 
 			//display the image
-			cv::putText(img_resize, "Orient the white face as Up", cv::Point(10, 590), cv::FONT_HERSHEY_DUPLEX, 1.0, CV_RGB(200, 200, 150), 1);
+			cv::putText(img_resize, message, cv::Point(10, 590), cv::FONT_HERSHEY_DUPLEX, 1.0, CV_RGB(200, 200, 250), 1);
 			cv::imshow("Rubik's Cube Solver", img_resize);
 			cv::waitKey(10);
 		}
@@ -137,27 +215,27 @@ Face Cube::getValidCubeFace(cv::VideoCapture& webcam, COLOR side)
 void Cube::initializeCube(cv::VideoCapture& webcam)
 {
 	//get each face
-	Face front_face = this -> getValidCubeFace(webcam, COLOR::G); 
+	Face front_face = this -> getValidCubeFace(webcam, COLOR::G, "Green Face (White Side as Up)");
 	front_face.printFace();
 	std::cout << std::endl;
 
-	Face right_face = this -> getValidCubeFace(webcam, COLOR::R); 
+	Face right_face = this -> getValidCubeFace(webcam, COLOR::R, "Red Face (White Side as Up)");
 	right_face.printFace();
 	std::cout << std::endl;
 
-	Face back_face = this -> getValidCubeFace(webcam, COLOR::B);
+	Face back_face = this -> getValidCubeFace(webcam, COLOR::B, "Blue Face (White Side as Up)");
 	back_face.printFace();
 	std::cout << std::endl;
 
-	Face left_face = this -> getValidCubeFace(webcam, COLOR::O); 
+	Face left_face = this -> getValidCubeFace(webcam, COLOR::O, "Orange Face (White Side as Up)");
 	left_face.printFace();
 	std::cout << std::endl;
 
-	Face up_face = this -> getValidCubeFace(webcam, COLOR::W);
+	Face up_face = this -> getValidCubeFace(webcam, COLOR::W, "White Face (Blue Side as Up)");
 	up_face.printFace();
 	std::cout << std::endl;
 
-	Face down_face = this -> getValidCubeFace(webcam, COLOR::Y); 
+	Face down_face = this -> getValidCubeFace(webcam, COLOR::Y, "Yellow Face (Green Side as Up)");
 	down_face.printFace();
 	std::cout << std::endl;
 
@@ -171,4 +249,90 @@ void Cube::initializeCube(cv::VideoCapture& webcam)
 
 	//convert string representation
 	facelet_cube = this->convertToString(); 
+}
+
+//apply moves on the cube until it is solved
+void Cube::applyMoves(cv::VideoCapture& webcam)
+{
+	//start at front face (green)
+	SIDE current_face = SIDE::F;
+	
+	while (solution.size() != 0)
+	{
+		//get current move
+		ROT move = solution[0];
+		solution.erase(solution.begin());
+
+		//apply move to the actual cube
+		Face face;
+		cv::Mat img, img_resize;
+
+		//ensure cube is on the correct side before applying the move
+		if ((rotationToString(move)[0] == 'L' || rotationToString(move)[0] == 'R' || rotationToString(move)[0] == 'U' || rotationToString(move)[0] == 'D') && (current_face != SIDE::F))
+		{
+			while (face != cube[2])
+			{
+				//read the image from the webcam
+				webcam.read(img);
+				cv::resize(img, img_resize, cv::Size(800, 600), cv::INTER_LINEAR);
+				drawFacelets(img_resize, cv::Scalar(255, 255, 255));
+				drawArrows(img_resize, ROT::MU);
+				cv::imshow("Rubik's Cube Solver", img_resize);
+				face = getCubeFace(img_resize);
+				cv::waitKey(20);
+			}
+
+			current_face = SIDE::F;
+		}
+		else if ((rotationToString(move)[0] == 'F' || rotationToString(move)[0] == 'B') && (current_face != SIDE::U))
+		{
+			while (face != cube[0])
+			{
+				//read the image from the webcam
+				webcam.read(img);
+				cv::resize(img, img_resize, cv::Size(800, 600), cv::INTER_LINEAR);
+				drawFacelets(img_resize, cv::Scalar(255, 255, 255));
+				drawArrows(img_resize, ROT::MD);
+				cv::imshow("Rubik's Cube Solver", img_resize);
+				face = getCubeFace(img_resize);
+				cv::waitKey(20);
+			}
+
+			current_face = SIDE::U;
+		}
+
+		//apply move to the cube
+		facelet_cube = rotateCube(facelet_cube, { move });
+		this->stringToCube();
+
+		//ensure move is applied
+		if (rotationToString(move)[0] == 'L' || rotationToString(move)[0] == 'R' || rotationToString(move)[0] == 'U' || rotationToString(move)[0] == 'D')
+		{
+			while (face != cube[2])
+			{
+				//read the image from the webcam
+				webcam.read(img);
+				cv::resize(img, img_resize, cv::Size(800, 600), cv::INTER_LINEAR);
+				drawFacelets(img_resize, cv::Scalar(255, 255, 255));
+				drawArrows(img_resize, move);
+				cv::imshow("Rubik's Cube Solver", img_resize);
+				face = getCubeFace(img_resize);
+				cv::waitKey(100);
+			}
+		}
+		else if (rotationToString(move)[0] == 'F' || rotationToString(move)[0] == 'B')
+		{
+			while (face != cube[0])
+			{
+				//read the image from the webcam
+				webcam.read(img);
+				cv::resize(img, img_resize, cv::Size(800, 600), cv::INTER_LINEAR);
+				drawFacelets(img_resize, cv::Scalar(255, 255, 255));
+				drawArrows(img_resize, move);
+				cv::imshow("Rubik's Cube Solver", img_resize);
+				face = getCubeFace(img_resize);
+				cv::waitKey(100);
+			}
+		}
+	}
 }

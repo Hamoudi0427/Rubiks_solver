@@ -65,6 +65,26 @@ Face& Face::operator=(const Face& face_copy)
 	return *this;
 }
 
+//equality operator
+bool operator==(const Face& face1, const Face& face2)
+{
+	for (int i = 0; i < 9; i++)
+	{
+		if (face1.getFaceletColor(i) != face2.getFaceletColor(i))
+		{
+			return false;
+		}
+	}
+
+	return true;
+}
+
+//inequality operator
+bool operator!=(const Face& face1, const Face& face2)
+{
+	return !(face1 == face2);
+}
+
 //returns the color of the individual facelet (index is zero-indexed)
 COLOR Face::getFaceletColor(int index) const
 {
@@ -251,5 +271,45 @@ Face Cube::getFace(SIDE side)
 		return cube[4];
 	case SIDE::B:
 		return cube[5];
+	}
+}
+
+//convert the facelet string representation of the cube to the geometric representation
+void Cube::stringToCube(void)
+{
+	int index = 0;
+
+	for (int j = 0; j < 6; j++)
+	{
+		for (int i = 0; i < 9; i++)
+		{
+			switch (facelet_cube[index])
+			{
+			case 'W':
+				cube[j].setFaceletColor(i, COLOR::W);
+				index++;
+				break;
+			case 'R':
+				cube[j].setFaceletColor(i, COLOR::R);
+				index++;
+				break;
+			case 'B':
+				cube[j].setFaceletColor(i, COLOR::B);
+				index++;
+				break;
+			case 'G':
+				cube[j].setFaceletColor(i, COLOR::G);
+				index++;
+				break;
+			case 'Y':
+				cube[j].setFaceletColor(i, COLOR::Y);
+				index++;
+				break;
+			case 'O':
+				cube[j].setFaceletColor(i, COLOR::O);
+				index++;
+				break;
+			}
+		}
 	}
 }

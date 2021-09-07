@@ -9,7 +9,7 @@
 //cube rotations
 enum class ROT
 {
-    U, UP, U2, D, DP, D2, F, FP, F2, R, RP, R2, L, LP, L2, B, BP, B2
+    U, UP, U2, D, DP, D2, F, FP, F2, R, RP, R2, L, LP, L2, B, BP, B2, MU, MD
 };
 
 //phase pruning table depths
