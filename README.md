@@ -52,5 +52,5 @@ Once all the HSV values were collected getting the cube faces was trivial as all
 1) The starting cube is first initialized.
 
 <p align="center">
-  <img width="230" height="230" src="https://github.com/Hamoudi0427/Rubiks_solver/blob/master/Test_Demo/cube_init.gif">
+  <img width="600" height="450" src="https://github.com/Hamoudi0427/Rubiks_solver/blob/master/Test_Demo/cube_init.gif">
 </p>
