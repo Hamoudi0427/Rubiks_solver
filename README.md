@@ -14,3 +14,9 @@ Cube Groups:
 
 4) G3 = <L2, R2, F2, B2, U2, D2> contains 6.63 x 10^5 permuations and allows only half turns (6 moves total). From this group we can reach the solved state G4 = Solved Cube.
 
+Pattern Databases:
+
+To get from one group to another the cube is masked for important facelets and then iteratively deepening depth first search (IDDFS) is used to search for the set of moves to reach the target state. However only using IDDFS is still not efficient enough so pruning tables are used as a heuristic to exit unfruitful searches early. The tables are generated before each phase at a certain depth and are then consulted during IDDFS. 
+
+The current solver takes about 40 seconds to reach a solution (with most of the time being used to generate the pruning tables).
+
