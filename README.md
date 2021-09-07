@@ -64,5 +64,5 @@ Once all the HSV values were collected getting the cube faces was trivial as all
 3) Apply moves till the cube is solved.
 
 <p align="center">
-  <img width="600" height="381" src="https://github.com/Hamoudi0427/Rubiks_solver/blob/master/Test_Demo/cube_moves.gif">
+  <img width="600" height="453" src="https://github.com/Hamoudi0427/Rubiks_solver/blob/master/Test_Demo/cube_moves.gif">
 </p>
