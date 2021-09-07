@@ -22,10 +22,10 @@ To get from one group to another the cube is masked for important facelets and t
 To get input from the webcam openCV is used. The most difficult aspect of of getting input was differentiating between different colors in the images. To help with this the images are preprocessed by being blurred and converted to the HSV color space. HSV is used over RGB as it only has one channel (Hue channel) dedicated to color making it easier to adjust for different colors. However, different lighting condtions reflect different HSV values for each color. To get accurate HSV values data was collected for four different lighting conditions. 
 
 <p align="center">
-  <img width="230" height="230" src="https://github.com/Hamoudi0427/Rubiks_solver/blob/master/Test_Demo/dark.png">
-  <img width="230" height="230" src="https://github.com/Hamoudi0427/Rubiks_solver/blob/master/Test_Demo/regular.png">
-  <img width="230" height="230" src="https://github.com/Hamoudi0427/Rubiks_solver/blob/master/Test_Demo/bright.png">
-  <img width="230" height="230" src="https://github.com/Hamoudi0427/Rubiks_solver/blob/master/Test_Demo/very_bright.png">
+  <img width="220" height="220" src="https://github.com/Hamoudi0427/Rubiks_solver/blob/master/Test_Demo/dark.png">
+  <img width="220" height="220" src="https://github.com/Hamoudi0427/Rubiks_solver/blob/master/Test_Demo/regular.png">
+  <img width="220" height="220" src="https://github.com/Hamoudi0427/Rubiks_solver/blob/master/Test_Demo/bright.png">
+  <img width="220" height="220" src="https://github.com/Hamoudi0427/Rubiks_solver/blob/master/Test_Demo/very_bright.png">
 </p>
 
 
