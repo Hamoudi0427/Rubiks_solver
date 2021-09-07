@@ -19,7 +19,7 @@ Pattern Databases:
 To get from one group to another the cube is masked for important facelets and then iteratively deepening depth first search (IDDFS) is used to search for the set of moves to reach the target state. However using only IDDFS is still not efficient enough so pruning tables are used as a heuristic to exit unfruitful searches early. The tables are generated before each phase at a certain depth and are then consulted during IDDFS. 
 
 # Computer Vision For Input
-To get input from the webcam openCV is used. The most difficult aspect of of getting input was differentiating between different colors in the images. To help with this the images are preprocessed by being blurred and converted to the HSV color space. HSV is used over RGB as it only has one channel (Hue channel) dedicated to color making it easier to adjust for different colors. However, different lighting condtions reflect different HSV values for each color. To get accurate HSV values data was collected for four different lighting conditions. 
+To get input from the webcam openCV is used. The most difficult aspect of getting input was differentiating between different colors in the images. To help with this the images are preprocessed by being blurred and converted to the HSV color space. HSV is used over RGB as it only has one channel (Hue channel) dedicated to color making it easier to adjust for different colors. However, different lighting condtions reflect different HSV values for each color. To get accurate HSV values data was collected for four different lighting conditions. 
 
 <p align="center">
   <img width="230" height="230" src="https://github.com/Hamoudi0427/Rubiks_solver/blob/master/Test_Demo/dark.png">
