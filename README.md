@@ -68,3 +68,5 @@ Once all the HSV values were collected getting the cube faces was trivial as all
 </p>
 
 # Download and Installation
+1) Download and install openCV. This project uses version 4.5.3.
+2) 
