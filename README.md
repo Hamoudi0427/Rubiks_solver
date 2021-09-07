@@ -2,5 +2,13 @@
 This is a Rubik's Cube solver that uses Thistlewaite's algorithm to solve the cube and openCV to get input from a webcam.
 
 # Thistlewaite's Algorithm
-Thistlewaite's algorithm is an algorithm designed by Morwen B. Thistelwaite that allows a Rubik's Cube to be programatically solved in under 45 moves (with the average number of moves being around 30. The algorithm works by moving the cube from one group to another, with each group having less available moves, restricting the cube to fewer and fewer possibilities till it is solved.
+Thistlewaite's algorithm is an algorithm designed by Morwen B. Thistelwaite that allows a Rubik's Cube to be programatically solved in under 45 moves (with the average number of moves being around 30). The algorithm works by moving the cube from one group to another, with each group having less available moves, restricting the cube to fewer and fewer possibilities until it is solved.
+
+Cube Groups:
+
+1) G0 = <L, R, F, B, U, D> is a group that contains any possible Rubik's cube state and allows all moves (18 in total). This group contains 4.33 x 10^19 positions so solving a cube using brute force from this state would take too long. To reduce the possible cube states we can move the cube to G1 by orienting all the edge facelets correctly. An edge facelet is said to be oriented if it can reached the solved state without front and back quarter turns.
+
+2) G1 = <L, R, F2, B2, U, D> contains 2.11 x 10^16 possible positions and allows 14 moves in total (no F and B quarter turns as they affect edge orientation). In this phase we orient the corners and move the edges to the correct slice tp reach G2. A corner is oriented if the facelet is on the the solved face or the opposite face.
+
+3) G2 = <L2, R2, F2, B2, U, D> contains 1.95 x 10^10 possibles positions and allows 10 moves moves (no more L and R quarter turns as they affect corner orientation. In this phase we move from G2 to G3 by moving the cube into 1 of the 96 permisible corner orbits to allow the cube to be half turn solvable.
 
