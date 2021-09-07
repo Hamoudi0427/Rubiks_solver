@@ -39,6 +39,7 @@ std::vector<cv::Mat> Cube::faceletCrop(const cv::Mat& img)
 	return {upper_left, upper_middle, upper_right, middle_left, middle_middle, middle_right, lower_left, lower_middle, lower_right};
 }
 
+//draws the facelet contours
 void Cube::drawFacelets(cv::Mat& img_resize, cv::Scalar color)
 {
 	cv::rectangle(img_resize, cv::Point(270, 200), cv::Point(330, 260), color, 2);
@@ -52,6 +53,7 @@ void Cube::drawFacelets(cv::Mat& img_resize, cv::Scalar color)
 	cv::rectangle(img_resize, cv::Point(430, 360), cv::Point(490, 420), color, 2);
 }
 
+//draws the move arrows that correspond to rotations
 void Cube::drawArrows(cv::Mat& img_resize, ROT move)
 {
 	switch (move)
@@ -129,6 +131,16 @@ void Cube::drawArrows(cv::Mat& img_resize, ROT move)
 	}
 }
 
+//draws the remaining amount of moves on the screen
+void Cube::drawMoveCount(cv::Mat& img_resize, ROT move)
+{
+	std::string count = std::to_string(solution.size());
+	std::string message = "Remaining Moves: " + count;
+
+	cv::putText(img_resize, message, cv::Point(500, 50), cv::FONT_HERSHEY_DUPLEX, 0.7, CV_RGB(200, 200, 250), 1);
+	cv::putText(img_resize, rotationToString(move), cv::Point(500, 75), cv::FONT_HERSHEY_DUPLEX, 0.7, CV_RGB(200, 200, 250), 1);
+}
+
 //will check if a face is found
 bool Cube::isFaceFound(const std::map<std::string, int>& face_count)
 {
@@ -195,7 +207,7 @@ Face Cube::getValidCubeFace(cv::VideoCapture& webcam, COLOR side, std::string me
 			addFaceToMap(face_count, face);
 
 			//display the image
-			cv::putText(img_resize, message, cv::Point(10, 590), cv::FONT_HERSHEY_DUPLEX, 1.0, CV_RGB(200, 200, 250), 1);
+			cv::putText(img_resize, message, cv::Point(10, 590), cv::FONT_HERSHEY_DUPLEX, 0.8, CV_RGB(200, 200, 250), 1);
 			cv::imshow("Rubik's Cube Solver", img_resize);
 			cv::waitKey(10);
 		}
@@ -277,6 +289,7 @@ void Cube::applyMoves(cv::VideoCapture& webcam)
 				cv::resize(img, img_resize, cv::Size(800, 600), cv::INTER_LINEAR);
 				drawFacelets(img_resize, cv::Scalar(255, 255, 255));
 				drawArrows(img_resize, ROT::MU);
+				drawMoveCount(img_resize, move);
 				cv::imshow("Rubik's Cube Solver", img_resize);
 				face = getCubeFace(img_resize);
 				cv::waitKey(20);
@@ -293,6 +306,7 @@ void Cube::applyMoves(cv::VideoCapture& webcam)
 				cv::resize(img, img_resize, cv::Size(800, 600), cv::INTER_LINEAR);
 				drawFacelets(img_resize, cv::Scalar(255, 255, 255));
 				drawArrows(img_resize, ROT::MD);
+				drawMoveCount(img_resize, move);
 				cv::imshow("Rubik's Cube Solver", img_resize);
 				face = getCubeFace(img_resize);
 				cv::waitKey(20);
@@ -315,6 +329,7 @@ void Cube::applyMoves(cv::VideoCapture& webcam)
 				cv::resize(img, img_resize, cv::Size(800, 600), cv::INTER_LINEAR);
 				drawFacelets(img_resize, cv::Scalar(255, 255, 255));
 				drawArrows(img_resize, move);
+				drawMoveCount(img_resize, move);
 				cv::imshow("Rubik's Cube Solver", img_resize);
 				face = getCubeFace(img_resize);
 				cv::waitKey(100);
@@ -329,6 +344,7 @@ void Cube::applyMoves(cv::VideoCapture& webcam)
 				cv::resize(img, img_resize, cv::Size(800, 600), cv::INTER_LINEAR);
 				drawFacelets(img_resize, cv::Scalar(255, 255, 255));
 				drawArrows(img_resize, move);
+				drawMoveCount(img_resize, move);
 				cv::imshow("Rubik's Cube Solver", img_resize);
 				face = getCubeFace(img_resize);
 				cv::waitKey(100);

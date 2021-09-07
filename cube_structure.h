@@ -78,6 +78,7 @@ private:
 	std::vector<cv::Mat> faceletCrop(const cv::Mat& img);
 	void drawFacelets(cv::Mat& img_resize, cv::Scalar color);
 	void drawArrows(cv::Mat& img_resize, ROT move);
+	void drawMoveCount(cv::Mat& img_resize, ROT move);
 	bool isFaceFound(const std::map<std::string, int>& face_count);
 	void addFaceToMap(std::map<std::string, int>& face_count, Face& face);
 	Face getCubeFace(const cv::Mat& img);
