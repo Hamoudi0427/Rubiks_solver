@@ -6,7 +6,7 @@
 #include <unordered_map>
 
 /*
-	This file contains functions that generate the prune tables to speed up the move solvers. These tables
+	This file contains functions that generate the pruning tables to speed up the move solvers. These tables
 	significantly reduce wait times.
 */
 

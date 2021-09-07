@@ -49,6 +49,7 @@ std::string getCornerMask(std::string g1_cube)
 	return target_mask;
 }
 
+//gets G2 moves (sub-optimal)
 std::vector<ROT> getG2Moves(std::string g2_mask)
 {
 	std::string target_mask = "MMMMXMMMMXXXXXXXXXXXXYXYXXXMMMMXMMMMXXXXXXXXXXXXYXYXXX";
@@ -64,6 +65,7 @@ std::vector<ROT> getG2Moves(std::string g2_mask)
 	return depthFirstSearchCube(target_mask, g2_mask, moves, PHASE_G2_DEPTH, table, PHASE_G2_TABLE);
 }
 
+//returns the shortest amount of moves to get to G2
 std::vector<ROT> getShortestG2Moves(std::string g2_mask)
 {
 	std::string target_mask = "MMMMXMMMMXXXXXXXXXXXXYXYXXXMMMMXMMMMXXXXXXXXXXXXYXYXXX";
@@ -79,4 +81,4 @@ std::vector<ROT> getShortestG2Moves(std::string g2_mask)
 	return iterativeDeepeningSearchCube(target_mask, g2_mask, moves, PHASE_G2_DEPTH, table, PHASE_G2_TABLE);
 }
 
-//Note: 'C' = corner, 'M' = U/D edge, 'Y' = E-slice edges
+//'M' = U/D edge, 'Y' = E-slice edges

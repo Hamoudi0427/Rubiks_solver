@@ -18,6 +18,6 @@ int main(void)
 	//generate cube solution
 	rubiks_cube.solveCube();
 
-	//apply moves to cube
+	//apply moves to cube until it is solved
 	rubiks_cube.applyMoves(webcam);
 }

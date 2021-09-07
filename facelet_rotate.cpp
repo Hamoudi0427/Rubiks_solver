@@ -556,7 +556,6 @@ std::vector<ROT> depthFirstSearchCube(const std::string& target, std::string cub
     }
     else if (table.find(cube) == table.end())
     {
-        //Note: this value must be modified if the depth is changed
         table[cube] = phase + 1;
     }
 
@@ -590,7 +589,7 @@ std::vector<ROT> depthFirstSearchCube(const std::string& target, std::string cub
 std::vector<ROT> iterativeDeepeningSearchCube(std::string target, std::string cube, std::vector<ROT> moves, int depth,
     std::map<std::string, int>& table, int phase)
 {
-    //continues searching deeper until a solution is found, garentees optimal solution if one exists
+    //continues searching deeper until a solution is found, guarantees optimal solution if one exists
     for (int i = 1; i <= depth; i++)
     {
         std::vector<ROT> solution = depthFirstSearchCube(target, cube, moves, i, table, phase);
@@ -663,7 +662,7 @@ std::vector<ROT> depthFirstSearchCubes(const std::vector<std::string>& targets, 
 std::vector<ROT> iterativeDeepeningSearchCubes(std::vector<std::string> targets, std::string cube, std::vector<ROT> moves, int depth,
     std::unordered_map<std::string, int>& table, int phase)
 {
-    //continues searching deeper until a solution is found, garentees optimal solution if one exists
+    //continues searching deeper until a solution is found, guarentees optimal solution if one exists
     for (int i = 1; i <= depth; i++)
     {
         std::vector<ROT> sol;

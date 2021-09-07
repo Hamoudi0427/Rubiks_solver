@@ -49,7 +49,6 @@ private:
 bool operator==(const Face& face1, const Face& face2);
 bool operator!=(const Face& face1, const Face& face2);
 
-
 //geometric representation of the cube
 class Cube
 {

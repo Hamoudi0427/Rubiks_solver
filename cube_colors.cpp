@@ -93,7 +93,7 @@ bool isOrange(const cv::Mat& cropped_img)
 	cv::Mat masked_img;
 	cv::inRange(cropped_img, cv::Scalar(hmin, smin, vmin), cv::Scalar(hmax, smax, vmax), masked_img);
 
-	//if 40% or more of the facelet is orange then the color can be determined
+	//if 35% or more of the facelet is orange then the color can be determined
 	float img_size = cropped_img.rows * cropped_img.cols;
 	float num_masked_pixels = cv::countNonZero(masked_img);
 	float masked_percentage = (num_masked_pixels / img_size) * 100;
