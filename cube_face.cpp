@@ -98,20 +98,20 @@ void Cube::drawArrows(cv::Mat& img_resize, ROT move)
 		cv::arrowedLine(img_resize, cv::Point(315, 230), cv::Point(315, 390), cv::Scalar(0, 0, 255), 3);
 		cv::arrowedLine(img_resize, cv::Point(285, 230), cv::Point(285, 390), cv::Scalar(0, 0, 255), 3);
 		break;
-	case ROT::BP:
+	case ROT::B:
 		cv::arrowedLine(img_resize, cv::Point(300, 230), cv::Point(460, 230), cv::Scalar(0, 0, 255), 3);
 		break;
-	case ROT::B:
+	case ROT::BP:
 		cv::arrowedLine(img_resize, cv::Point(460, 230), cv::Point(300, 230), cv::Scalar(0, 0, 255), 3);
 		break;
 	case ROT::B2:
 		cv::arrowedLine(img_resize, cv::Point(300, 215), cv::Point(460, 215), cv::Scalar(0, 0, 255), 3);
 		cv::arrowedLine(img_resize, cv::Point(300, 245), cv::Point(460, 245), cv::Scalar(0, 0, 255), 3);
 		break;
-	case ROT::F:
+	case ROT::FP:
 		cv::arrowedLine(img_resize, cv::Point(300, 390), cv::Point(460, 390), cv::Scalar(0, 0, 255), 3);
 		break;
-	case ROT::FP:
+	case ROT::F:
 		cv::arrowedLine(img_resize, cv::Point(460, 390), cv::Point(300, 390), cv::Scalar(0, 0, 255), 3);
 		break;
 	case ROT::F2:
@@ -218,7 +218,18 @@ Face Cube::getValidCubeFace(cv::VideoCapture& webcam, COLOR side, std::string me
 			drawFacelets(img_resize, cv::Scalar(0, 255, 0));
 			cv::imshow("Rubik's Cube Solver", img_resize);
 			cv::waitKey(500);
-			return face;
+
+			//check if the correct face was found
+			char cont;
+			std::cout << "Is this the correct face? (y/n)" << std::endl;
+			face.printFace();
+			std::cout << std::endl;
+			std::cin >> cont;
+
+			if (cont == 'y')
+			{
+				return face;
+			}
 		}
 	}
 }
@@ -332,7 +343,7 @@ void Cube::applyMoves(cv::VideoCapture& webcam)
 				drawMoveCount(img_resize, move);
 				cv::imshow("Rubik's Cube Solver", img_resize);
 				face = getCubeFace(img_resize);
-				cv::waitKey(100);
+				cv::waitKey(20);
 			}
 		}
 		else if (rotationToString(move)[0] == 'F' || rotationToString(move)[0] == 'B')
@@ -347,7 +358,7 @@ void Cube::applyMoves(cv::VideoCapture& webcam)
 				drawMoveCount(img_resize, move);
 				cv::imshow("Rubik's Cube Solver", img_resize);
 				face = getCubeFace(img_resize);
-				cv::waitKey(100);
+				cv::waitKey(20);
 			}
 		}
 	}
