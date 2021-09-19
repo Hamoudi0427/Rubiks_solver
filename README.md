@@ -48,7 +48,7 @@ The images above show Rubik's cubes in different lighting conditions. The first 
 
 Once all the HSV values were collected getting the cube faces was trivial as all that was required was cropping the facelets from input images from the webcam. From there the starting cube can be initialized and the moves can be drawn on the webcam stream to solve the cube.
 
-# Demo
+# Demo :computer:
 1) The starting cube is first initialized.
 
 <p align="center">
