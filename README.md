@@ -67,7 +67,7 @@ Once all the HSV values were collected getting the cube faces was trivial as all
   <img width="600" height="453" src="https://github.com/Hamoudi0427/Rubiks_solver/blob/master/Test_Demo/cube_moves.gif">
 </p>
 
-# Download and Installation
+# Download and Installation :link:
 1) Download and install openCV. This project uses version 4.5.3.
 
 2) Set up openCV dependencies and include opencv_world453d.lib in the linker. A tutorial can be found here: https://www.geeksforgeeks.org/opencv-c-windows-setup-using-visual-studio-2019/.
