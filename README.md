@@ -74,7 +74,7 @@ Once all the HSV values were collected getting the cube faces was trivial as all
 
 3) Clone repository and run.
 
-# References
+# References :page_facing_up:
 1) https://www.jaapsch.net/puzzles/thistle.htm (contains Thistlewaite's papers)
-2) https://observablehq.com/@onionhoney/how-to-model-a-rubiks-cube (describes Thistlewaite algorithm implementation if greater depth)
+2) https://observablehq.com/@onionhoney/how-to-model-a-rubiks-cube (describes Thistlewaite algorithm implementation in greater depth)
 3) https://www.diva-portal.org/smash/get/diva2:816583/FULLTEXT01.pdf (general information on Rubik's cube algorithms)
