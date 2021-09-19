@@ -1,4 +1,4 @@
-# <p> Rubik's Cube Solver &nbsp; <img width="50" height="50" src= "https://i.pinimg.com/originals/08/05/a8/0805a8f92d5f8a31a15587859b965264.png"> </p>
+# <p> Rubik's Cube Solver &nbsp; <imge align = "center" img width="50" height="50" src= "https://i.pinimg.com/originals/08/05/a8/0805a8f92d5f8a31a15587859b965264.png"> </p>
 This is a Rubik's Cube solver that uses Thistlewaite's algorithm to solve a cube and openCV to get input from a webcam.
 
 # Thistlewaite's Algorithm :abacus:
