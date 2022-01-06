@@ -1,6 +1,25 @@
 # <p> Rubik's Cube Solver &nbsp; <img width="50" height="50" src= "https://i.pinimg.com/originals/08/05/a8/0805a8f92d5f8a31a15587859b965264.png"> </p>
 This is a Rubik's Cube solver that uses Thistlewaite's algorithm to solve a cube and openCV to get input from a webcam.
 
+# Demo :computer:
+1) The starting cube is first initialized.
+
+<p align="center">
+  <img width="600" height="381" src="https://github.com/Hamoudi0427/Rubiks_solver/blob/master/Test_Demo/cube_init.gif">
+</p>
+
+2) The solution is then calculated using the algorithm described above.
+
+<p align="center">
+  <img width="600" height="381" src="https://github.com/Hamoudi0427/Rubiks_solver/blob/master/Test_Demo/cube_solver.gif">
+</p>
+
+3) Apply moves till the cube is solved.
+
+<p align="center">
+  <img width="600" height="453" src="https://github.com/Hamoudi0427/Rubiks_solver/blob/master/Test_Demo/cube_moves.gif">
+</p>
+
 # Thistlewaite's Algorithm :abacus:
 Thistlewaite's algorithm is an algorithm designed by Morwen B. Thistelwaite that allows a Rubik's Cube to be programatically solved in under 45 moves (with the average number of moves being around 30). The algorithm works by moving the cube from one group to another, with each group having less available moves, restricting the cube to fewer and fewer possibilities until it is solved. The current solver takes about 40 seconds to find a solution.
 
@@ -47,25 +66,6 @@ To get input from the webcam openCV is used. The most difficult aspect of gettin
 The images above show Rubik's cubes in different lighting conditions. The first row contains the cube in RGB, the second contains the cube converted to the HSV color space and the third row shows the cube masked with the blue HSV color values ([90 140], [30 255], [20 255]).
 
 Once all the HSV values were collected getting the cube faces was trivial as all that was required was cropping the facelets from input images from the webcam. From there the starting cube can be initialized and the moves can be drawn on the webcam stream to solve the cube.
-
-# Demo :computer:
-1) The starting cube is first initialized.
-
-<p align="center">
-  <img width="600" height="381" src="https://github.com/Hamoudi0427/Rubiks_solver/blob/master/Test_Demo/cube_init.gif">
-</p>
-
-2) The solution is then calculated using the algorithm described above.
-
-<p align="center">
-  <img width="600" height="381" src="https://github.com/Hamoudi0427/Rubiks_solver/blob/master/Test_Demo/cube_solver.gif">
-</p>
-
-3) Apply moves till the cube is solved.
-
-<p align="center">
-  <img width="600" height="453" src="https://github.com/Hamoudi0427/Rubiks_solver/blob/master/Test_Demo/cube_moves.gif">
-</p>
 
 # Download and Installation :link:
 1) Download and install openCV. This project uses version 4.5.3.
