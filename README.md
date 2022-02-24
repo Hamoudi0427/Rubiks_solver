@@ -75,10 +75,10 @@ Once all the HSV values were collected getting the cube faces was trivial as all
 3) Clone repository and run.
 
 # To-Do
-1) Color Calibrator for more accurate color detection
-2) Use two color spaces to verify colors and to handle reflection
-3) Improve UI (display cube when extracted, show color in real time, reduce lag, etc)
-4) Improve solve speeds by using pre-generated tables 
+1) Clean/Refactor Code.
+2) Improve color detection through color distance (as opposed to preset color ranges).
+3) Improve UI (during solve).
+4) Multi-threading during solve to hide small runtime delay.
 
 # References :page_facing_up:
 1) https://www.jaapsch.net/puzzles/thistle.htm (contains Thistlewaite's papers)
